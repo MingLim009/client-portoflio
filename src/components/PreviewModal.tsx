@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import type { WorkItem } from '../data/works'
 import {
@@ -9,15 +9,32 @@ import {
 
 type Props = {
   work: WorkItem | null
+  list: WorkItem[]
   onClose: () => void
+  onNavigate: (work: WorkItem) => void
 }
 
-export function PreviewModal({ work, onClose }: Props) {
+export function PreviewModal({ work, list, onClose, onNavigate }: Props) {
+  const titleId = useId()
+  const closeRef = useRef<HTMLButtonElement>(null)
+  const [iframeLoaded, setIframeLoaded] = useState(false)
+
+  const index = work ? list.findIndex((item) => item.id === work.id) : -1
+  const hasPrev = index > 0
+  const hasNext = index >= 0 && index < list.length - 1
+
   useEffect(() => {
     if (!work) return
 
+    setIframeLoaded(false)
+    closeRef.current?.focus()
+
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose()
+      if (event.key === 'ArrowLeft' && index > 0) onNavigate(list[index - 1])
+      if (event.key === 'ArrowRight' && index >= 0 && index < list.length - 1) {
+        onNavigate(list[index + 1])
+      }
     }
 
     document.body.style.overflow = 'hidden'
@@ -27,13 +44,13 @@ export function PreviewModal({ work, onClose }: Props) {
       document.body.style.overflow = ''
       window.removeEventListener('keydown', onKey)
     }
-  }, [work, onClose])
+  }, [work, index, list, onClose, onNavigate])
 
   if (!work) return null
 
   const pending = isPlaceholderDriveId(work.driveFileId)
   const previewSrc = pending ? '' : drivePreviewUrl(work.driveFileId)
-  const driveHref = pending ? '#' : driveViewUrl(work.driveFileId)
+  const driveHref = pending ? undefined : driveViewUrl(work.driveFileId)
 
   return (
     <div className="modal-root" role="presentation" onClick={onClose}>
@@ -41,7 +58,7 @@ export function PreviewModal({ work, onClose }: Props) {
         className="modal-panel"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="preview-title"
+        aria-labelledby={titleId}
         onClick={(event) => event.stopPropagation()}
         initial={{ opacity: 0, y: 24, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -51,10 +68,19 @@ export function PreviewModal({ work, onClose }: Props) {
           <div>
             <p className="work-function">
               {work.function} · {work.type}
+              {list.length > 1 && index >= 0
+                ? ` · ${index + 1} of ${list.length}`
+                : null}
             </p>
-            <h2 id="preview-title">{work.title}</h2>
+            <h2 id={titleId}>{work.title}</h2>
           </div>
-          <button type="button" className="icon-btn" onClick={onClose} aria-label="Close preview">
+          <button
+            ref={closeRef}
+            type="button"
+            className="icon-btn"
+            onClick={onClose}
+            aria-label="Close preview"
+          >
             ✕
           </button>
         </div>
@@ -62,36 +88,68 @@ export function PreviewModal({ work, onClose }: Props) {
         <div className={`preview-frame ${work.type}`}>
           {pending ? (
             <div className="preview-placeholder">
-              <p>Drive file ID not set yet.</p>
-              <p>Once the client shares the file, replace the ID in the data layer.</p>
+              <p>Preview is not available yet.</p>
+              <p>
+                This piece is listed in the portfolio, but the Drive file still
+                needs to be connected.
+              </p>
             </div>
           ) : (
-            <iframe
-              title={`${work.title} preview`}
-              src={previewSrc}
-              allow="autoplay"
-              allowFullScreen
-            />
+            <>
+              {!iframeLoaded && (
+                <div className="preview-loading" aria-live="polite">
+                  Loading preview…
+                </div>
+              )}
+              <iframe
+                title={`${work.title} preview`}
+                src={previewSrc}
+                allow="autoplay"
+                allowFullScreen
+                onLoad={() => setIframeLoaded(true)}
+              />
+            </>
           )}
         </div>
 
         <p className="modal-desc">{work.description}</p>
 
-        <div className="modal-actions">
-          <a
+        <div className="modal-nav">
+          <button
+            type="button"
             className="btn btn-ghost"
-            href={driveHref}
-            target="_blank"
-            rel="noreferrer"
-            aria-disabled={pending}
-            onClick={(event) => {
-              if (pending) event.preventDefault()
-            }}
+            disabled={!hasPrev}
+            onClick={() => hasPrev && onNavigate(list[index - 1])}
           >
-            Open in Drive
-          </a>
+            ← Previous
+          </button>
+          <button
+            type="button"
+            className="btn btn-ghost"
+            disabled={!hasNext}
+            onClick={() => hasNext && onNavigate(list[index + 1])}
+          >
+            Next →
+          </button>
+        </div>
+
+        <div className="modal-actions">
+          {driveHref ? (
+            <a
+              className="btn btn-ghost"
+              href={driveHref}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open in Drive
+            </a>
+          ) : (
+            <button type="button" className="btn btn-ghost" disabled>
+              Drive link pending
+            </button>
+          )}
           <button type="button" className="btn btn-primary" onClick={onClose}>
-            Close
+            Back to work
           </button>
         </div>
       </motion.div>

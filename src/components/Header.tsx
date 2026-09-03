@@ -1,8 +1,18 @@
+import { useEffect, useState } from 'react'
 import { site } from '../data/site'
 
 export function Header() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="site-header">
+    <header className={scrolled ? 'site-header is-scrolled' : 'site-header'}>
       <a className="brand" href="#top">
         {site.name}
       </a>

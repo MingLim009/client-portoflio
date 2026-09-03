@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { About } from './components/About'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
@@ -12,18 +12,36 @@ import './index.css'
 
 export default function App() {
   const [activeWork, setActiveWork] = useState<WorkItem | null>(null)
+  const [activeList, setActiveList] = useState<WorkItem[]>([])
+
+  const openWork = useCallback((work: WorkItem, list: WorkItem[]) => {
+    setActiveWork(work)
+    setActiveList(list)
+  }, [])
+
+  const closeWork = useCallback(() => {
+    setActiveWork(null)
+  }, [])
 
   return (
     <div className="app-shell">
+      <a className="skip-link" href="#work">
+        Skip to work
+      </a>
       <Header />
       <main>
         <Hero />
-        <WorkSection onSelect={setActiveWork} />
+        <WorkSection onSelect={openWork} />
         <About />
         {site.showDirectContacts ? <Contact /> : null}
       </main>
       <Footer />
-      <PreviewModal work={activeWork} onClose={() => setActiveWork(null)} />
+      <PreviewModal
+        work={activeWork}
+        list={activeList}
+        onClose={closeWork}
+        onNavigate={setActiveWork}
+      />
     </div>
   )
 }

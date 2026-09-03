@@ -29,6 +29,9 @@ export function Hero() {
           <p className="hero-name-label">Portfolio</p>
           <p className="hero-name-text">{site.name}</p>
           <p className="hero-name-role">{site.role}</p>
+          <a className="btn btn-primary hero-cta" href="#work">
+            Browse work
+          </a>
         </motion.div>
       </div>
 
