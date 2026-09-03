@@ -95,7 +95,15 @@ export function PreviewModal({ work, list, onClose, onNavigate }: Props) {
           </button>
         </div>
 
-        <div className={`preview-frame ${work.type === 'script' ? 'script' : 'video'}`}>
+        <div
+          className={`preview-frame ${
+            work.type === 'script'
+              ? 'script'
+              : hasLocal && !localIsVideo
+                ? 'stats'
+                : 'video'
+          }`}
+        >
           {hasLocal && localIsVideo ? (
             <video
               className="preview-video"
