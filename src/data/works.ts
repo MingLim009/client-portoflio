@@ -81,17 +81,6 @@ export const works: WorkItem[] = [
     featured: true,
   },
   {
-    id: 'bizzopp-retention',
-    title: 'BizzOpp — Pitch Retention',
-    type: 'result',
-    function: 'VSL Strategy',
-    category: 'Results',
-    market: 'BizzOpp',
-    description:
-      '47.61% pitch retention on a 22:51 video · 1,526 views · 658 plays · 49.39% play rate.',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
-  },
-  {
     id: 'vision-vsl',
     title: 'Vision Offer VSL',
     type: 'video',
@@ -152,14 +141,64 @@ export const works: WorkItem[] = [
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
   },
   {
-    id: 'bizzopp-vsl',
-    title: 'BizzOpp VSL — Wire 27',
-    type: 'video',
-    function: 'Full VSL',
-    category: 'VSL',
-    market: 'BizzOpp',
-    description: 'Cold-traffic money offer VSL — “What do you usually do on Mondays?”',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    id: 'https-47-script',
+    title: 'HTTPS-47 — VSL Script',
+    type: 'script',
+    function: 'VSL Script + Brief',
+    category: 'Infoproduct',
+    market: 'HTTPS-47',
+    description:
+      'Updated VSL script + brief for HTTPS-47 (infoproduct). Wire 27 was removed as requested.',
+    driveFileId: '10Xdh0vhnA2gEpOsY3msCKo3yOGZ5947s0acdTEQKRpE',
+    featured: false,
+  },
+  {
+    id: 'liver-research',
+    title: 'Liver Support — Competitor Research',
+    type: 'script',
+    function: 'Competitor analysis',
+    category: 'Nutraceuticals (Liver Support)',
+    market: 'Verdaia',
+    description:
+      'Research before writing: competitor teardown, best public segments, persona & mechanism insights used to build the ads.',
+    driveFileId: '1vpONqeSLWQeZ_iitPZtLhccKov2aCxTAqH9b5UxPeZ8',
+    featured: false,
+  },
+  {
+    id: 'liver-script-07',
+    title: 'Concept 07 — Script + Brief',
+    type: 'script',
+    function: 'VSL Script + Brief',
+    category: 'Nutraceuticals (Liver Support)',
+    market: 'Verdaia',
+    description:
+      'Updated script + brief for the Liver Support VSL set (Concept 07).',
+    driveFileId: '14SM_krE_arlmWgCl3v8o8FCPU6vgpWf-rpGN6Skh4jc',
+    featured: false,
+  },
+  {
+    id: 'iron-rise-ads-doc',
+    title: 'Iron Rise — Ads Library',
+    type: 'script',
+    function: 'Ads library / copy list',
+    category: 'Nutraceuticals (Iron Rise)',
+    market: 'Iron Rise',
+    description:
+      'All Iron Rise ads list from the client doc (includes the ad that needs replacement).',
+    driveFileId: '1mz5Q2tP4yjLCipOG0gJe1jLa_-HEQsbMxsPAR2vH7Sg',
+    featured: false,
+  },
+  {
+    id: 'nad-telehealth-script',
+    title: 'NAD+ — Telehealth Script',
+    type: 'script',
+    function: 'Telehealth scripts',
+    category: 'Telehealth',
+    market: 'NAD+',
+    description:
+      'Script doc for the NAD+ telehealth mini-VSLs / ads (replacement for “six signs” handled in the ads library doc).',
+    driveFileId: '1L9oLwm_6W3YuqkVCDNBvnaU1gB-qWVINYQyjD_eLgew',
+    featured: false,
   },
   {
     id: 'liver-ad-set',
@@ -169,7 +208,7 @@ export const works: WorkItem[] = [
     category: 'Ads',
     market: 'Verdaia',
     description:
-      'Selected Liver Support ads from the Verdaia account — creative paired with the $82K / 4.05x ROAS results.',
+      'Liver Support is a supplement that supports the liver. Creative strategy built from competitor research (see Liver Research doc) and paired with the $82K / 4.05x ROAS results.',
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
     featured: true,
   },
@@ -181,7 +220,7 @@ export const works: WorkItem[] = [
     category: 'Ads',
     market: 'Verdaia',
     description:
-      'Men’s health ads for Iron Rise — compliant creative in one of the hardest niches to keep live.',
+      'Men’s health ads for Iron Rise — compliant creative in a difficult niche. Use the Iron Rise Ads Library doc for the full list (last ad will be replaced as requested).',
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
   },
   {
@@ -192,7 +231,7 @@ export const works: WorkItem[] = [
     category: 'Ads',
     market: 'Telehealth',
     description:
-      'Current work: animated mini-VSLs and UGC talking heads for a telehealth NAD+ offer.',
+      'Current work: animated mini-VSLs and UGC talking heads for a telehealth NAD+ offer. Script reference: NAD+ Telehealth Script doc.',
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
   },
 ]
