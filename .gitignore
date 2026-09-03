@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Client source materials (keep local; site uses /public/proof)
+Data/*.pdf
+Data/extracted.txt
+Data/image.png

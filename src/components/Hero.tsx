@@ -22,11 +22,11 @@ export function Hero() {
         </p>
         <p className="hero-tagline">{site.tagline}</p>
         <div className="hero-actions">
-          <a className="btn btn-primary" href="#work">
-            Browse work
+          <a className="btn btn-primary" href="#proof">
+            See proof
           </a>
-          <a className="btn btn-ghost" href="#about">
-            About me
+          <a className="btn btn-ghost" href="#work">
+            Browse work
           </a>
         </div>
       </motion.div>

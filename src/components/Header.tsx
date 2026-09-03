@@ -17,6 +17,7 @@ export function Header() {
         <span className="brand-name">{site.name}</span>
       </a>
       <nav className="nav" aria-label="Primary">
+        <a href="#proof">Proof</a>
         <a href="#work">Work</a>
         <a href="#about">About</a>
       </nav>

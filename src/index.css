@@ -750,10 +750,120 @@ p {
   font-weight: 600;
 }
 
+#proof,
 #work,
 #about,
 #contact {
   scroll-margin-top: 5.5rem;
+}
+
+.proof-section {
+  border-bottom: 1px solid var(--line);
+}
+
+.proof-metrics {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.proof-metric {
+  padding: 1.25rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.proof-value {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.proof-label {
+  margin-top: 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.proof-detail {
+  margin-top: 0.45rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.proof-figure {
+  position: relative;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #0b1018;
+}
+
+.proof-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.proof-figure figcaption {
+  padding: 0.9rem 1.1rem 1.1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  border-top: 1px solid var(--line);
+}
+
+.experience-list {
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  max-width: 42rem;
+}
+
+.experience-item {
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--line);
+}
+
+.experience-period {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.experience-item h3 {
+  margin-top: 0.4rem;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.experience-item h3 span {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.experience-item ul {
+  margin: 0.65rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.experience-item li + li {
+  margin-top: 0.3rem;
 }
 
 @keyframes glow-breathe {

@@ -5,6 +5,7 @@ import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { PreviewModal } from './components/PreviewModal'
+import { ProofSection } from './components/ProofSection'
 import { WorkSection } from './components/WorkSection'
 import { site } from './data/site'
 import type { WorkItem } from './data/works'
@@ -25,12 +26,13 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <a className="skip-link" href="#work">
-        Skip to work
+      <a className="skip-link" href="#proof">
+        Skip to proof
       </a>
       <Header />
       <main>
         <Hero />
+        <ProofSection />
         <WorkSection onSelect={openWork} />
         <About />
         {site.showDirectContacts ? <Contact /> : null}

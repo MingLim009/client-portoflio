@@ -1,26 +1,24 @@
-export type WorkType = 'script' | 'video'
+export type WorkType = 'script' | 'video' | 'result'
 
 export type WorkItem = {
   id: string
   title: string
   type: WorkType
-  /** Role / function shown on the card (e.g. Screenplay, Director, Editor) */
+  /** Role / function shown on the card */
   function: string
   category: string
   description: string
   /** Google Drive file ID only — not the full URL */
   driveFileId: string
-  /**
-   * Optional custom thumbnail URL.
-   * If empty, the site uses the Drive thumbnail for that file ID.
-   */
+  /** Optional custom thumbnail URL */
   thumbnail?: string
   featured?: boolean
+  market?: string
 }
 
 /**
  * Content layer — add / edit / remove items here.
- * No component changes needed when updating portfolio pieces.
+ * Replace driveFileId values when the client sends Drive links.
  *
  * driveFileId: extract from any Drive share link:
  *   https://drive.google.com/file/d/FILE_ID_HERE/view?...
@@ -28,56 +26,183 @@ export type WorkItem = {
  */
 export const works: WorkItem[] = [
   {
-    id: 'sample-script-01',
-    title: 'Midnight Transit',
-    type: 'script',
-    function: 'Screenplay',
-    category: 'Drama',
+    id: 'meta-sfk-hub',
+    title: 'Meta Ads — SFK Hub',
+    type: 'result',
+    function: 'Creative Strategy',
+    category: 'Results',
+    market: 'United States',
     description:
-      'A night-shift driver crosses the city with a passenger who knows too much about tomorrow.',
+      '$267,778.67 across 88 campaigns · 5,837 purchases · $45.88 per purchase. Account-level proof from the info-product funnel.',
+    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    thumbnail: '/proof/meta-ads-proof.png',
+    featured: true,
+  },
+  {
+    id: 'meta-liver-support',
+    title: 'Meta Ads — Liver Support',
+    type: 'result',
+    function: 'Creative Strategy',
+    category: 'Results',
+    market: 'Verdaia',
+    description:
+      '$82,225.16 spent · 4.05x average ROAS · best ad set at 12.27x on the Liver Support offer.',
+    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    thumbnail: '/proof/meta-ads-proof.png',
+    featured: true,
+  },
+  {
+    id: 'prostapime-retention',
+    title: 'ProstaPrime VSL — Retention',
+    type: 'result',
+    function: 'VSL Strategy',
+    category: 'Results',
+    market: 'United States',
+    description:
+      '13.3M plays on VTurb. 18.42% still watching at 33:55 — 92% into a 36:43 video.',
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
     featured: true,
   },
   {
-    id: 'sample-video-01',
-    title: 'Soft Signal',
-    type: 'video',
-    function: 'Director / Editor',
-    category: 'Short Film',
+    id: 'bizzopp-retention',
+    title: 'BizzOpp — Pitch Retention',
+    type: 'result',
+    function: 'VSL Strategy',
+    category: 'Results',
+    market: 'BizzOpp',
     description:
-      'A quiet visual piece about missed calls and the light that stays on after midnight.',
+      '47.61% pitch retention on a 22:51 video · 1,526 views · 658 plays · 49.39% play rate.',
+    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+  },
+  {
+    id: 'prostalax-vsl',
+    title: 'Prostalax VSL',
+    type: 'video',
+    function: 'Full VSL',
+    category: 'VSL',
+    market: 'Brazil',
+    description: 'Full prostate VSL in PT-BR — one of the pieces that shaped the ads training path.',
+    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+  },
+  {
+    id: 'prostalax-script',
+    title: 'Prostalax Lead 3 — Script',
+    type: 'script',
+    function: 'VSL Script',
+    category: 'Script',
+    market: 'Brazil',
+    description: 'VSL script for the Prostalax lead — writing and structure behind the video.',
+    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+  },
+  {
+    id: 'vision-vsl',
+    title: 'Vision Offer VSL',
+    type: 'video',
+    function: 'Full VSL',
+    category: 'VSL',
+    market: 'United States',
+    description: 'Eye-health VSL for the US market.',
+    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+  },
+  {
+    id: 'prostate-vsl-us',
+    title: 'Prostate VSL — US',
+    type: 'video',
+    function: 'Full VSL',
+    category: 'VSL',
+    market: 'United States',
+    description: 'Prostate VSL produced for the US market.',
+    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+  },
+  {
+    id: 'zepbound-script',
+    title: 'ZepBound 2.0 VSL — Script',
+    type: 'script',
+    function: 'VSL Script',
+    category: 'Script',
+    market: 'United States',
+    description: 'GLP-1 angle VSL script — the document behind the creative.',
+    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+  },
+  {
+    id: 'memory-advertorials',
+    title: 'Memory Advertorials',
+    type: 'script',
+    function: 'Advertorial',
+    category: 'Script',
+    market: 'United States',
+    description: 'Native-ad format advertorials for a memory offer.',
+    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+  },
+  {
+    id: 'memocore-upsell',
+    title: 'Memocore Upsell 1',
+    type: 'script',
+    function: 'Upsell Script',
+    category: 'Script',
+    market: 'United States',
+    description: 'Post-purchase upsell flow script.',
+    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+  },
+  {
+    id: 'longform-scripts',
+    title: 'Long-form Ad Scripts',
+    type: 'script',
+    function: 'Ad Scripts',
+    category: 'Script',
+    market: 'United States',
+    description: 'Long-form paid social scripts — the format scaling in selected niches.',
+    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+  },
+  {
+    id: 'bizzopp-vsl',
+    title: 'BizzOpp VSL — Wire 27',
+    type: 'video',
+    function: 'Full VSL',
+    category: 'VSL',
+    market: 'BizzOpp',
+    description: 'Cold-traffic money offer VSL — “What do you usually do on Mondays?”',
+    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+  },
+  {
+    id: 'liver-ad-set',
+    title: 'Liver Support — Ad Set',
+    type: 'video',
+    function: 'Paid Social Ads',
+    category: 'Ads',
+    market: 'Verdaia',
+    description:
+      'Selected Liver Support ads from the Verdaia account — creative paired with the $82K / 4.05x ROAS results.',
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
     featured: true,
   },
   {
-    id: 'sample-script-02',
-    title: 'The Quiet Room',
-    type: 'script',
-    function: 'Treatment',
-    category: 'Thriller',
+    id: 'iron-rise-ads',
+    title: 'Iron Rise — Ad Set',
+    type: 'video',
+    function: 'Paid Social Ads',
+    category: 'Ads',
+    market: 'Verdaia',
     description:
-      'Two strangers share a waiting room that never opens its door — until it does.',
+      'Men’s health ads for Iron Rise — compliant creative in one of the hardest niches to keep live.',
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
   },
   {
-    id: 'sample-video-02',
-    title: 'Frame by Frame',
+    id: 'telehealth-nads',
+    title: 'Telehealth NAD+ — Mini-VSLs',
     type: 'video',
-    function: 'Editor',
-    category: 'Reel',
+    function: 'Animated + UGC',
+    category: 'Ads',
+    market: 'Telehealth',
     description:
-      'Selected cuts showcasing pacing, transitions, and narrative rhythm.',
+      'Current work: animated mini-VSLs and UGC talking heads for a telehealth NAD+ offer.',
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
   },
-]
-
-export const categories = [
-  'All',
-  ...Array.from(new Set(works.map((w) => w.category))).sort(),
 ]
 
 export const typeFilters = [
   { id: 'all' as const, label: 'All work' },
   { id: 'script' as const, label: 'Scripts' },
-  { id: 'video' as const, label: 'Videos' },
+  { id: 'video' as const, label: 'Ads & VSLs' },
+  { id: 'result' as const, label: 'Results' },
 ]

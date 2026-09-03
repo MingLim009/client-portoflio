@@ -49,10 +49,10 @@ export function WorkSection({ onSelect }: Props) {
     <section className="section work-section" id="work">
       <div className="section-head">
         <p className="section-kicker">Selected work</p>
-        <h2>Scripts & videos</h2>
+        <h2>Scripts, ads & results</h2>
         <p className="section-lead">
-          Click any piece to preview it here. Use “Open in Drive” when you want
-          the original file.
+          Not a video-editor reel — each piece pairs the writing with the creative
+          outcome. Preview here; open Drive when the source file is linked.
         </p>
       </div>
 
@@ -157,8 +157,14 @@ export function WorkSection({ onSelect }: Props) {
                     <img src={thumb} alt="" loading="lazy" />
                   ) : (
                     <div className="work-media-fallback" aria-hidden="true">
-                      <span>{work.type === 'video' ? '▶' : 'SCR'}</span>
-                    </div>
+                    <span>
+                      {work.type === 'video'
+                        ? '▶'
+                        : work.type === 'result'
+                          ? 'ROI'
+                          : 'DOC'}
+                    </span>
+                  </div>
                   )}
                   <span className="work-type">{work.type}</span>
                   {pending && (
@@ -167,7 +173,10 @@ export function WorkSection({ onSelect }: Props) {
                   <span className="work-hover-cue">Preview</span>
                 </div>
                 <div className="work-copy">
-                  <p className="work-function">{work.function}</p>
+                  <p className="work-function">
+                    {work.function}
+                    {work.market ? ` · ${work.market}` : ''}
+                  </p>
                   <h3>{work.title}</h3>
                   <p className="work-desc">{work.description}</p>
                   <p className="work-meta">{work.category}</p>

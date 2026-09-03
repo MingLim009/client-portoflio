@@ -85,13 +85,14 @@ export function PreviewModal({ work, list, onClose, onNavigate }: Props) {
           </button>
         </div>
 
-        <div className={`preview-frame ${work.type}`}>
+        <div className={`preview-frame ${work.type === 'script' ? 'script' : 'video'}`}>
           {pending ? (
             <div className="preview-placeholder">
-              <p>Preview is not available yet.</p>
+              <p>Drive file not linked yet.</p>
               <p>
-                This piece is listed in the portfolio, but the Drive file still
-                needs to be connected.
+                {work.type === 'result'
+                  ? 'Result proof is shown on the Proof section. The original dashboard file will open here once the Drive link is added.'
+                  : 'This piece is listed from the portfolio. The Google Drive file will open here once the client sends the share link.'}
               </p>
             </div>
           ) : (

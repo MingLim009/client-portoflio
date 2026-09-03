@@ -5,11 +5,18 @@ export type ContactLink = {
   description: string
 }
 
+export type ProofMetric = {
+  value: string
+  label: string
+  detail: string
+}
+
 export type SiteConfig = {
   name: string
   role: string
   tagline: string
   about: string
+  aboutTitle: string
   heroLine1: string
   heroLine2: string
   services: string
@@ -17,6 +24,11 @@ export type SiteConfig = {
   location: string
   origin: string
   email?: string
+  phone?: string
+  proofIntro: string
+  proofImage: string
+  proofMetrics: ProofMetric[]
+  experience: { period: string; company: string; role: string; points: string[] }[]
   /**
    * Keep false while sharing review links on freelancing platforms.
    * Set true only at final delivery so WhatsApp / Discord / Slack appear.
@@ -30,24 +42,80 @@ export type SiteConfig = {
   }
 }
 
-/**
- * Update this file with the client's real details once materials arrive.
- * Leave unused contact hrefs empty to hide them from the UI.
- */
 export const site: SiteConfig = {
-  name: 'Benjamim Rhuan',
-  role: 'Writer & Visual Storyteller',
+  name: 'Benjamin Rhuan',
+  role: 'Creative Strategist',
   tagline:
-    'Scripts and films shaped for clarity, pace, and emotional precision.',
+    'Direct response creative for performance brands — scripts, ads, and the results behind them.',
+  aboutTitle: 'Strategy first. Creative that scales.',
   about:
-    'I craft screenplays and video pieces that move with intention — from first page to final cut. This portfolio collects selected scripts and films, each available to preview here and open from Google Drive when you need the source file.',
-  heroLine1: 'Scripts &',
-  heroLine2: 'films',
-  services: 'Scripts / Videos / Treatments',
-  availability: 'Currently available for projects worldwide',
-  location: 'Based worldwide',
-  origin: 'Stories in motion',
-  email: '',
+    'I build creative strategy for direct-response and performance brands: research, angles, scripts, briefs, and the ads that carry them. This portfolio shows both sides of the work — the writing and the proof from the ad accounts.',
+  heroLine1: 'Scripts,',
+  heroLine2: 'ads & results',
+  services: 'Creative Strategy / VSLs / Paid Social',
+  availability: '100% available to start now',
+  location: 'Brazil · US · EU markets',
+  origin: '37 pieces · 4 markets',
+  email: 'benjamimrhuan@hotmail.com',
+  phone: '+55 81 98699-7127',
+  proofIntro:
+    'These screenshots are account-level proof from Meta Ads — spend, purchases, and ROAS from funnels I built the creative strategy for.',
+  proofImage: '/proof/meta-ads-proof.png',
+  proofMetrics: [
+    {
+      value: '$267,778.67',
+      label: 'Meta spend',
+      detail: '88 campaigns · 5,837 purchases · $45.88 CPA',
+    },
+    {
+      value: '4.05x',
+      label: 'Average ROAS',
+      detail: '$82,225.16 on Liver Support · peak ad set 12.27x',
+    },
+    {
+      value: '13.3M',
+      label: 'VSL plays',
+      detail: 'ProstaPrime · 18.4% still watching at 92% of the video',
+    },
+  ],
+  experience: [
+    {
+      period: '2025 – 2026',
+      company: 'Verdaia',
+      role: 'Creative Strategist',
+      points: [
+        'Creative for Iron Rise and Liver Support.',
+        'Liver Support: $82K spend at 4.05x average ROAS.',
+      ],
+    },
+    {
+      period: '2024 – 2025',
+      company: 'Telemedicine Brand',
+      role: 'Creative Strategist',
+      points: [
+        'Built full funnels: ad creative, sales pages, and quizzes.',
+        'Owned creative strategy end to end — not only copy.',
+      ],
+    },
+    {
+      period: '2023 – 2024',
+      company: 'SFK Hub',
+      role: 'Creative Strategist & Copywriter',
+      points: [
+        'Health, weight-loss, and extra-income offers for US and German markets.',
+        'Source of the $267K Meta campaign set: research-backed briefs.',
+      ],
+    },
+    {
+      period: '2021 – 2023',
+      company: 'Bedigital',
+      role: 'Copywriter Trainee → Senior Copywriter',
+      points: [
+        'Ads, advertorials, and VSLs for Brazil, US, and Europe.',
+        'VSLs scaled past $20M in tracked spend by the time I left.',
+      ],
+    },
+  ],
   showDirectContacts: false,
   contacts: [
     {
@@ -70,9 +138,9 @@ export const site: SiteConfig = {
     },
   ],
   seo: {
-    title: 'Benjamim Rhuan — Portfolio',
+    title: 'Benjamin Rhuan — Creative Strategist',
     description:
-      'Professional portfolio of scripts and videos. Preview work on-site or open the original files on Google Drive.',
+      'Creative strategist for direct-response brands. Scripts, ads, VSL retention, and Meta Ads proof from scaled campaigns.',
     ogImage: '/og-image.svg',
   },
 }
