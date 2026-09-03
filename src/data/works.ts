@@ -201,6 +201,42 @@ export const works: WorkItem[] = [
     featured: false,
   },
   {
+    id: 'nad-3-0-talking-head-hook2',
+    title:
+      '3.0 Script — Persona Supplement-fatigued woman 40–55 (Hook 2)',
+    type: 'script',
+    function: 'Talking head script',
+    category: 'Telehealth',
+    market: 'NAD+',
+    description:
+      'Client script doc for the NAD+ talking head piece (Hook 2 / TOF-3.0).',
+    driveFileId: '13ll9HoA2icUxBPHXeS7GDEH0sNs2MuV3tXr2HhEVlvM',
+    featured: false,
+  },
+  {
+    id: 'nad-4-0-podcast',
+    title: '4.0 Script — Persona Woman 50+ (It’s Just Your Age)',
+    type: 'script',
+    function: 'Podcast script',
+    category: 'Telehealth',
+    market: 'NAD+',
+    description:
+      'Client script doc for the NAD+ 4.0 concept (Podcast angle / 3 hooks).',
+    driveFileId: '1gXRLPsjYlCuLbL35-3UsK41Vr4lhf6RKGunJCODKhZI',
+    featured: false,
+  },
+  {
+    id: 'nad-whiteboard',
+    title: 'Whiteboard',
+    type: 'script',
+    function: 'Production reference',
+    category: 'Telehealth',
+    market: 'NAD+',
+    description: 'Client whiteboard doc for the NAD+ production set.',
+    driveFileId: '1y6-7S3kl7MQME-TtUjvUeLrykn7rE0M49mELQfGMJdk',
+    featured: false,
+  },
+  {
     id: 'liver-ad-set',
     title: 'Liver Support — Ad Set',
     type: 'video',
