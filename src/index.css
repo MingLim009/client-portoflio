@@ -164,20 +164,20 @@ p {
 
 .hero-symbol {
   position: absolute;
-  right: clamp(-8%, -2vw, 4%);
-  top: 50%;
-  translate: 0 -52%;
-  width: min(54vw, 560px);
+  right: clamp(-2%, 2vw, 8%);
+  top: 46%;
+  translate: 0 -50%;
+  width: min(58vw, 620px);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.34;
-  filter: saturate(1.05) contrast(1.08);
+  opacity: 0.55;
+  filter: saturate(1.1);
   mask-image: linear-gradient(
-    115deg,
+    105deg,
     transparent 0%,
-    rgba(0, 0, 0, 0.55) 22%,
-    rgba(0, 0, 0, 0.95) 55%,
-    rgba(0, 0, 0, 0.75) 82%,
+    rgba(0, 0, 0, 0.45) 18%,
+    #000 48%,
+    rgba(0, 0, 0, 0.8) 78%,
     transparent 100%
   );
   animation: symbol-float 10s ease-in-out infinite alternate;
@@ -187,8 +187,8 @@ p {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 22px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .hero-grain {
@@ -303,15 +303,14 @@ p {
 .section.proof-section::after {
   content: '';
   position: absolute;
-  right: clamp(-4%, 2vw, 6%);
-  top: 18%;
-  width: min(38vw, 380px);
-  aspect-ratio: 1121 / 1200;
+  right: clamp(0%, 3vw, 8%);
+  top: 12%;
+  width: min(42vw, 420px);
+  aspect-ratio: 720 / 420;
   pointer-events: none;
-  opacity: 0.12;
-  background:
-    url('/brand/industry-symbol-bg.png') center / cover no-repeat;
-  mask-image: radial-gradient(circle at 50% 40%, #000 20%, transparent 72%);
+  opacity: 0.28;
+  background: url('/brand/sparkline-symbol-mint.svg') center / contain no-repeat;
+  mask-image: radial-gradient(circle at 55% 45%, #000 15%, transparent 72%);
   z-index: 0;
 }
 
@@ -1095,13 +1094,33 @@ p {
 }
 
 .proof-metric {
-  padding: 1.25rem 1.2rem;
+  position: relative;
+  overflow: hidden;
+  padding: 1.25rem 1.2rem 1.35rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.02);
 }
 
+.proof-metric-spark {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 46%;
+  pointer-events: none;
+  opacity: 0.55;
+  background: url('/brand/sparkline-symbol.svg') center bottom / 115% auto no-repeat;
+  mask-image: linear-gradient(180deg, transparent, #000 35%);
+}
+
+.proof-metric:nth-child(2) .proof-metric-spark {
+  background-image: url('/brand/sparkline-symbol-mint.svg');
+}
+
 .proof-value {
+  position: relative;
+  z-index: 1;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -1110,6 +1129,8 @@ p {
 }
 
 .proof-label {
+  position: relative;
+  z-index: 1;
   margin-top: 0.55rem;
   font-size: 0.78rem;
   font-weight: 700;
@@ -1119,6 +1140,8 @@ p {
 }
 
 .proof-detail {
+  position: relative;
+  z-index: 1;
   margin-top: 0.45rem;
   color: var(--ink-soft);
   font-size: 0.95rem;

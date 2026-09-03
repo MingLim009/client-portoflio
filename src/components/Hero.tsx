@@ -5,12 +5,7 @@ export function Hero() {
   return (
     <section className="hero" id="top" aria-labelledby="hero-heading">
       <div className="hero-symbol" aria-hidden="true">
-        <img
-          src="/brand/industry-symbol-bg.png"
-          alt=""
-          loading="eager"
-          decoding="async"
-        />
+        <img src="/brand/sparkline-symbol.svg" alt="" />
       </div>
       <div className="hero-grain" aria-hidden="true" />
 

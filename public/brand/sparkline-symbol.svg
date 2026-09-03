@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" fill="none">
+  <defs>
+    <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4EA8FF" stop-opacity="0.55"/>
+      <stop offset="55%" stop-color="#4EA8FF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#4EA8FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sparkLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7EC8FF"/>
+      <stop offset="100%" stop-color="#4EA8FF"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <path
+    d="M0 290 L48 250 L96 268 L144 210 L192 230 L240 170 L288 188 L336 140 L384 165 L432 110 L480 150 L528 95 L576 130 L624 78 L672 118 L720 70 L720 420 L0 420 Z"
+    fill="url(#sparkFill)"
+  />
+  <path
+    d="M0 290 L48 250 L96 268 L144 210 L192 230 L240 170 L288 188 L336 140 L384 165 L432 110 L480 150 L528 95 L576 130 L624 78 L672 118 L720 70"
+    stroke="url(#sparkLine)"
+    stroke-width="5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    filter="url(#glow)"
+  />
+</svg>

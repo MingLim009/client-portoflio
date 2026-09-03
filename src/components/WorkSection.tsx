@@ -70,8 +70,8 @@ export function WorkSection({ onSelect }: Props) {
         <p className="section-kicker">Selected work</p>
         <h2>Organized by market</h2>
         <p className="section-lead">
-          Nutraceuticals / supplements, infoproducts, and telehealth — each with
-          its script version and video version kept clearly separate.
+          Separate markets — Iron Rise, Liver Support, infoproducts, and
+          telehealth — each with scripts and videos kept clearly apart.
         </p>
       </div>
 

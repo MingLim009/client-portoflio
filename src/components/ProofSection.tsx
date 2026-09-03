@@ -15,7 +15,7 @@ const proofShots = [
     id: 'liver-support',
     src: '/proof/meta-embed-2.png',
     eyebrow: 'Meta Ads Manager',
-    title: 'Liver Support — nutraceutical account',
+    title: 'Liver Support — supplement account',
     summary:
       '$82,225.16 spent · 4.05x average purchase ROAS · best ad set at 12.27x',
     accent: 'mint' as const,
@@ -41,6 +41,7 @@ export function ProofSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: index * 0.06 }}
           >
+            <div className="proof-metric-spark" aria-hidden="true" />
             <p className="proof-value">{metric.value}</p>
             <p className="proof-label">{metric.label}</p>
             <p className="proof-detail">{metric.detail}</p>
@@ -85,7 +86,12 @@ export function ProofSection() {
                 <h3>{shot.title}</h3>
                 <p>{shot.summary}</p>
               </div>
-              <a className="proof-shot-open" href={shot.src} target="_blank" rel="noreferrer">
+              <a
+                className="proof-shot-open"
+                href={shot.src}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Full screenshot
                 <span aria-hidden="true"> ↗</span>
               </a>
@@ -94,15 +100,15 @@ export function ProofSection() {
         ))}
       </div>
 
-      <div className="proof-supplements" aria-label="Supplement accounts">
-        <span className="proof-pill is-light">Nutraceuticals · Iron Rise</span>
-        <span className="proof-pill is-dark">Nutraceuticals · Liver Support</span>
+      <div className="proof-supplements" aria-label="Separate supplement markets">
+        <span className="proof-pill is-light">Iron Rise · Supplement</span>
+        <span className="proof-pill is-dark">Liver Support · Supplement</span>
       </div>
 
       <p className="proof-source-note">
         These are original Meta Ads Manager captures — not redesigned charts.
         Campaign names are redacted where needed. Iron Rise and Liver Support
-        are nutraceutical / supplement offers.
+        are separate supplement markets.
       </p>
     </section>
   )

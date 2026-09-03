@@ -609,7 +609,8 @@ export const typeFilters = [
 ]
 
 export type WorkVertical =
-  | 'nutraceuticals'
+  | 'iron-rise'
+  | 'liver-support'
   | 'infoproducts'
   | 'telehealth'
   | 'direct-response'
@@ -621,9 +622,14 @@ export const verticalFilters = [
     blurb: 'Every vertical in one view',
   },
   {
-    id: 'nutraceuticals' as const,
-    label: 'Nutraceuticals / Supplements',
-    blurb: 'Iron Rise · Liver Support',
+    id: 'iron-rise' as const,
+    label: 'Iron Rise',
+    blurb: 'Supplement market · men’s health',
+  },
+  {
+    id: 'liver-support' as const,
+    label: 'Liver Support',
+    blurb: 'Supplement market · Verdaia',
   },
   {
     id: 'infoproducts' as const,
@@ -646,15 +652,9 @@ export function getWorkVertical(work: WorkItem): WorkVertical {
   const hay =
     `${work.id} ${work.title} ${work.category} ${work.market ?? ''}`.toLowerCase()
 
-  if (
-    hay.includes('liver') ||
-    hay.includes('iron') ||
-    hay.includes('nutraceut') ||
-    hay.includes('supplement') ||
-    hay.includes('verdaia')
-  ) {
-    return 'nutraceuticals'
-  }
+  // Keep supplement brands as separate markets.
+  if (hay.includes('iron')) return 'iron-rise'
+  if (hay.includes('liver') || hay.includes('verdaia')) return 'liver-support'
 
   if (hay.includes('nad') || hay.includes('telehealth')) {
     return 'telehealth'
