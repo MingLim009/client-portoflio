@@ -10,8 +10,13 @@ export type SiteConfig = {
   role: string
   tagline: string
   about: string
+  heroLine1: string
+  heroLine2: string
+  services: string
+  availability: string
+  location: string
+  origin: string
   email?: string
-  location?: string
   /**
    * Keep false while sharing review links on freelancing platforms.
    * Set true only at final delivery so WhatsApp / Discord / Slack appear.
@@ -36,26 +41,31 @@ export const site: SiteConfig = {
     'Scripts and films shaped for clarity, pace, and emotional precision.',
   about:
     'I craft screenplays and video pieces that move with intention — from first page to final cut. This portfolio collects selected scripts and films, each available to preview here and open from Google Drive when you need the source file.',
+  heroLine1: 'Scripts &',
+  heroLine2: 'films',
+  services: 'Scripts / Videos / Treatments',
+  availability: 'Currently available for projects worldwide',
+  location: 'Based worldwide',
+  origin: 'Stories in motion',
   email: '',
-  location: '',
   showDirectContacts: false,
   contacts: [
     {
       id: 'whatsapp',
       label: 'WhatsApp',
-      href: '', // e.g. https://wa.me/5511999999999
+      href: '',
       description: 'Message me directly',
     },
     {
       id: 'discord',
       label: 'Discord',
-      href: '', // e.g. https://discord.gg/xxxxx or discord user link
+      href: '',
       description: 'Chat on Discord',
     },
     {
       id: 'slack',
       label: 'Slack',
-      href: '', // e.g. https://join.slack.com/...
+      href: '',
       description: 'Reach me on Slack',
     },
   ],

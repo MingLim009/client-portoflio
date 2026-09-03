@@ -8,7 +8,7 @@ export function Footer() {
       <p>
         © {year} {site.name}
       </p>
-      <p>Scripts · Videos</p>
+      <p>{site.role}</p>
     </footer>
   )
 }
