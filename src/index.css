@@ -528,8 +528,10 @@ p {
 }
 
 .about-layout h2 {
-  font-size: clamp(2.6rem, 6vw, 4.2rem);
-  max-width: 10ch;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  max-width: 18ch;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
 }
 
 .about-text {
