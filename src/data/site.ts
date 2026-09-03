@@ -26,7 +26,6 @@ export type SiteConfig = {
   email?: string
   phone?: string
   proofIntro: string
-  proofImage: string
   proofMetrics: ProofMetric[]
   experience: { period: string; company: string; role: string; points: string[] }[]
   /**
@@ -59,8 +58,7 @@ export const site: SiteConfig = {
   email: 'benjamimrhuan@hotmail.com',
   phone: '+55 81 98699-7127',
   proofIntro:
-    'These screenshots are account-level proof from Meta Ads — spend, purchases, and ROAS from funnels I built the creative strategy for.',
-  proofImage: '/proof/meta-ads-proof.png',
+    'These numbers come straight from Meta Ads Manager — spend, purchases, and ROAS from funnels I built the creative strategy for. Presented here in a clear account breakdown instead of a compressed screenshot.',
   proofMetrics: [
     {
       value: '$267,778.67',

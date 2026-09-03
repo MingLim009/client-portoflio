@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#0b1220"/>
+  <rect x="0" y="0" width="8" height="500" fill="#8eb6ff"/>
+  <text x="48" y="78" fill="#8eb6ff" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3">META ADS · SFK HUB</text>
+  <text x="48" y="190" fill="#f4f6fb" font-family="Arial, sans-serif" font-size="72" font-weight="700">$267,778</text>
+  <text x="48" y="250" fill="#9aa3b5" font-family="Arial, sans-serif" font-size="26">88 campaigns · 5,837 purchases</text>
+  <text x="48" y="300" fill="#9aa3b5" font-family="Arial, sans-serif" font-size="26">$45.88 cost per purchase</text>
+  <rect x="48" y="360" width="220" height="54" rx="27" fill="#8eb6ff"/>
+  <text x="158" y="395" fill="#05070d" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Account proof</text>
+</svg>

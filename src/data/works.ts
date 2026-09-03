@@ -35,7 +35,7 @@ export const works: WorkItem[] = [
     description:
       '$267,778.67 across 88 campaigns · 5,837 purchases · $45.88 per purchase. Account-level proof from the info-product funnel.',
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
-    thumbnail: '/proof/meta-ads-proof.png',
+    thumbnail: '/proof/thumb-sfk-hub.svg',
     featured: true,
   },
   {
@@ -48,7 +48,7 @@ export const works: WorkItem[] = [
     description:
       '$82,225.16 spent · 4.05x average ROAS · best ad set at 12.27x on the Liver Support offer.',
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
-    thumbnail: '/proof/meta-ads-proof.png',
+    thumbnail: '/proof/thumb-liver-support.svg',
     featured: true,
   },
   {
