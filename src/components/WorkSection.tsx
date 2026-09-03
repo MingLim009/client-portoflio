@@ -1,7 +1,12 @@
 import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
-import type { WorkItem, WorkType } from '../data/works'
-import { typeFilters, works } from '../data/works'
+import type { WorkItem, WorkType, WorkVertical } from '../data/works'
+import {
+  getWorkVertical,
+  typeFilters,
+  verticalFilters,
+  works,
+} from '../data/works'
 import { getWorkThumbnail } from '../lib/workMedia'
 import { isPlaceholderDriveId } from '../lib/drive'
 import { ResultCardMedia } from './ResultCardMedia'
@@ -10,100 +15,110 @@ type Props = {
   onSelect: (work: WorkItem, list: WorkItem[]) => void
 }
 
-export function WorkSection({ onSelect }: Props) {
-  const [type, setType] = useState<'all' | WorkType>('all')
-  const [category, setCategory] = useState('All')
+type FormatFilter = 'all' | WorkType
+type MarketFilter = 'all' | WorkVertical
 
-  const categories = useMemo(
-    () => [
-      'All',
-      ...Array.from(
-        new Set(
-          works
-            .filter((w) => type === 'all' || w.type === type)
-            .map((w) => w.category),
-        ),
-      ).sort(),
-    ],
-    [type],
-  )
+const formatSections: { id: WorkType; label: string }[] = [
+  { id: 'script', label: 'Scripts' },
+  { id: 'video', label: 'Videos' },
+  { id: 'result', label: 'Results' },
+]
+
+export function WorkSection({ onSelect }: Props) {
+  const [market, setMarket] = useState<MarketFilter>('all')
+  const [format, setFormat] = useState<FormatFilter>('all')
 
   const filtered = useMemo(
     () =>
       works.filter((work) => {
-        const typeOk = type === 'all' || work.type === type
-        const categoryOk = category === 'All' || work.category === category
-        return typeOk && categoryOk
+        const vertical = getWorkVertical(work)
+        const marketOk = market === 'all' || vertical === market
+        const formatOk = format === 'all' || work.type === format
+        return marketOk && formatOk
       }),
-    [type, category],
+    [market, format],
   )
 
-  const resultLabel =
-    filtered.length === 1
-      ? '1 piece'
-      : `${filtered.length} pieces`
+  const marketSections = useMemo(() => {
+    const ids =
+      market === 'all'
+        ? (verticalFilters
+            .map((item) => item.id)
+            .filter((id) => id !== 'all') as WorkVertical[])
+        : [market]
 
-  const activeTypeLabel =
-    typeFilters.find((filter) => filter.id === type)?.label ?? 'All work'
+    return ids
+      .map((id) => {
+        const meta = verticalFilters.find((item) => item.id === id)!
+        const items = filtered.filter((work) => getWorkVertical(work) === id)
+        return { id, meta, items }
+      })
+      .filter((section) => section.items.length > 0)
+  }, [filtered, market])
+
+  const resultLabel =
+    filtered.length === 1 ? '1 piece' : `${filtered.length} pieces`
+
+  const activeMarketLabel =
+    verticalFilters.find((item) => item.id === market)?.label ?? 'All markets'
+  const activeFormatLabel =
+    typeFilters.find((item) => item.id === format)?.label ?? 'All formats'
 
   return (
     <section className="section work-section" id="work">
       <div className="section-head">
         <p className="section-kicker">Selected work</p>
-        <h2>Scripts, ads & results</h2>
+        <h2>Organized by market</h2>
         <p className="section-lead">
-          More scripts, ads, and account results. Case studies above keep related
-          pieces together — script + creative + retention as one unit.
+          Nutraceuticals / supplements, infoproducts, and telehealth — each with
+          its script version and video version kept clearly separate.
         </p>
       </div>
 
       <div className="filters" role="group" aria-label="Filter work">
         <div className="filter-row">
-          <p className="filter-label" id="filter-type-label">
-            Type
+          <p className="filter-label" id="filter-market-label">
+            Market
           </p>
           <div
             className="filter-group"
             role="toolbar"
-            aria-labelledby="filter-type-label"
+            aria-labelledby="filter-market-label"
           >
-            {typeFilters.map((filter) => (
+            {verticalFilters.map((item) => (
               <button
-                key={filter.id}
+                key={item.id}
                 type="button"
-                className={type === filter.id ? 'chip active' : 'chip'}
-                aria-pressed={type === filter.id}
-                onClick={() => {
-                  setType(filter.id)
-                  setCategory('All')
-                }}
+                className={market === item.id ? 'chip active' : 'chip'}
+                aria-pressed={market === item.id}
+                onClick={() => setMarket(item.id)}
               >
-                {filter.label}
+                {item.label}
               </button>
             ))}
           </div>
         </div>
 
         <div className="filter-row">
-          <p className="filter-label" id="filter-category-label">
-            Category
+          <p className="filter-label" id="filter-format-label">
+            Format
           </p>
           <div
             className="filter-group"
             role="toolbar"
-            aria-labelledby="filter-category-label"
+            aria-labelledby="filter-format-label"
           >
-            {categories.map((cat) => (
+            {typeFilters.map((item) => (
               <button
-                key={cat}
+                key={item.id}
                 type="button"
                 className={
-                  category === cat ? 'chip chip-soft active' : 'chip chip-soft'
+                  format === item.id ? 'chip chip-soft active' : 'chip chip-soft'
                 }
-                aria-pressed={category === cat}
-                onClick={() => setCategory(cat)}
+                aria-pressed={format === item.id}
+                onClick={() => setFormat(item.id)}
               >
-                {cat}
+                {item.label}
               </button>
             ))}
           </div>
@@ -113,17 +128,17 @@ export function WorkSection({ onSelect }: Props) {
       <div className="results-bar" aria-live="polite">
         <p>
           Showing <strong>{resultLabel}</strong>
-          {type !== 'all' || category !== 'All'
-            ? ` · ${activeTypeLabel}${category !== 'All' ? ` / ${category}` : ''}`
+          {market !== 'all' || format !== 'all'
+            ? ` · ${activeMarketLabel}${format !== 'all' ? ` / ${activeFormatLabel}` : ''}`
             : null}
         </p>
-        {(type !== 'all' || category !== 'All') && (
+        {(market !== 'all' || format !== 'all') && (
           <button
             type="button"
             className="text-btn"
             onClick={() => {
-              setType('all')
-              setCategory('All')
+              setMarket('all')
+              setFormat('all')
             }}
           >
             Clear filters
@@ -131,79 +146,18 @@ export function WorkSection({ onSelect }: Props) {
         )}
       </div>
 
-      {filtered.length > 0 ? (
-        <div className="work-grid">
-          {filtered.map((work, index) => {
-            const thumb = getWorkThumbnail(work)
-            const pending =
-              !work.localPreviewUrl && isPlaceholderDriveId(work.driveFileId)
-
-            return (
-              <motion.button
-                key={work.id}
-                type="button"
-                className="work-item"
-                onClick={() => onSelect(work, filtered)}
-                aria-label={`Preview ${work.title}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{
-                  duration: 0.45,
-                  delay: Math.min(index * 0.05, 0.25),
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              >
-                <div className="work-media">
-                  {work.cardHighlight ? (
-                    <ResultCardMedia {...work.cardHighlight} />
-                  ) : thumb ? (
-                    <img
-                      src={thumb}
-                      alt=""
-                      loading="lazy"
-                      onError={(event) => {
-                        event.currentTarget.style.display = 'none'
-                        const fallback = event.currentTarget.nextElementSibling
-                        if (fallback instanceof HTMLElement) {
-                          fallback.hidden = false
-                        }
-                      }}
-                    />
-                  ) : null}
-                  {!work.cardHighlight ? (
-                    <div
-                      className="work-media-fallback"
-                      aria-hidden="true"
-                      hidden={Boolean(thumb)}
-                    >
-                      <span>
-                        {work.type === 'video'
-                          ? '▶'
-                          : work.type === 'result'
-                            ? 'ROI'
-                            : 'DOC'}
-                      </span>
-                    </div>
-                  ) : null}
-                  <span className="work-type">{work.type}</span>
-                  {pending && (
-                    <span className="work-pending">Preview soon</span>
-                  )}
-                  <span className="work-hover-cue">Preview</span>
-                </div>
-                <div className="work-copy">
-                  <p className="work-function">
-                    {work.function}
-                    {work.market ? ` · ${work.market}` : ''}
-                  </p>
-                  <h3>{work.title}</h3>
-                  <p className="work-desc">{work.description}</p>
-                  <p className="work-meta">{work.category}</p>
-                </div>
-              </motion.button>
-            )
-          })}
+      {marketSections.length > 0 ? (
+        <div className="market-sections">
+          {marketSections.map((section) => (
+            <MarketBlock
+              key={section.id}
+              title={section.meta.label}
+              blurb={section.meta.blurb}
+              items={section.items}
+              format={format}
+              onSelect={onSelect}
+            />
+          ))}
         </div>
       ) : (
         <div className="empty-state">
@@ -212,8 +166,8 @@ export function WorkSection({ onSelect }: Props) {
             type="button"
             className="btn btn-primary"
             onClick={() => {
-              setType('all')
-              setCategory('All')
+              setMarket('all')
+              setFormat('all')
             }}
           >
             Show all work
@@ -221,5 +175,146 @@ export function WorkSection({ onSelect }: Props) {
         </div>
       )}
     </section>
+  )
+}
+
+function MarketBlock({
+  title,
+  blurb,
+  items,
+  format,
+  onSelect,
+}: {
+  title: string
+  blurb: string
+  items: WorkItem[]
+  format: FormatFilter
+  onSelect: Props['onSelect']
+}) {
+  const groups = formatSections
+    .map((section) => ({
+      ...section,
+      items: items.filter((work) => work.type === section.id),
+    }))
+    .filter((group) => group.items.length > 0)
+    .filter((group) => format === 'all' || group.id === format)
+
+  return (
+    <article className="market-block">
+      <header className="market-block-head">
+        <div>
+          <p className="market-block-kicker">Market</p>
+          <h3>{title}</h3>
+          <p className="market-block-blurb">{blurb}</p>
+        </div>
+        <p className="market-block-count">
+          {items.length} {items.length === 1 ? 'piece' : 'pieces'}
+        </p>
+      </header>
+
+      <div className="format-sections">
+        {groups.map((group) => (
+          <div key={group.id} className="format-section">
+            <div className="format-section-head">
+              <h4>{group.label}</h4>
+              <span>
+                {group.items.length}{' '}
+                {group.items.length === 1 ? 'item' : 'items'}
+              </span>
+            </div>
+            <div className="work-grid">
+              {group.items.map((work, index) => (
+                <WorkCard
+                  key={work.id}
+                  work={work}
+                  index={index}
+                  list={group.items}
+                  onSelect={onSelect}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </article>
+  )
+}
+
+function WorkCard({
+  work,
+  index,
+  list,
+  onSelect,
+}: {
+  work: WorkItem
+  index: number
+  list: WorkItem[]
+  onSelect: Props['onSelect']
+}) {
+  const thumb = getWorkThumbnail(work)
+  const pending =
+    !work.localPreviewUrl && isPlaceholderDriveId(work.driveFileId)
+
+  return (
+    <motion.button
+      type="button"
+      className="work-item"
+      onClick={() => onSelect(work, list)}
+      aria-label={`Preview ${work.title}`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{
+        duration: 0.45,
+        delay: Math.min(index * 0.05, 0.25),
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    >
+      <div className="work-media">
+        {work.cardHighlight ? (
+          <ResultCardMedia {...work.cardHighlight} />
+        ) : thumb ? (
+          <img
+            src={thumb}
+            alt=""
+            loading="lazy"
+            onError={(event) => {
+              event.currentTarget.style.display = 'none'
+              const fallback = event.currentTarget.nextElementSibling
+              if (fallback instanceof HTMLElement) {
+                fallback.hidden = false
+              }
+            }}
+          />
+        ) : null}
+        {!work.cardHighlight ? (
+          <div
+            className="work-media-fallback"
+            aria-hidden="true"
+            hidden={Boolean(thumb)}
+          >
+            <span>
+              {work.type === 'video'
+                ? '▶'
+                : work.type === 'result'
+                  ? 'ROI'
+                  : 'DOC'}
+            </span>
+          </div>
+        ) : null}
+        <span className="work-type">{work.type}</span>
+        {pending && <span className="work-pending">Preview soon</span>}
+        <span className="work-hover-cue">Preview</span>
+      </div>
+      <div className="work-copy">
+        <p className="work-function">
+          {work.function}
+          {work.market ? ` · ${work.market}` : ''}
+        </p>
+        <h3>{work.title}</h3>
+        <p className="work-desc">{work.description}</p>
+        <p className="work-meta">{work.category}</p>
+      </div>
+    </motion.button>
   )
 }

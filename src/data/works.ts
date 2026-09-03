@@ -602,8 +602,73 @@ export const works: WorkItem[] = [
 ]
 
 export const typeFilters = [
-  { id: 'all' as const, label: 'All work' },
+  { id: 'all' as const, label: 'All formats' },
   { id: 'script' as const, label: 'Scripts' },
-  { id: 'video' as const, label: 'Ads & VSLs' },
+  { id: 'video' as const, label: 'Videos' },
   { id: 'result' as const, label: 'Results' },
 ]
+
+export type WorkVertical =
+  | 'nutraceuticals'
+  | 'infoproducts'
+  | 'telehealth'
+  | 'direct-response'
+
+export const verticalFilters = [
+  {
+    id: 'all' as const,
+    label: 'All markets',
+    blurb: 'Every vertical in one view',
+  },
+  {
+    id: 'nutraceuticals' as const,
+    label: 'Nutraceuticals / Supplements',
+    blurb: 'Iron Rise · Liver Support',
+  },
+  {
+    id: 'infoproducts' as const,
+    label: 'Infoproducts',
+    blurb: 'HTTPS-47 · SFK Hub',
+  },
+  {
+    id: 'telehealth' as const,
+    label: 'Telehealth',
+    blurb: 'NAD+ scripts & creatives',
+  },
+  {
+    id: 'direct-response' as const,
+    label: 'Direct response',
+    blurb: 'US VSLs, advertorials & retention',
+  },
+]
+
+export function getWorkVertical(work: WorkItem): WorkVertical {
+  const hay =
+    `${work.id} ${work.title} ${work.category} ${work.market ?? ''}`.toLowerCase()
+
+  if (
+    hay.includes('liver') ||
+    hay.includes('iron') ||
+    hay.includes('nutraceut') ||
+    hay.includes('supplement') ||
+    hay.includes('verdaia')
+  ) {
+    return 'nutraceuticals'
+  }
+
+  if (hay.includes('nad') || hay.includes('telehealth')) {
+    return 'telehealth'
+  }
+
+  if (
+    hay.includes('https') ||
+    hay.includes('infoproduct') ||
+    hay.includes('sfk') ||
+    hay.includes('bizzopp')
+  ) {
+    return 'infoproducts'
+  }
+
+  return 'direct-response'
+}
+

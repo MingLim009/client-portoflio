@@ -377,6 +377,86 @@ p {
   color: #05070d;
 }
 
+.chip.chip-soft.active {
+  background: rgba(244, 246, 251, 0.12);
+  border-color: rgba(244, 246, 251, 0.35);
+  color: var(--ink);
+}
+
+.market-sections {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.market-block {
+  display: grid;
+  gap: 1.35rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--line);
+}
+
+.market-block-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.market-block-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.market-block-head h3 {
+  margin-top: 0.3rem;
+  font-size: clamp(1.45rem, 3vw, 1.9rem);
+  letter-spacing: -0.03em;
+}
+
+.market-block-blurb {
+  margin-top: 0.35rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.market-block-count {
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.format-sections {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.format-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.format-section-head h4 {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.format-section-head span {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
 .work-grid {
   position: relative;
   display: grid;
