@@ -58,7 +58,7 @@ export const site: SiteConfig = {
   email: 'benjamimrhuan@hotmail.com',
   phone: '+55 81 98699-7127',
   proofIntro:
-    'These numbers come straight from Meta Ads Manager — spend, purchases, and ROAS from funnels I built the creative strategy for. Presented here in a clear account breakdown instead of a compressed screenshot.',
+    'The screenshots below are direct captures from Meta Ads Manager — the same Business Manager view used to run the accounts. Totals are readable in the export itself, not rebuilt into custom charts.',
   proofMetrics: [
     {
       value: '$267,778.67',
@@ -68,7 +68,7 @@ export const site: SiteConfig = {
     {
       value: '4.05x',
       label: 'Average ROAS',
-      detail: '$82,225.16 on Liver Support · peak ad set 12.27x',
+      detail: '$82,225.16 on Liver Support (supplement) · peak 12.27x',
     },
     {
       value: '13.3M',
@@ -82,7 +82,7 @@ export const site: SiteConfig = {
       company: 'Verdaia',
       role: 'Creative Strategist',
       points: [
-        'Creative for Iron Rise and Liver Support.',
+        'Creative for two nutraceutical supplements: Iron Rise and Liver Support.',
         'Liver Support: $82K spend at 4.05x average ROAS.',
       ],
     },
