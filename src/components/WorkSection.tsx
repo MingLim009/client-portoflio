@@ -24,8 +24,12 @@ const formatSections: { id: WorkType; label: string }[] = [
   { id: 'result', label: 'Results' },
 ]
 
+function marketLabel(vertical: WorkVertical) {
+  return verticalFilters.find((item) => item.id === vertical)?.label ?? vertical
+}
+
 export function WorkSection({ onSelect }: Props) {
-  const [market, setMarket] = useState<MarketFilter>('all')
+  const [market, setMarket] = useState<MarketFilter>('telehealth')
   const [format, setFormat] = useState<FormatFilter>('all')
 
   const filtered = useMemo(
@@ -59,121 +63,121 @@ export function WorkSection({ onSelect }: Props) {
   const resultLabel =
     filtered.length === 1 ? '1 piece' : `${filtered.length} pieces`
 
-  const activeMarketLabel =
-    verticalFilters.find((item) => item.id === market)?.label ?? 'All markets'
-  const activeFormatLabel =
-    typeFilters.find((item) => item.id === format)?.label ?? 'All formats'
-
   return (
     <section className="section work-section" id="work">
       <div className="section-head">
         <p className="section-kicker">Selected work</p>
-        <h2>Organized by market</h2>
+        <h2>Markets, scripts & videos</h2>
         <p className="section-lead">
-          Separate markets — Iron Rise, Liver Support, infoproducts, and
-          telehealth — each with scripts and videos kept clearly apart.
+          Pick a market on the left. Each market keeps scripts and videos in
+          separate groups — Telehealth, Iron Rise, Liver Support, Infoproducts,
+          and Direct response stay apart.
         </p>
       </div>
 
-      <div className="filters" role="group" aria-label="Filter work">
-        <div className="filter-row">
-          <p className="filter-label" id="filter-market-label">
-            Market
-          </p>
-          <div
-            className="filter-group market-tabs"
-            role="toolbar"
-            aria-labelledby="filter-market-label"
-          >
+      <div className="work-shell">
+        <aside className="work-sidebar" aria-label="Markets">
+          <p className="work-sidebar-title">Markets</p>
+          <nav className="work-sidebar-nav">
             {verticalFilters.map((item) => (
               <button
                 key={item.id}
                 type="button"
-                className={market === item.id ? 'chip active' : 'chip'}
+                className={
+                  market === item.id
+                    ? 'work-sidebar-link is-active'
+                    : 'work-sidebar-link'
+                }
                 aria-pressed={market === item.id}
                 onClick={() => setMarket(item.id)}
               >
-                {item.label}
+                <span>{item.label}</span>
+                {item.id !== 'all' ? (
+                  <small>{item.blurb}</small>
+                ) : (
+                  <small>Browse every market</small>
+                )}
               </button>
             ))}
-          </div>
-        </div>
+          </nav>
 
-        <div className="filter-row">
-          <p className="filter-label" id="filter-format-label">
-            Format
-          </p>
-          <div
-            className="filter-group"
-            role="toolbar"
-            aria-labelledby="filter-format-label"
-          >
-            {typeFilters.map((item) => (
+          <div className="work-sidebar-formats">
+            <p className="work-sidebar-title">Format</p>
+            <div className="filter-group">
+              {typeFilters.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  className={
+                    format === item.id
+                      ? 'chip chip-soft active'
+                      : 'chip chip-soft'
+                  }
+                  aria-pressed={format === item.id}
+                  onClick={() => setFormat(item.id)}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </aside>
+
+        <div className="work-main">
+          <div className="results-bar" aria-live="polite">
+            <p>
+              Showing <strong>{resultLabel}</strong>
+              {market !== 'all'
+                ? ` · ${marketLabel(market as WorkVertical)}`
+                : ' · All markets'}
+              {format !== 'all'
+                ? ` / ${typeFilters.find((item) => item.id === format)?.label}`
+                : ''}
+            </p>
+            {(market !== 'all' || format !== 'all') && (
               <button
-                key={item.id}
                 type="button"
-                className={
-                  format === item.id ? 'chip chip-soft active' : 'chip chip-soft'
-                }
-                aria-pressed={format === item.id}
-                onClick={() => setFormat(item.id)}
+                className="text-btn"
+                onClick={() => {
+                  setMarket('all')
+                  setFormat('all')
+                }}
               >
-                {item.label}
+                Clear filters
               </button>
-            ))}
+            )}
           </div>
+
+          {marketSections.length > 0 ? (
+            <div className="market-sections">
+              {marketSections.map((section) => (
+                <MarketBlock
+                  key={section.id}
+                  title={section.meta.label}
+                  blurb={section.meta.blurb}
+                  items={section.items}
+                  format={format}
+                  onSelect={onSelect}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="empty-state">
+              <p>No pieces match these filters.</p>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => {
+                  setMarket('all')
+                  setFormat('all')
+                }}
+              >
+                Show all work
+              </button>
+            </div>
+          )}
         </div>
       </div>
-
-      <div className="results-bar" aria-live="polite">
-        <p>
-          Showing <strong>{resultLabel}</strong>
-          {market !== 'all' || format !== 'all'
-            ? ` · ${activeMarketLabel}${format !== 'all' ? ` / ${activeFormatLabel}` : ''}`
-            : null}
-        </p>
-        {(market !== 'all' || format !== 'all') && (
-          <button
-            type="button"
-            className="text-btn"
-            onClick={() => {
-              setMarket('all')
-              setFormat('all')
-            }}
-          >
-            Clear filters
-          </button>
-        )}
-      </div>
-
-      {marketSections.length > 0 ? (
-        <div className="market-sections">
-          {marketSections.map((section) => (
-            <MarketBlock
-              key={section.id}
-              title={section.meta.label}
-              blurb={section.meta.blurb}
-              items={section.items}
-              format={format}
-              onSelect={onSelect}
-            />
-          ))}
-        </div>
-      ) : (
-        <div className="empty-state">
-          <p>No pieces match these filters.</p>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => {
-              setMarket('all')
-              setFormat('all')
-            }}
-          >
-            Show all work
-          </button>
-        </div>
-      )}
     </section>
   )
 }
@@ -201,40 +205,40 @@ function MarketBlock({
 
   return (
     <article className="market-block">
-      <aside className="market-rail">
-        <p className="market-block-kicker">Market</p>
-        <h3>{title}</h3>
-        <p className="market-block-blurb">{blurb}</p>
+      <header className="market-block-banner">
+        <div>
+          <p className="market-block-kicker">Market</p>
+          <h3>{title}</h3>
+          <p className="market-block-blurb">{blurb}</p>
+        </div>
         <p className="market-block-count">
           {items.length} {items.length === 1 ? 'piece' : 'pieces'}
         </p>
-      </aside>
+      </header>
 
-      <div className="market-main">
-        <div className="format-sections">
-          {groups.map((group) => (
-            <div key={group.id} className="format-section">
-              <div className="format-section-head">
-                <h4>{group.label}</h4>
-                <span>
-                  {group.items.length}{' '}
-                  {group.items.length === 1 ? 'item' : 'items'}
-                </span>
-              </div>
-              <div className="work-grid">
-                {group.items.map((work, index) => (
-                  <WorkCard
-                    key={work.id}
-                    work={work}
-                    index={index}
-                    list={group.items}
-                    onSelect={onSelect}
-                  />
-                ))}
-              </div>
+      <div className="format-sections">
+        {groups.map((group) => (
+          <div key={group.id} className="format-section">
+            <div className="format-section-head">
+              <h4>{group.label}</h4>
+              <span>
+                {group.items.length}{' '}
+                {group.items.length === 1 ? 'item' : 'items'}
+              </span>
             </div>
-          ))}
-        </div>
+            <div className="work-grid">
+              {group.items.map((work, index) => (
+                <WorkCard
+                  key={work.id}
+                  work={work}
+                  index={index}
+                  list={group.items}
+                  onSelect={onSelect}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </article>
   )
@@ -254,6 +258,7 @@ function WorkCard({
   const thumb = getWorkThumbnail(work)
   const pending =
     !work.localPreviewUrl && isPlaceholderDriveId(work.driveFileId)
+  const vertical = getWorkVertical(work)
 
   return (
     <motion.button
@@ -313,7 +318,7 @@ function WorkCard({
         </p>
         <h3>{work.title}</h3>
         <p className="work-desc">{work.description}</p>
-        <p className="work-meta">{work.category}</p>
+        <p className="work-meta">{marketLabel(vertical)}</p>
       </div>
     </motion.button>
   )

@@ -2,6 +2,13 @@ import type { DriveKind } from '../lib/drive'
 
 export type WorkType = 'script' | 'video' | 'result'
 
+export type WorkVertical =
+  | 'iron-rise'
+  | 'liver-support'
+  | 'infoproducts'
+  | 'telehealth'
+  | 'direct-response'
+
 export type WorkItem = {
   id: string
   title: string
@@ -27,6 +34,8 @@ export type WorkItem = {
   }
   featured?: boolean
   market?: string
+  /** Explicit market bucket — required for correct section placement */
+  vertical: WorkVertical
 }
 
 /**
@@ -42,6 +51,7 @@ export const works: WorkItem[] = [
     function: 'Creative Strategy',
     category: 'Results',
     market: 'United States',
+    vertical: 'infoproducts',
     description:
       '$267,778.67 across 88 campaigns · 5,837 purchases · $45.88 per purchase. Account-level proof from the info-product funnel.',
     driveFileId: '',
@@ -62,6 +72,7 @@ export const works: WorkItem[] = [
     function: 'Creative Strategy',
     category: 'Results',
     market: 'Verdaia',
+    vertical: 'liver-support',
     description:
       '$82,225.16 spent · 4.05x average ROAS · best ad set at 12.27x on the Liver Support offer.',
     driveFileId: '',
@@ -82,6 +93,7 @@ export const works: WorkItem[] = [
     function: 'VSL Strategy',
     category: 'Results',
     market: 'United States',
+    vertical: 'direct-response',
     description:
       '13.3M plays on VTurb. 18.42% still watching at 33:55 — 92% into a 36:43 video.',
     driveFileId: '',
@@ -96,6 +108,7 @@ export const works: WorkItem[] = [
     function: 'VTurb Retention',
     category: 'Infoproduct',
     market: 'HTTPS-47',
+    vertical: 'infoproducts',
     description:
       '47.61% pitch retention on a 22:51 video · 1,526 views · 658 plays · 49.39% play rate.',
     driveFileId: '1tKU7K5W_uYxnZW9PsEMOJIg20n3FKM_7',
@@ -108,6 +121,7 @@ export const works: WorkItem[] = [
     function: 'Full VSL',
     category: 'VSL',
     market: 'United States',
+    vertical: 'direct-response',
     description: 'Eye-health VSL for the US market.',
     driveFileId: '1n3rEqlpolIaWTSXiCbrkUbK5xxynZQPC',
   },
@@ -118,6 +132,7 @@ export const works: WorkItem[] = [
     function: 'Full VSL',
     category: 'VSL',
     market: 'United States',
+    vertical: 'direct-response',
     description: 'Prostate VSL produced for the US market.',
     driveFileId: '1j8J4t-ywLXIAOOfS6F8DD0wA_4BNu2Po',
   },
@@ -128,6 +143,7 @@ export const works: WorkItem[] = [
     function: 'VSL Script',
     category: 'Script',
     market: 'United States',
+    vertical: 'direct-response',
     description: 'GLP-1 angle VSL script — the document behind the creative.',
     driveFileId: '1ztKKUkGcGleGXEtW4dQRNh0WA3LIAKM2',
     driveKind: 'file',
@@ -139,6 +155,7 @@ export const works: WorkItem[] = [
     function: 'Advertorial',
     category: 'Script',
     market: 'United States',
+    vertical: 'direct-response',
     description: 'Native-ad format advertorials for a memory offer.',
     driveFileId: '1OUVRhGKXUJFUQ0cSQ-0h1kr2m5EigCKhUIJyGIIhXHw',
     driveKind: 'doc',
@@ -150,6 +167,7 @@ export const works: WorkItem[] = [
     function: 'Upsell Script',
     category: 'Script',
     market: 'United States',
+    vertical: 'direct-response',
     description: 'Post-purchase upsell flow script.',
     driveFileId: '1y4BAsEV7rqnSNKnDEiQbpP-zFhas9KHZ',
     driveKind: 'doc',
@@ -161,6 +179,7 @@ export const works: WorkItem[] = [
     function: 'Ad Scripts',
     category: 'Script',
     market: 'United States',
+    vertical: 'direct-response',
     description: 'Long-form paid social scripts — the format scaling in selected niches.',
     driveFileId: '1-a_nZUoajqaVDDKaAuF3xD-kz9Toi8yO',
     driveKind: 'file',
@@ -173,6 +192,7 @@ export const works: WorkItem[] = [
     function: 'VSL Script + Brief',
     category: 'Infoproduct',
     market: 'HTTPS-47',
+    vertical: 'infoproducts',
     description:
       'Updated VSL script + brief for HTTPS-47 (infoproduct). Wire 27 was removed as requested.',
     driveFileId: '10Xdh0vhnA2gEpOsY3msCKo3yOGZ5947s0acdTEQKRpE',
@@ -185,6 +205,7 @@ export const works: WorkItem[] = [
     function: 'Competitor analysis',
     category: 'Nutraceuticals · Liver Support',
     market: 'Supplement',
+    vertical: 'liver-support',
     description:
       'Research before writing: competitor teardown, best public segments, persona & mechanism insights used to build the ads.',
     driveFileId: '1vpONqeSLWQeZ_iitPZtLhccKov2aCxTAqH9b5UxPeZ8',
@@ -197,6 +218,7 @@ export const works: WorkItem[] = [
     function: 'VSL Script + Brief',
     category: 'Nutraceuticals · Liver Support',
     market: 'Supplement',
+    vertical: 'liver-support',
     description:
       'Updated script + brief for the Liver Support VSL set (Concept 07).',
     driveFileId: '14SM_krE_arlmWgCl3v8o8FCPU6vgpWf-rpGN6Skh4jc',
@@ -209,6 +231,7 @@ export const works: WorkItem[] = [
     function: 'Ads library / copy list',
     category: 'Nutraceuticals · Iron Rise',
     market: 'Supplement',
+    vertical: 'iron-rise',
     description:
       'All Iron Rise ads list from the client doc (includes the ad that needs replacement).',
     driveFileId: '1mz5Q2tP4yjLCipOG0gJe1jLa_-HEQsbMxsPAR2vH7Sg',
@@ -221,6 +244,7 @@ export const works: WorkItem[] = [
     function: 'Telehealth scripts',
     category: 'Telehealth',
     market: 'NAD+',
+    vertical: 'telehealth',
     description:
       'Script doc for the NAD+ telehealth mini-VSLs / ads (replacement for “six signs” handled in the ads library doc).',
     driveFileId: '1L9oLwm_6W3YuqkVCDNBvnaU1gB-qWVINYQyjD_eLgew',
@@ -234,6 +258,7 @@ export const works: WorkItem[] = [
     function: 'Talking head script',
     category: 'Telehealth',
     market: 'NAD+',
+    vertical: 'telehealth',
     description:
       'Client script doc for the NAD+ talking head piece (Hook 2 / TOF-3.0).',
     driveFileId: '13ll9HoA2icUxBPHXeS7GDEH0sNs2MuV3tXr2HhEVlvM',
@@ -246,6 +271,7 @@ export const works: WorkItem[] = [
     function: 'Podcast script',
     category: 'Telehealth',
     market: 'NAD+',
+    vertical: 'telehealth',
     description:
       'Client script doc for the NAD+ 4.0 concept (Podcast angle / 3 hooks).',
     driveFileId: '1gXRLPsjYlCuLbL35-3UsK41Vr4lhf6RKGunJCODKhZI',
@@ -258,6 +284,7 @@ export const works: WorkItem[] = [
     function: 'Production reference',
     category: 'Telehealth',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'Client whiteboard doc for the NAD+ production set.',
     driveFileId: '1y6-7S3kl7MQME-TtUjvUeLrykn7rE0M49mELQfGMJdk',
     driveKind: 'doc',
@@ -271,6 +298,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Liver Support',
+    vertical: 'liver-support',
     description: 'AD01.2 — Liver Support supplement creative.',
     driveFileId: '1lCtcJewW4zU5Xd59YQO2CzkUa97mpHvE',
     featured: true,
@@ -282,6 +310,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Liver Support',
+    vertical: 'liver-support',
     description: 'AD01.3 — Liver Support creative.',
     driveFileId: '1bHsSmzjId1salVJTVdz5om2iM-hDz-XK',
   },
@@ -292,6 +321,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Liver Support',
+    vertical: 'liver-support',
     description: 'AD01.4 — Liver Support creative.',
     driveFileId: '1n-N9_rKKzfHX7-KJw26kyjNbKF674TeS',
   },
@@ -302,6 +332,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Liver Support',
+    vertical: 'liver-support',
     description: 'AD01.5 — Liver Support creative.',
     driveFileId: '1wejxJ8TcFtx8kzLdu3EjYWQR_UYFf6As',
   },
@@ -312,6 +343,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Liver Support',
+    vertical: 'liver-support',
     description: 'AD2.1 — Liver Support creative.',
     driveFileId: '1e5bJLLFZKp5O4Lb7NBZ2uIB9SocXnkma',
   },
@@ -322,6 +354,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Liver Support',
+    vertical: 'liver-support',
     description: 'AD2.2 — Liver Support creative.',
     driveFileId: '1HXUV08RaREd3y5HQ5kojmQrITZfOGFat',
   },
@@ -332,6 +365,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Liver Support',
+    vertical: 'liver-support',
     description: 'AD2.4 — Liver Support creative.',
     driveFileId: '1f3hH2bJlgEBJEG9FfMHP46oS5zGfvQP_',
   },
@@ -342,6 +376,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Liver Support',
+    vertical: 'liver-support',
     description: 'AD2.5 — Liver Support creative.',
     driveFileId: '1xh8XZA_7UpAkTjt1F9VgB2Df5AYS-jBL',
   },
@@ -354,6 +389,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Iron Rise',
+    vertical: 'iron-rise',
     description: 'AD2.1 — Iron Rise creative.',
     driveFileId: '13dMKNq56rmRy4r2cGet2MSTTcSpnYBi8',
     featured: true,
@@ -365,6 +401,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Iron Rise',
+    vertical: 'iron-rise',
     description: 'AD1.6 — Iron Rise creative.',
     driveFileId: '1ptfnfWezc3EklkwT_zsehH_EOcTv3Vr0',
   },
@@ -375,6 +412,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Iron Rise',
+    vertical: 'iron-rise',
     description: 'AD1.8 — Iron Rise creative.',
     driveFileId: '19I5UlU2MwZHx9yngdtcQYw5KaBHJWa7w',
   },
@@ -385,6 +423,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Iron Rise',
+    vertical: 'iron-rise',
     description: 'AD1.7 — Iron Rise creative.',
     driveFileId: '1zmqNO-UKJeEZikJhYN96RET4SVdrnp_p',
   },
@@ -395,6 +434,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Iron Rise',
+    vertical: 'iron-rise',
     description: 'AD1.5 — Iron Rise creative.',
     driveFileId: '180SEHN3yKEc_psb-vpd2wX2pTYTJCRCs',
   },
@@ -405,6 +445,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Iron Rise',
+    vertical: 'iron-rise',
     description: 'AD19.3 — Iron Rise creative.',
     driveFileId: '1z0-ESI16U0iQpbc8kBsV-jZXFsrQqN6m',
   },
@@ -415,6 +456,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Iron Rise',
+    vertical: 'iron-rise',
     description: 'AD13.2 — Iron Rise creative.',
     driveFileId: '1bfa5FzQuosj1yj9_xkWXAr0pXiLihui3',
   },
@@ -425,6 +467,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Iron Rise',
+    vertical: 'iron-rise',
     description: 'AD19.4 — Iron Rise creative.',
     driveFileId: '1Bzl7VkUMB05NZFIApkPo2kLkshydkvWv',
   },
@@ -435,6 +478,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'Iron Rise',
+    vertical: 'iron-rise',
     description: 'AD2.3 — Iron Rise creative.',
     driveFileId: '1H7KQC2iHqRHjRm0iTRQ9noByItltIDb-',
   },
@@ -447,6 +491,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'AD01 — Telehealth NAD+ creative.',
     driveFileId: '1yabBxQEdZYhHDOGEO4QpZ4STrXIHtMLv',
   },
@@ -457,6 +502,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'AD89 — Telehealth NAD+ creative.',
     driveFileId: '1E5CPunRTn4Nh7AIEtMl5MoK0yPBKDyGJ',
   },
@@ -467,6 +513,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'AD91 · silent enzyme — Telehealth NAD+ creative.',
     driveFileId: '1rMJ06PXFmdEZ3d-ck0u6KBOMPdnY5wci',
   },
@@ -477,6 +524,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'AD98 — Telehealth NAD+ creative.',
     driveFileId: '17Zjp0TDRCMEluWyrcbR7wUA2B8jLcQoI',
   },
@@ -487,6 +535,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'AD99 · husband POV — Telehealth NAD+ creative.',
     driveFileId: '1F6iGGfTdjErtG4b46riGb5HDev363mf2',
   },
@@ -497,6 +546,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'AD124 — Telehealth NAD+ creative.',
     driveFileId: '1rKLuiZhI8PVatMbRhNnIxMREfjjrN7yl',
   },
@@ -507,6 +557,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'AD126 — Telehealth NAD+ creative.',
     driveFileId: '1lqNjLRcd1DEO1jlhLooNGiGQNPus7y4b',
   },
@@ -517,6 +568,7 @@ export const works: WorkItem[] = [
     function: 'Paid Social Ad',
     category: 'Ads',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'AD125 — Telehealth NAD+ creative.',
     driveFileId: '1ep_85E-_4n06O-1UkTSa7b0HWA-fKIWC',
   },
@@ -529,6 +581,7 @@ export const works: WorkItem[] = [
     function: 'Talking Head VSL',
     category: 'Telehealth',
     market: 'NAD+',
+    vertical: 'telehealth',
     description:
       'Talking head VSL (Hook 2 / TOF-3.0) — local preview. Drive link pending.',
     driveFileId: '',
@@ -544,6 +597,7 @@ export const works: WorkItem[] = [
     function: 'Script Video',
     category: 'Telehealth',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'Script 1 video — local preview. Drive link pending.',
     driveFileId: '',
     localPreviewUrl: '/videos/Script1.mp4',
@@ -556,6 +610,7 @@ export const works: WorkItem[] = [
     function: 'Script Video',
     category: 'Telehealth',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'Script 2 video — local preview. Drive link pending.',
     driveFileId: '',
     localPreviewUrl: '/videos/Script2.mp4',
@@ -568,6 +623,7 @@ export const works: WorkItem[] = [
     function: 'Script Video',
     category: 'Telehealth',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'Script 3 video — local preview. Drive link pending.',
     driveFileId: '',
     localPreviewUrl: '/videos/Script3.mp4',
@@ -580,6 +636,7 @@ export const works: WorkItem[] = [
     function: 'Paid Creative Video',
     category: 'Telehealth',
     market: 'NAD+',
+    vertical: 'telehealth',
     description: 'AD149v2 final video — local preview. Drive link pending.',
     driveFileId: '',
     localPreviewUrl: '/videos/AD149v2_NAD_FILHA_FINAL.mp4',
@@ -589,11 +646,12 @@ export const works: WorkItem[] = [
     id: 'nad-large-thumbnail',
     title: 'NAD+ — Retention / Thumbnail Media',
     type: 'video',
-    function: 'Media Preview',
+    function: 'Telehealth Media',
     category: 'Telehealth',
     market: 'NAD+',
+    vertical: 'telehealth',
     description:
-      'Additional NAD+ media file — local preview. Drive link pending.',
+      'NAD+ telehealth retention / thumbnail media — local preview. Drive link pending.',
     driveFileId: '',
     localPreviewUrl:
       '/videos/large-thumbnail20250307-4035589-1m3s24m.mp4',
@@ -608,18 +666,16 @@ export const typeFilters = [
   { id: 'result' as const, label: 'Results' },
 ]
 
-export type WorkVertical =
-  | 'iron-rise'
-  | 'liver-support'
-  | 'infoproducts'
-  | 'telehealth'
-  | 'direct-response'
-
 export const verticalFilters = [
   {
     id: 'all' as const,
     label: 'All markets',
     blurb: 'Every vertical in one view',
+  },
+  {
+    id: 'telehealth' as const,
+    label: 'Telehealth',
+    blurb: 'NAD+ scripts & creatives',
   },
   {
     id: 'iron-rise' as const,
@@ -637,11 +693,6 @@ export const verticalFilters = [
     blurb: 'HTTPS-47 · SFK Hub',
   },
   {
-    id: 'telehealth' as const,
-    label: 'Telehealth',
-    blurb: 'NAD+ scripts & creatives',
-  },
-  {
     id: 'direct-response' as const,
     label: 'Direct response',
     blurb: 'US VSLs, advertorials & retention',
@@ -649,26 +700,6 @@ export const verticalFilters = [
 ]
 
 export function getWorkVertical(work: WorkItem): WorkVertical {
-  const hay =
-    `${work.id} ${work.title} ${work.category} ${work.market ?? ''}`.toLowerCase()
-
-  // Keep supplement brands as separate markets.
-  if (hay.includes('iron')) return 'iron-rise'
-  if (hay.includes('liver') || hay.includes('verdaia')) return 'liver-support'
-
-  if (hay.includes('nad') || hay.includes('telehealth')) {
-    return 'telehealth'
-  }
-
-  if (
-    hay.includes('https') ||
-    hay.includes('infoproduct') ||
-    hay.includes('sfk') ||
-    hay.includes('bizzopp')
-  ) {
-    return 'infoproducts'
-  }
-
-  return 'direct-response'
+  return work.vertical
 }
 
