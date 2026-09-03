@@ -18,6 +18,7 @@ export function Header() {
       </a>
       <nav className="nav" aria-label="Primary">
         <a href="#proof">Proof</a>
+        <a href="#cases">Cases</a>
         <a href="#work">Work</a>
         <a href="#about">About</a>
       </nav>

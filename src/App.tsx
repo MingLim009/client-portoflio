@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import { About } from './components/About'
+import { CaseStudiesSection } from './components/CaseStudiesSection'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
@@ -33,6 +34,7 @@ export default function App() {
       <main>
         <Hero />
         <ProofSection />
+        <CaseStudiesSection onSelect={openWork} />
         <WorkSection onSelect={openWork} />
         <About />
         {site.showDirectContacts ? <Contact /> : null}

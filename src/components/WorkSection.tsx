@@ -51,8 +51,8 @@ export function WorkSection({ onSelect }: Props) {
         <p className="section-kicker">Selected work</p>
         <h2>Scripts, ads & results</h2>
         <p className="section-lead">
-          Not a video-editor reel — each piece pairs the writing with the creative
-          outcome. Preview here; open Drive when the source file is linked.
+          More scripts, ads, and account results. Case studies above keep related
+          pieces together — script + creative + retention as one unit.
         </p>
       </div>
 

@@ -751,10 +751,129 @@ p {
 }
 
 #proof,
+#cases,
 #work,
 #about,
 #contact {
   scroll-margin-top: 5.5rem;
+}
+
+.cases-section {
+  border-bottom: 1px solid var(--line);
+}
+
+.cases-list {
+  position: relative;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.case-block {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.case-head h3 {
+  margin-top: 0.35rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: -0.03em;
+}
+
+.case-market {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.case-summary,
+.case-note,
+.case-desc,
+.case-subtitle {
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.case-summary {
+  margin-top: 0.65rem;
+  max-width: 46rem;
+}
+
+.case-note {
+  margin-top: 0.7rem;
+  max-width: 46rem;
+  padding: 0.85rem 1rem;
+  border-left: 2px solid var(--accent);
+  background: rgba(142, 182, 255, 0.06);
+  font-size: 0.95rem;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.case-asset {
+  display: grid;
+  gap: 0.85rem;
+  text-align: left;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.case-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #121826;
+  box-shadow: var(--shadow);
+}
+
+.case-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.case-copy h4 {
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.case-subtitle {
+  margin-top: 0.25rem;
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.case-desc {
+  margin-top: 0.4rem;
+  font-size: 0.92rem;
+}
+
+.case-asset:hover .case-copy h4 {
+  color: var(--accent);
+}
+
+@media (max-width: 1100px) {
+  .case-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .proof-section {
