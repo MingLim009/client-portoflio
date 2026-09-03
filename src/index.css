@@ -75,10 +75,11 @@ p {
   position: absolute;
   inset: 0 0 auto;
   z-index: 40;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
-  padding: 1.4rem clamp(1.2rem, 4vw, 3rem);
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.6rem clamp(1.2rem, 4vw, 3rem);
   pointer-events: none;
 }
 
@@ -88,23 +89,21 @@ p {
 }
 
 .brand {
-  justify-self: start;
-  font-size: 0.78rem;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .nav {
-  justify-self: center;
   display: flex;
-  gap: 2.5rem;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
 }
 
 .nav a {
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-soft);
 }
@@ -120,9 +119,9 @@ p {
   display: grid;
   align-content: center;
   padding:
-    clamp(5.5rem, 12vh, 7rem)
+    clamp(6.5rem, 14vh, 8rem)
     clamp(1.2rem, 4vw, 3rem)
-    clamp(2rem, 6vh, 3.5rem);
+    clamp(7.5rem, 16vh, 9rem);
   overflow: hidden;
   background:
     radial-gradient(ellipse 70% 55% at 55% 45%, rgba(40, 78, 160, 0.55), transparent 70%),
@@ -169,13 +168,20 @@ p {
   animation: orb-float 10s ease-in-out infinite alternate;
 }
 
-.hero-title {
+.hero-main {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 0.05em;
-  max-width: 12ch;
-  font-size: clamp(4rem, 12vw, 8.8rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: end;
+  width: 100%;
+}
+
+.hero-title {
+  display: grid;
+  gap: 0.02em;
+  font-size: clamp(3.6rem, 11vw, 8.5rem);
   font-weight: 650;
   letter-spacing: -0.045em;
   line-height: 0.92;
@@ -186,7 +192,39 @@ p {
 }
 
 .hero-line-2 {
-  margin-left: clamp(1.5rem, 8vw, 6rem);
+  margin-left: clamp(1rem, 6vw, 4.5rem);
+}
+
+.hero-name {
+  justify-self: end;
+  text-align: right;
+  max-width: 14ch;
+  padding-bottom: 0.35em;
+}
+
+.hero-name-label {
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.65rem;
+}
+
+.hero-name-text {
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.hero-name-role {
+  margin-top: 0.75rem;
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink-soft);
 }
 
 .hero-meta {
@@ -196,14 +234,14 @@ p {
   bottom: clamp(1.6rem, 4vh, 2.8rem);
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 280px));
+  grid-template-columns: repeat(2, minmax(0, 340px));
   gap: 1.5rem 3rem;
 }
 
 .hero-meta-strong,
 .hero-meta-soft {
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  font-size: clamp(0.82rem, 1.4vw, 0.95rem);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1.55;
 }
@@ -216,7 +254,7 @@ p {
 .hero-meta-soft {
   font-weight: 450;
   color: var(--muted);
-  margin-top: 0.2rem;
+  margin-top: 0.25rem;
 }
 
 .section {
@@ -646,13 +684,20 @@ p {
 }
 
 @media (max-width: 720px) {
-  .site-header {
-    grid-template-columns: 1fr auto;
+  .nav {
+    gap: 1.25rem;
   }
 
-  .nav {
-    justify-self: end;
-    gap: 1.25rem;
+  .hero-main {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .hero-name {
+    justify-self: start;
+    text-align: left;
+    max-width: none;
+    padding-bottom: 0;
   }
 
   .hero-meta {

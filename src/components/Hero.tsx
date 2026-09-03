@@ -8,16 +8,29 @@ export function Hero() {
       <div className="hero-grain" aria-hidden="true" />
       <div className="hero-orb" aria-hidden="true" />
 
-      <motion.h1
-        id="hero-heading"
-        className="hero-title"
-        initial={{ opacity: 0, y: 36 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <span className="hero-line hero-line-1">{site.heroLine1}</span>
-        <span className="hero-line hero-line-2">{site.heroLine2}</span>
-      </motion.h1>
+      <div className="hero-main">
+        <motion.h1
+          id="hero-heading"
+          className="hero-title"
+          initial={{ opacity: 0, y: 36 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="hero-line hero-line-1">{site.heroLine1}</span>
+          <span className="hero-line hero-line-2">{site.heroLine2}</span>
+        </motion.h1>
+
+        <motion.div
+          className="hero-name"
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="hero-name-label">Portfolio</p>
+          <p className="hero-name-text">{site.name}</p>
+          <p className="hero-name-role">{site.role}</p>
+        </motion.div>
+      </div>
 
       <motion.div
         className="hero-meta"
