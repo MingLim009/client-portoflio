@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#e8ece7"/>
+  <circle cx="980" cy="120" r="220" fill="#0f6b5c" fill-opacity="0.18"/>
+  <circle cx="180" cy="520" r="180" fill="#3d4a42" fill-opacity="0.12"/>
+  <text x="80" y="290" fill="#152019" font-family="Georgia, serif" font-size="72" font-weight="700">Benjamim Rhuan</text>
+  <text x="80" y="360" fill="#3d4a42" font-family="Arial, sans-serif" font-size="34">Scripts &amp; Videos Portfolio</text>
+  <rect x="80" y="400" width="72" height="8" rx="4" fill="#0f6b5c"/>
+</svg>
