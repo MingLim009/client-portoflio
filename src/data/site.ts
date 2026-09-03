@@ -42,6 +42,9 @@ export type SiteConfig = {
   proofIntro: string
   proofMetrics: ProofMetric[]
   journeyIntro: string
+  journeyGuideTitle: string
+  journeyGuide: string
+  journeyGuidePoints: string[]
   journey: JourneyStep[]
   experience: { period: string; company: string; role: string; points: string[] }[]
   /**
@@ -73,6 +76,14 @@ export const site: SiteConfig = {
   origin: '37 pieces · 5 markets',
   journeyIntro:
     'Curriculum order — latest chapter first. Each step includes the real work from that era. Filter by year, market, or format.',
+  journeyGuideTitle: 'How to read this path',
+  journeyGuide:
+    'This column follows the same idea as a CV: newest markets first, foundation at the bottom. Use the filters to jump by year or format — scripts, videos, and results stay grouped inside each chapter.',
+  journeyGuidePoints: [
+    'Latest experience stays on top',
+    'Each chapter holds its real work',
+    'Filter when you want a sharper cut',
+  ],
   email: 'benjamimrhuan@hotmail.com',
   phone: '+55 81 98699-7127',
   proofIntro:

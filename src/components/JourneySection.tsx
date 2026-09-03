@@ -185,103 +185,125 @@ export function JourneySection({ onSelect }: Props) {
         )}
       </div>
 
-      <div className="journey-track" aria-live="polite">
-        {filtered.length === 0 ? (
-          <div className="empty-state">
-            <p>No steps match these filters.</p>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => {
-                selectYear('All')
-                setMarket('All markets')
-                setFormat('all')
-              }}
-            >
-              Show full timeline
-            </button>
-          </div>
-        ) : (
-          filtered.map((step, index) => {
-            const stepWorks = worksForStep(step.verticals, format)
-            const groups = formatSections
-              .map((section) => ({
-                ...section,
-                items: stepWorks.filter((work) => work.type === section.id),
-              }))
-              .filter((group) => group.items.length > 0)
-
-            return (
-              <motion.article
-                key={step.id}
-                id={`journey-${step.year}`}
-                className="journey-step"
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{
-                  duration: 0.45,
-                  delay: Math.min(index * 0.05, 0.2),
+      <div className="journey-body">
+        <div className="journey-track" aria-live="polite">
+          {filtered.length === 0 ? (
+            <div className="empty-state">
+              <p>No steps match these filters.</p>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => {
+                  selectYear('All')
+                  setMarket('All markets')
+                  setFormat('all')
                 }}
               >
-                <div className="journey-step-rail" aria-hidden="true">
-                  <span className="journey-dot" />
-                  {index < filtered.length - 1 ? (
-                    <span className="journey-line" />
-                  ) : null}
-                </div>
-                <div className="journey-step-card">
-                  <div className="journey-step-top">
-                    <p className="journey-year">
-                      {step.year}
-                      <span> · {step.era}</span>
-                    </p>
-                    <span className="journey-market">{step.market}</span>
-                  </div>
-                  <h3>{step.title}</h3>
-                  <p className="journey-summary">{step.summary}</p>
-                  <div className="journey-focus">
-                    {step.focus.map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </div>
+                Show full timeline
+              </button>
+            </div>
+          ) : (
+            filtered.map((step, index) => {
+              const stepWorks = worksForStep(step.verticals, format)
+              const groups = formatSections
+                .map((section) => ({
+                  ...section,
+                  items: stepWorks.filter((work) => work.type === section.id),
+                }))
+                .filter((group) => group.items.length > 0)
 
-                  {groups.length > 0 ? (
-                    <div className="journey-work">
-                      {groups.map((group) => (
-                        <div key={group.id} className="journey-work-group">
-                          <div className="format-section-head">
-                            <h4>{group.label}</h4>
-                            <span>
-                              {group.items.length}{' '}
-                              {group.items.length === 1 ? 'item' : 'items'}
-                            </span>
-                          </div>
-                          <div className="work-grid journey-work-grid">
-                            {group.items.map((work, workIndex) => (
-                              <WorkCard
-                                key={work.id}
-                                work={work}
-                                index={workIndex}
-                                list={group.items}
-                                onSelect={onSelect}
-                                compact
-                              />
-                            ))}
-                          </div>
-                        </div>
+              return (
+                <motion.article
+                  key={step.id}
+                  id={`journey-${step.year}`}
+                  className="journey-step"
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{
+                    duration: 0.45,
+                    delay: Math.min(index * 0.05, 0.2),
+                  }}
+                >
+                  <div className="journey-step-rail" aria-hidden="true">
+                    <span className="journey-dot" />
+                    {index < filtered.length - 1 ? (
+                      <span className="journey-line" />
+                    ) : null}
+                  </div>
+                  <div className="journey-step-card">
+                    <div className="journey-step-top">
+                      <p className="journey-year">
+                        {step.year}
+                        <span> · {step.era}</span>
+                      </p>
+                      <span className="journey-market">{step.market}</span>
+                    </div>
+                    <h3>{step.title}</h3>
+                    <p className="journey-summary">{step.summary}</p>
+                    <div className="journey-focus">
+                      {step.focus.map((item) => (
+                        <span key={item}>{item}</span>
                       ))}
                     </div>
-                  ) : (
-                    <p className="journey-work-empty">
-                      No pieces in this chapter for the current format filter.
-                    </p>
-                  )}
-                </div>
-              </motion.article>
-            )
-          })
-        )}
+
+                    {groups.length > 0 ? (
+                      <div className="journey-work">
+                        {groups.map((group) => (
+                          <div key={group.id} className="journey-work-group">
+                            <div className="format-section-head">
+                              <h4>{group.label}</h4>
+                              <span>
+                                {group.items.length}{' '}
+                                {group.items.length === 1 ? 'item' : 'items'}
+                              </span>
+                            </div>
+                            <div className="work-grid journey-work-grid">
+                              {group.items.map((work, workIndex) => (
+                                <WorkCard
+                                  key={work.id}
+                                  work={work}
+                                  index={workIndex}
+                                  list={group.items}
+                                  onSelect={onSelect}
+                                  compact
+                                />
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="journey-work-empty">
+                        No pieces in this chapter for the current format filter.
+                      </p>
+                    )}
+                  </div>
+                </motion.article>
+              )
+            })
+          )}
+        </div>
+
+        <aside className="journey-aside" aria-label="Timeline guide">
+          <div className="journey-aside-panel">
+            <p className="journey-aside-kicker">{site.journeyGuideTitle}</p>
+            <p className="journey-aside-blurb">{site.journeyGuide}</p>
+            <ul className="journey-aside-points">
+              {site.journeyGuidePoints.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+            <div className="journey-aside-effect" aria-hidden="true">
+              <span className="journey-aside-line" />
+              <img
+                className="journey-aside-spark"
+                src="/brand/sparkline-symbol.svg"
+                alt=""
+              />
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
   )
