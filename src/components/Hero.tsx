@@ -4,7 +4,14 @@ import { site } from '../data/site'
 export function Hero() {
   return (
     <section className="hero" id="top" aria-labelledby="hero-heading">
-      <div className="hero-glow" aria-hidden="true" />
+      <div className="hero-symbol" aria-hidden="true">
+        <img
+          src="/brand/industry-symbol-bg.png"
+          alt=""
+          loading="eager"
+          decoding="async"
+        />
+      </div>
       <div className="hero-grain" aria-hidden="true" />
 
       <motion.div

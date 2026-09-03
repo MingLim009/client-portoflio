@@ -158,26 +158,46 @@ p {
     clamp(7.5rem, 16vh, 9rem);
   overflow: hidden;
   background:
-    radial-gradient(ellipse 58% 48% at 18% 18%, rgba(126, 200, 184, 0.14), transparent 62%),
-    radial-gradient(ellipse 70% 55% at 78% 42%, rgba(48, 78, 110, 0.35), transparent 68%),
+    radial-gradient(ellipse 50% 40% at 12% 20%, rgba(126, 200, 184, 0.08), transparent 60%),
     linear-gradient(165deg, #04060a 0%, #0a1218 48%, #06080e 100%);
 }
 
-.hero-glow {
+.hero-symbol {
   position: absolute;
-  inset: 15% 10% 20% 20%;
-  background: radial-gradient(circle, rgba(120, 160, 255, 0.16), transparent 68%);
-  filter: blur(40px);
+  right: clamp(-8%, -2vw, 4%);
+  top: 50%;
+  translate: 0 -52%;
+  width: min(54vw, 560px);
   pointer-events: none;
-  animation: glow-breathe 9s ease-in-out infinite alternate;
+  z-index: 0;
+  opacity: 0.34;
+  filter: saturate(1.05) contrast(1.08);
+  mask-image: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.55) 22%,
+    rgba(0, 0, 0, 0.95) 55%,
+    rgba(0, 0, 0, 0.75) 82%,
+    transparent 100%
+  );
+  animation: symbol-float 10s ease-in-out infinite alternate;
+}
+
+.hero-symbol img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 22px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
 }
 
 .hero-grain {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.28;
+  opacity: 0.22;
   mix-blend-mode: overlay;
+  z-index: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -276,8 +296,23 @@ p {
 .section.work-section,
 .section.proof-section {
   background:
-    radial-gradient(ellipse 50% 30% at 0% 0%, rgba(126, 200, 184, 0.06), transparent 55%),
+    radial-gradient(ellipse 42% 28% at 100% 8%, rgba(126, 200, 184, 0.05), transparent 55%),
     var(--bg);
+}
+
+.section.proof-section::after {
+  content: '';
+  position: absolute;
+  right: clamp(-4%, 2vw, 6%);
+  top: 18%;
+  width: min(38vw, 380px);
+  aspect-ratio: 1121 / 1200;
+  pointer-events: none;
+  opacity: 0.12;
+  background:
+    url('/brand/industry-symbol-bg.png') center / cover no-repeat;
+  mask-image: radial-gradient(circle at 50% 40%, #000 20%, transparent 72%);
+  z-index: 0;
 }
 
 .section.cases-section {
@@ -1047,10 +1082,12 @@ p {
 
 .proof-section {
   border-bottom: 1px solid var(--line);
+  overflow: hidden;
 }
 
 .proof-metrics {
   position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 1rem;
@@ -1112,6 +1149,8 @@ p {
 }
 
 .proof-shots {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.15rem;
@@ -1374,14 +1413,14 @@ p {
   margin-top: 0.3rem;
 }
 
-@keyframes glow-breathe {
+@keyframes symbol-float {
   from {
-    opacity: 0.7;
-    transform: scale(1);
+    transform: translateY(0);
+    opacity: 0.3;
   }
   to {
-    opacity: 1;
-    transform: scale(1.06);
+    transform: translateY(-10px);
+    opacity: 0.4;
   }
 }
 
@@ -1396,6 +1435,12 @@ p {
     gap: 1.25rem;
   }
 
+  .hero-symbol {
+    width: min(78vw, 420px);
+    right: -18%;
+    opacity: 0.22;
+  }
+
   .hero-meta {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -1403,7 +1448,7 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-glow {
+  .hero-symbol {
     animation: none;
   }
 }
