@@ -6,40 +6,36 @@ export function Hero() {
     <section className="hero" id="top" aria-labelledby="hero-heading">
       <div className="hero-glow" aria-hidden="true" />
       <div className="hero-grain" aria-hidden="true" />
-      <div className="hero-orb" aria-hidden="true" />
 
-      <div className="hero-main">
-        <motion.h1
-          id="hero-heading"
-          className="hero-title"
-          initial={{ opacity: 0, y: 36 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <span className="hero-line hero-line-1">{site.heroLine1}</span>
-          <span className="hero-line hero-line-2">{site.heroLine2}</span>
-        </motion.h1>
-
-        <motion.div
-          className="hero-name"
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <p className="hero-name-label">Portfolio</p>
-          <p className="hero-name-text">{site.name}</p>
-          <p className="hero-name-role">{site.role}</p>
-          <a className="btn btn-primary hero-cta" href="#work">
+      <motion.div
+        className="hero-content"
+        initial={{ opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <p className="hero-role">{site.role}</p>
+        <h1 id="hero-heading" className="hero-brand">
+          {site.name}
+        </h1>
+        <p className="hero-craft">
+          {site.heroLine1} {site.heroLine2}
+        </p>
+        <p className="hero-tagline">{site.tagline}</p>
+        <div className="hero-actions">
+          <a className="btn btn-primary" href="#work">
             Browse work
           </a>
-        </motion.div>
-      </div>
+          <a className="btn btn-ghost" href="#about">
+            About me
+          </a>
+        </div>
+      </motion.div>
 
       <motion.div
         className="hero-meta"
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.35, duration: 0.65 }}
+        transition={{ delay: 0.28, duration: 0.65 }}
       >
         <div className="hero-meta-block">
           <p className="hero-meta-strong">{site.services}</p>
