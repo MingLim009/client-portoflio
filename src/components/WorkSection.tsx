@@ -81,7 +81,7 @@ export function WorkSection({ onSelect }: Props) {
             Market
           </p>
           <div
-            className="filter-group"
+            className="filter-group market-tabs"
             role="toolbar"
             aria-labelledby="filter-market-label"
           >
@@ -201,40 +201,40 @@ function MarketBlock({
 
   return (
     <article className="market-block">
-      <header className="market-block-head">
-        <div>
-          <p className="market-block-kicker">Market</p>
-          <h3>{title}</h3>
-          <p className="market-block-blurb">{blurb}</p>
-        </div>
+      <aside className="market-rail">
+        <p className="market-block-kicker">Market</p>
+        <h3>{title}</h3>
+        <p className="market-block-blurb">{blurb}</p>
         <p className="market-block-count">
           {items.length} {items.length === 1 ? 'piece' : 'pieces'}
         </p>
-      </header>
+      </aside>
 
-      <div className="format-sections">
-        {groups.map((group) => (
-          <div key={group.id} className="format-section">
-            <div className="format-section-head">
-              <h4>{group.label}</h4>
-              <span>
-                {group.items.length}{' '}
-                {group.items.length === 1 ? 'item' : 'items'}
-              </span>
+      <div className="market-main">
+        <div className="format-sections">
+          {groups.map((group) => (
+            <div key={group.id} className="format-section">
+              <div className="format-section-head">
+                <h4>{group.label}</h4>
+                <span>
+                  {group.items.length}{' '}
+                  {group.items.length === 1 ? 'item' : 'items'}
+                </span>
+              </div>
+              <div className="work-grid">
+                {group.items.map((work, index) => (
+                  <WorkCard
+                    key={work.id}
+                    work={work}
+                    index={index}
+                    list={group.items}
+                    onSelect={onSelect}
+                  />
+                ))}
+              </div>
             </div>
-            <div className="work-grid">
-              {group.items.map((work, index) => (
-                <WorkCard
-                  key={work.id}
-                  work={work}
-                  index={index}
-                  list={group.items}
-                  onSelect={onSelect}
-                />
-              ))}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </article>
   )
