@@ -70,8 +70,18 @@ export function ProofSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.08 + index * 0.06 }}
           >
-            <p className="proof-panel-eyebrow">{panel.eyebrow}</p>
-            <h3>{panel.headline}</h3>
+            <div className="proof-panel-top">
+              <div>
+                <p className="proof-panel-eyebrow">{panel.eyebrow}</p>
+                <h3>{panel.headline}</h3>
+              </div>
+              <span
+                className={`proof-promo-arrow accent-${panel.accent}`}
+                aria-hidden="true"
+              >
+                →
+              </span>
+            </div>
             <p className="proof-panel-summary">{panel.summary}</p>
 
             <div className="proof-table-wrap">
@@ -96,6 +106,10 @@ export function ProofSection() {
             </div>
 
             <p className="proof-panel-footer">{panel.footer}</p>
+            <a className="proof-panel-cta" href="#work">
+              See related work
+              <span aria-hidden="true"> →</span>
+            </a>
           </motion.article>
         ))}
       </div>

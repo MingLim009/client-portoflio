@@ -4,6 +4,7 @@ import type { WorkItem, WorkType } from '../data/works'
 import { typeFilters, works } from '../data/works'
 import { getWorkThumbnail } from '../lib/workMedia'
 import { isPlaceholderDriveId } from '../lib/drive'
+import { ResultCardMedia } from './ResultCardMedia'
 
 type Props = {
   onSelect: (work: WorkItem, list: WorkItem[]) => void
@@ -153,18 +154,20 @@ export function WorkSection({ onSelect }: Props) {
                 }}
               >
                 <div className="work-media">
-                  {thumb ? (
+                  {work.cardHighlight ? (
+                    <ResultCardMedia {...work.cardHighlight} />
+                  ) : thumb ? (
                     <img src={thumb} alt="" loading="lazy" />
                   ) : (
                     <div className="work-media-fallback" aria-hidden="true">
-                    <span>
-                      {work.type === 'video'
-                        ? '▶'
-                        : work.type === 'result'
-                          ? 'ROI'
-                          : 'DOC'}
-                    </span>
-                  </div>
+                      <span>
+                        {work.type === 'video'
+                          ? '▶'
+                          : work.type === 'result'
+                            ? 'ROI'
+                            : 'DOC'}
+                      </span>
+                    </div>
                   )}
                   <span className="work-type">{work.type}</span>
                   {pending && (

@@ -12,6 +12,13 @@ export type WorkItem = {
   driveFileId: string
   /** Optional custom thumbnail URL */
   thumbnail?: string
+  /** Inline metric card — preferred over thumbnail for Results */
+  cardHighlight?: {
+    value: string
+    label: string
+    detail: string
+    tone?: 'blue' | 'mint'
+  }
   featured?: boolean
   market?: string
 }
@@ -35,7 +42,12 @@ export const works: WorkItem[] = [
     description:
       '$267,778.67 across 88 campaigns · 5,837 purchases · $45.88 per purchase. Account-level proof from the info-product funnel.',
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
-    thumbnail: '/proof/thumb-sfk-hub.svg',
+    cardHighlight: {
+      value: '$267,778',
+      label: 'Meta Ads · SFK Hub',
+      detail: '88 campaigns · 5,837 purchases · $45.88 CPA',
+      tone: 'blue',
+    },
     featured: true,
   },
   {
@@ -48,7 +60,12 @@ export const works: WorkItem[] = [
     description:
       '$82,225.16 spent · 4.05x average ROAS · best ad set at 12.27x on the Liver Support offer.',
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
-    thumbnail: '/proof/thumb-liver-support.svg',
+    cardHighlight: {
+      value: '4.05x',
+      label: 'Meta Ads · Liver Support',
+      detail: '$82,225 spent · peak ad set 12.27x ROAS',
+      tone: 'mint',
+    },
     featured: true,
   },
   {
