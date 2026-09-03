@@ -341,13 +341,18 @@ p {
 .work-grid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  /* auto-fill keeps empty columns so 1 item does not stretch full-width */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 2rem 1.35rem;
+  align-items: start;
+  justify-items: stretch;
 }
 
 .work-item {
   display: grid;
   gap: 1rem;
+  width: 100%;
+  max-width: 420px;
   text-align: left;
   padding: 0;
   border: 0;
