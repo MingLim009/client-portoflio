@@ -1,9 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
-  <rect width="1200" height="630" fill="#f3f8ff"/>
-  <circle cx="980" cy="120" r="240" fill="#3f8cff" fill-opacity="0.16"/>
-  <circle cx="1080" cy="420" r="180" fill="#5ec8b3" fill-opacity="0.18"/>
-  <circle cx="160" cy="500" r="200" fill="#ffb39a" fill-opacity="0.16"/>
-  <text x="80" y="290" fill="#243247" font-family="Arial, sans-serif" font-size="72" font-weight="700">Benjamim Rhuan</text>
-  <text x="80" y="360" fill="#4a5d73" font-family="Arial, sans-serif" font-size="34">Scripts &amp; Videos Portfolio</text>
-  <rect x="80" y="400" width="72" height="8" rx="4" fill="#3f8cff"/>
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <rect x="0" y="0" width="12" height="630" fill="#0066ff"/>
+  <circle cx="980" cy="180" r="220" stroke="#0e0e0e" stroke-opacity="0.08" stroke-width="1" fill="none"/>
+  <circle cx="1040" cy="240" r="140" stroke="#0066ff" stroke-opacity="0.4" stroke-width="1" fill="none"/>
+  <text x="80" y="300" fill="#0e0e0e" font-family="Georgia, serif" font-size="78">Benjamim Rhuan</text>
+  <text x="80" y="365" fill="#3a3a3a" font-family="Arial, sans-serif" font-size="30">Scripts &amp; Videos Portfolio</text>
 </svg>
