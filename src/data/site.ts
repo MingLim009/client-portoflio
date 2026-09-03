@@ -72,7 +72,7 @@ export const site: SiteConfig = {
   location: 'Brazil · US · EU markets',
   origin: '37 pieces · 5 markets',
   journeyIntro:
-    'How I got here — and the work from each chapter. Filter by year, market, or format to move through the path.',
+    'Curriculum order — latest chapter first. Each step includes the real work from that era. Filter by year, market, or format.',
   email: 'benjamimrhuan@hotmail.com',
   phone: '+55 81 98699-7127',
   proofIntro:
@@ -96,15 +96,26 @@ export const site: SiteConfig = {
   ],
   journey: [
     {
-      id: '2021-dr',
-      year: '2021',
-      era: '2021 – 2023',
-      market: 'Direct response',
-      title: 'Direct response market',
+      id: '2025-supp',
+      year: '2025',
+      era: '2025 – 2026',
+      market: 'Supplements',
+      title: 'Supplement markets',
       summary:
-        'Started in the craft: ads, advertorials, and VSLs across Brazil, US, and Europe — learning funnel structure from the ground up.',
-      focus: ['Bedigital', 'VSLs', 'Copy systems'],
-      verticals: ['direct-response'],
+        'Creative for two separate supplement brands — Iron Rise and Liver Support — with account-level ROAS proof.',
+      focus: ['Iron Rise', 'Liver Support', '4.05x ROAS'],
+      verticals: ['iron-rise', 'liver-support'],
+    },
+    {
+      id: '2024-tele',
+      year: '2024',
+      era: '2024 – 2025',
+      market: 'Telehealth',
+      title: 'Telehealth · NAD+',
+      summary:
+        'Owned creative end to end for telemedicine — ads, sales pages, quizzes, and the NAD+ Meta proof.',
+      focus: ['NAD+', 'Full funnels', 'UGC + VSL'],
+      verticals: ['telehealth'],
     },
     {
       id: '2023-info',
@@ -118,26 +129,15 @@ export const site: SiteConfig = {
       verticals: ['infoproducts'],
     },
     {
-      id: '2024-tele',
-      year: '2024',
-      era: '2024 – 2025',
-      market: 'Telehealth',
-      title: 'Telehealth · NAD+',
+      id: '2021-dr',
+      year: '2021',
+      era: '2021 – 2023',
+      market: 'Direct response',
+      title: 'Direct response foundation',
       summary:
-        'Owned creative end to end for telemedicine — ads, sales pages, quizzes, and the NAD+ Meta proof below.',
-      focus: ['NAD+', 'Full funnels', 'UGC + VSL'],
-      verticals: ['telehealth'],
-    },
-    {
-      id: '2025-supp',
-      year: '2025',
-      era: '2025 – 2026',
-      market: 'Supplements',
-      title: 'Supplement markets',
-      summary:
-        'Creative for two separate supplement brands — Iron Rise and Liver Support — with account-level ROAS proof.',
-      focus: ['Iron Rise', 'Liver Support', '4.05x ROAS'],
-      verticals: ['iron-rise', 'liver-support'],
+        'The base years — ads, advertorials, and VSLs across Brazil, US, and Europe (including Prostalax Brazil). Foundational craft, kept without special highlight.',
+      focus: ['Bedigital', 'Prostalax BR', 'VSLs'],
+      verticals: ['direct-response'],
     },
   ],
   experience: [
