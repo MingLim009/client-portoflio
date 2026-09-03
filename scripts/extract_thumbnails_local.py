@@ -23,7 +23,6 @@ def extract_thumb(video_path: Path, out_path: Path) -> bool:
         return False
 
     fps = cap.get(cv2.CAP_PROP_FPS)
-    # grab frame at ~1 second (fallback to frame 0)
     target_frame = int(round(fps * 1.0)) if fps and fps > 0 else 30
     cap.set(cv2.CAP_PROP_POS_FRAMES, target_frame)
     ok, frame = cap.read()
@@ -35,8 +34,15 @@ def extract_thumb(video_path: Path, out_path: Path) -> bool:
     if not ok:
         return False
 
-    thumb = cv2.resize(frame, (640, 400), interpolation=cv2.INTER_AREA)
+    height, width = frame.shape[:2]
+    # Preserve native aspect ratio (most NAD+ creatives are 9:16).
+    max_edge = 1080 if height >= width else 960
+    scale = max_edge / max(width, height)
+    new_w = max(1, int(round(width * scale)))
+    new_h = max(1, int(round(height * scale)))
+    thumb = cv2.resize(frame, (new_w, new_h), interpolation=cv2.INTER_AREA)
     cv2.imwrite(str(out_path), thumb)
+    print(f"  source {width}x{height} -> thumb {new_w}x{new_h}")
     return True
 
 
@@ -54,4 +60,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
