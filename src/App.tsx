@@ -6,6 +6,7 @@ import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { PreviewModal } from './components/PreviewModal'
 import { WorkSection } from './components/WorkSection'
+import { site } from './data/site'
 import type { WorkItem } from './data/works'
 import './index.css'
 
@@ -19,7 +20,7 @@ export default function App() {
         <Hero />
         <WorkSection onSelect={setActiveWork} />
         <About />
-        <Contact />
+        {site.showDirectContacts ? <Contact /> : null}
       </main>
       <Footer />
       <PreviewModal work={activeWork} onClose={() => setActiveWork(null)} />

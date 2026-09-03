@@ -22,8 +22,8 @@ export function Hero() {
           <a className="btn btn-primary" href="#work">
             View work
           </a>
-          <a className="btn btn-ghost" href="#contact">
-            Get in touch
+          <a className="btn btn-ghost" href="#about">
+            About
           </a>
         </div>
       </motion.div>

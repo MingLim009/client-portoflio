@@ -12,6 +12,11 @@ export type SiteConfig = {
   about: string
   email?: string
   location?: string
+  /**
+   * Keep false while sharing review links on freelancing platforms.
+   * Set true only at final delivery so WhatsApp / Discord / Slack appear.
+   */
+  showDirectContacts: boolean
   contacts: ContactLink[]
   seo: {
     title: string
@@ -33,6 +38,7 @@ export const site: SiteConfig = {
     'I craft screenplays and video pieces that move with intention — from first page to final cut. This portfolio collects selected scripts and films, each available to preview here and open from Google Drive when you need the source file.',
   email: '',
   location: '',
+  showDirectContacts: false,
   contacts: [
     {
       id: 'whatsapp',

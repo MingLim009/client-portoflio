@@ -1,12 +1,14 @@
 import { site } from '../data/site'
 
-const links = [
-  { href: '#work', label: 'Work' },
-  { href: '#about', label: 'About' },
-  { href: '#contact', label: 'Contact' },
-]
-
 export function Header() {
+  const links = [
+    { href: '#work', label: 'Work' },
+    { href: '#about', label: 'About' },
+    ...(site.showDirectContacts
+      ? [{ href: '#contact', label: 'Contact' }]
+      : []),
+  ]
+
   return (
     <header className="site-header">
       <a className="brand" href="#top">

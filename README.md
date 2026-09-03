@@ -8,7 +8,7 @@ Professional English-language portfolio for scripts and videos stored on Google 
 - Secondary **Open in Drive** action
 - Content data layer: title, function, category, description, thumbnail, Drive file ID
 - Filters by type (Scripts / Videos) and category
-- Contact links for WhatsApp, Discord, and Slack
+- Contact links for WhatsApp, Discord, and Slack (hidden until final delivery)
 - Mobile-first layout, sharing meta tags, fast Vite build
 
 ## Run locally
@@ -42,15 +42,16 @@ use only:
 
 Every file must be shared as **Anyone with the link → Viewer**.
 
-### Contacts
+### Contacts (enable only at final delivery)
 
-Fill `href` in `site.contacts`:
+Direct contact channels stay off during platform review to avoid policy issues.
+
+1. Fill `href` in `site.contacts`
+2. Set `showDirectContacts: true` in `src/data/site.ts`
 
 - WhatsApp: `https://wa.me/5511999999999`
 - Discord: invite or profile URL
 - Slack: invite / workspace link
-
-Empty `href` values show as “Link pending” and stay non-clickable.
 
 ## Client materials checklist
 
