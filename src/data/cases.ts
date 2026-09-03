@@ -1,3 +1,4 @@
+import type { DriveKind } from '../lib/drive'
 import type { WorkType } from './works'
 
 export type CaseAssetType = WorkType | 'mentorship'
@@ -9,6 +10,7 @@ export type CaseAsset = {
   subtitle: string
   description: string
   driveFileId: string
+  driveKind?: DriveKind
   thumbnail?: string
 }
 
@@ -23,7 +25,7 @@ export type CaseStudy = {
 
 /**
  * Grouped case studies — one story with script + creative + result (+ context).
- * Replace driveFileId values when Drive links arrive.
+ * Drive IDs from Portfolio_Benjamin_Rhuan.pdf Brazil covers.
  */
 export const caseStudies: CaseStudy[] = [
   {
@@ -37,39 +39,40 @@ export const caseStudies: CaseStudy[] = [
     assets: [
       {
         id: 'prostalax-creative-vsl',
-        title: 'Criativo VSL',
+        title: 'Creative VSL',
         type: 'video',
         subtitle: 'August 2022',
         description:
           'Finished VSL creative for the Prostalax offer — the video as it ran.',
-        driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+        driveFileId: '1NzvTNNohXI7fr6sFL7-m-_p8qZ2y9Vl_',
       },
       {
         id: 'prostalax-script-vsl',
-        title: 'Script VSL',
+        title: 'VSL Script',
         type: 'script',
         subtitle: 'August 2022',
         description:
           'The sales script written for the same VSL — writing and structure behind the creative.',
-        driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+        driveFileId: '1xjEquOmpGZofz5WECSpluTgZzQUjcEfg',
+        driveKind: 'doc',
       },
       {
         id: 'prostalax-retention',
-        title: 'Retenção alcançada',
+        title: 'Retention Result',
         type: 'result',
         subtitle: 'Retention goal hit',
         description:
           'VTurb retention dashboard for this VSL — proof that the creative held attention through the pitch.',
-        driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+        driveFileId: '1Pl4NxCzrbYQVsbrlWp5lEI3y28p1h2oV',
       },
       {
         id: 'prostalax-mentorship',
-        title: 'Mentoria Diogo Kobata',
+        title: 'Diogo Kobata Mentorship',
         type: 'mentorship',
         subtitle: '2021 · Ads Expert',
         description:
           'Mentorship session with Diogo Kobata, one of the biggest ads experts of that era — the training context behind this work.',
-        driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+        driveFileId: '1UKRyPj1zDd9Ufai7c7NG3UGr1iNMNATW',
       },
     ],
   },
@@ -96,6 +99,7 @@ export function caseAssetToWorkItem(
     market: caseStudy.market,
     description: asset.description,
     driveFileId: asset.driveFileId,
+    driveKind: asset.driveKind,
     thumbnail: asset.thumbnail,
   }
 }

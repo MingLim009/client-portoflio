@@ -5,6 +5,7 @@ import {
   drivePreviewUrl,
   driveViewUrl,
   isPlaceholderDriveId,
+  resolveDriveKind,
 } from '../lib/drive'
 
 type Props = {
@@ -49,9 +50,17 @@ export function PreviewModal({ work, list, onClose, onNavigate }: Props) {
   if (!work) return null
 
   const hasLocal = Boolean(work.localPreviewUrl)
+  const localIsVideo = Boolean(
+    work.localPreviewUrl?.match(/\.(mp4|webm|mov|ogg)(\?|$)/i),
+  )
   const pendingDrive = isPlaceholderDriveId(work.driveFileId)
-  const previewSrc = pendingDrive ? '' : drivePreviewUrl(work.driveFileId)
-  const driveHref = pendingDrive ? undefined : driveViewUrl(work.driveFileId)
+  const driveKind = resolveDriveKind(work.driveKind, work.type)
+  const previewSrc = pendingDrive
+    ? ''
+    : drivePreviewUrl(work.driveFileId, driveKind)
+  const driveHref = pendingDrive
+    ? undefined
+    : driveViewUrl(work.driveFileId, driveKind)
 
   return (
     <div className="modal-root" role="presentation" onClick={onClose}>
@@ -87,12 +96,18 @@ export function PreviewModal({ work, list, onClose, onNavigate }: Props) {
         </div>
 
         <div className={`preview-frame ${work.type === 'script' ? 'script' : 'video'}`}>
-          {hasLocal ? (
+          {hasLocal && localIsVideo ? (
             <video
               className="preview-video"
               src={work.localPreviewUrl}
               controls
               playsInline
+            />
+          ) : hasLocal ? (
+            <img
+              className="preview-image"
+              src={work.localPreviewUrl}
+              alt={`${work.title} preview`}
             />
           ) : pendingDrive ? (
             <div className="preview-placeholder">
@@ -150,9 +165,9 @@ export function PreviewModal({ work, list, onClose, onNavigate }: Props) {
               target="_blank"
               rel="noreferrer"
             >
-              Open in Drive
+              {driveKind === 'doc' ? 'Open document' : 'Open in Drive'}
             </a>
-          ) : (
+          ) : hasLocal ? null : (
             <button type="button" className="btn btn-ghost" disabled>
               Drive link pending
             </button>

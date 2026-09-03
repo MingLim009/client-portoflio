@@ -158,9 +158,25 @@ export function WorkSection({ onSelect }: Props) {
                   {work.cardHighlight ? (
                     <ResultCardMedia {...work.cardHighlight} />
                   ) : thumb ? (
-                    <img src={thumb} alt="" loading="lazy" />
-                  ) : (
-                    <div className="work-media-fallback" aria-hidden="true">
+                    <img
+                      src={thumb}
+                      alt=""
+                      loading="lazy"
+                      onError={(event) => {
+                        event.currentTarget.style.display = 'none'
+                        const fallback = event.currentTarget.nextElementSibling
+                        if (fallback instanceof HTMLElement) {
+                          fallback.hidden = false
+                        }
+                      }}
+                    />
+                  ) : null}
+                  {!work.cardHighlight ? (
+                    <div
+                      className="work-media-fallback"
+                      aria-hidden="true"
+                      hidden={Boolean(thumb)}
+                    >
                       <span>
                         {work.type === 'video'
                           ? '▶'
@@ -169,7 +185,7 @@ export function WorkSection({ onSelect }: Props) {
                             : 'DOC'}
                       </span>
                     </div>
-                  )}
+                  ) : null}
                   <span className="work-type">{work.type}</span>
                   {pending && (
                     <span className="work-pending">Preview soon</span>

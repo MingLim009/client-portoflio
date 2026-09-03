@@ -6,7 +6,7 @@ import {
   type CaseStudy,
 } from '../data/cases'
 import type { WorkItem } from '../data/works'
-import { isPlaceholderDriveId } from '../lib/drive'
+import { driveThumbnailUrl, isPlaceholderDriveId } from '../lib/drive'
 
 type Props = {
   onSelect: (work: WorkItem, list: WorkItem[]) => void
@@ -24,6 +24,12 @@ function assetFallback(type: CaseAsset['type']) {
   if (type === 'script') return 'DOC'
   if (type === 'result') return 'ROI'
   return 'ADS'
+}
+
+function assetThumb(asset: CaseAsset): string | null {
+  if (asset.thumbnail) return asset.thumbnail
+  if (isPlaceholderDriveId(asset.driveFileId)) return null
+  return driveThumbnailUrl(asset.driveFileId)
 }
 
 export function CaseStudiesSection({ onSelect }: Props) {
@@ -71,6 +77,7 @@ function CaseStudyBlock({
         {study.assets.map((asset, index) => {
           const pending = isPlaceholderDriveId(asset.driveFileId)
           const work = list[index]
+          const thumb = assetThumb(asset)
 
           return (
             <motion.button
@@ -88,13 +95,27 @@ function CaseStudyBlock({
               }}
             >
               <div className="case-media">
-                {asset.thumbnail ? (
-                  <img src={asset.thumbnail} alt="" loading="lazy" />
-                ) : (
-                  <div className="work-media-fallback" aria-hidden="true">
-                    <span>{assetFallback(asset.type)}</span>
-                  </div>
-                )}
+                {thumb ? (
+                  <img
+                    src={thumb}
+                    alt=""
+                    loading="lazy"
+                    onError={(event) => {
+                      event.currentTarget.style.display = 'none'
+                      const fallback = event.currentTarget.nextElementSibling
+                      if (fallback instanceof HTMLElement) {
+                        fallback.hidden = false
+                      }
+                    }}
+                  />
+                ) : null}
+                <div
+                  className="work-media-fallback"
+                  aria-hidden="true"
+                  hidden={Boolean(thumb)}
+                >
+                  <span>{assetFallback(asset.type)}</span>
+                </div>
                 <span className="work-type">{assetLabel(asset.type)}</span>
                 {pending && <span className="work-pending">Link soon</span>}
               </div>

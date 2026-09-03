@@ -1,3 +1,5 @@
+import type { DriveKind } from '../lib/drive'
+
 export type WorkType = 'script' | 'video' | 'result'
 
 export type WorkItem = {
@@ -8,9 +10,11 @@ export type WorkItem = {
   function: string
   category: string
   description: string
-  /** Google Drive file ID only — not the full URL */
+  /** Google Drive / Docs file ID only — not the full URL */
   driveFileId: string
-  /** Optional local preview URL (served from Vite public/). */
+  /** Defaults: scripts → Google Doc, others → Drive file */
+  driveKind?: DriveKind
+  /** Optional local preview URL (video or image from Vite public/) */
   localPreviewUrl?: string
   /** Optional custom thumbnail URL */
   thumbnail?: string
@@ -27,11 +31,8 @@ export type WorkItem = {
 
 /**
  * Content layer — add / edit / remove items here.
- * Replace driveFileId values when the client sends Drive links.
- *
- * driveFileId: extract from any Drive share link:
- *   https://drive.google.com/file/d/FILE_ID_HERE/view?...
- * Sharing must be "Anyone with the link" (Viewer).
+ * Drive IDs extracted from Portfolio_Benjamin_Rhuan.pdf cover links
+ * plus later client Google Docs / local NAD+ videos.
  */
 export const works: WorkItem[] = [
   {
@@ -43,7 +44,9 @@ export const works: WorkItem[] = [
     market: 'United States',
     description:
       '$267,778.67 across 88 campaigns · 5,837 purchases · $45.88 per purchase. Account-level proof from the info-product funnel.',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    driveFileId: '',
+    localPreviewUrl: '/proof/meta-embed-1.png',
+    thumbnail: '/proof/thumb-sfk-hub.svg',
     cardHighlight: {
       value: '$267,778',
       label: 'Meta Ads · SFK Hub',
@@ -61,7 +64,9 @@ export const works: WorkItem[] = [
     market: 'Verdaia',
     description:
       '$82,225.16 spent · 4.05x average ROAS · best ad set at 12.27x on the Liver Support offer.',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    driveFileId: '',
+    localPreviewUrl: '/proof/meta-embed-2.png',
+    thumbnail: '/proof/thumb-liver-support.svg',
     cardHighlight: {
       value: '4.05x',
       label: 'Meta Ads · Liver Support',
@@ -79,7 +84,21 @@ export const works: WorkItem[] = [
     market: 'United States',
     description:
       '13.3M plays on VTurb. 18.42% still watching at 33:55 — 92% into a 36:43 video.',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    driveFileId: '',
+    localPreviewUrl: '/proof/application-page-2.png',
+    thumbnail: '/proof/application-page-2.png',
+    featured: true,
+  },
+  {
+    id: 'https-47-retention',
+    title: 'HTTPS-47 — Pitch Retention',
+    type: 'video',
+    function: 'VTurb Retention',
+    category: 'Infoproduct',
+    market: 'HTTPS-47',
+    description:
+      '47.61% pitch retention on a 22:51 video · 1,526 views · 658 plays · 49.39% play rate.',
+    driveFileId: '1tKU7K5W_uYxnZW9PsEMOJIg20n3FKM_7',
     featured: true,
   },
   {
@@ -90,7 +109,7 @@ export const works: WorkItem[] = [
     category: 'VSL',
     market: 'United States',
     description: 'Eye-health VSL for the US market.',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    driveFileId: '1n3rEqlpolIaWTSXiCbrkUbK5xxynZQPC',
   },
   {
     id: 'prostate-vsl-us',
@@ -100,7 +119,7 @@ export const works: WorkItem[] = [
     category: 'VSL',
     market: 'United States',
     description: 'Prostate VSL produced for the US market.',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    driveFileId: '1j8J4t-ywLXIAOOfS6F8DD0wA_4BNu2Po',
   },
   {
     id: 'zepbound-script',
@@ -110,7 +129,8 @@ export const works: WorkItem[] = [
     category: 'Script',
     market: 'United States',
     description: 'GLP-1 angle VSL script — the document behind the creative.',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    driveFileId: '1ztKKUkGcGleGXEtW4dQRNh0WA3LIAKM2',
+    driveKind: 'file',
   },
   {
     id: 'memory-advertorials',
@@ -120,7 +140,8 @@ export const works: WorkItem[] = [
     category: 'Script',
     market: 'United States',
     description: 'Native-ad format advertorials for a memory offer.',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    driveFileId: '1OUVRhGKXUJFUQ0cSQ-0h1kr2m5EigCKhUIJyGIIhXHw',
+    driveKind: 'doc',
   },
   {
     id: 'memocore-upsell',
@@ -130,7 +151,8 @@ export const works: WorkItem[] = [
     category: 'Script',
     market: 'United States',
     description: 'Post-purchase upsell flow script.',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    driveFileId: '1y4BAsEV7rqnSNKnDEiQbpP-zFhas9KHZ',
+    driveKind: 'doc',
   },
   {
     id: 'longform-scripts',
@@ -140,7 +162,9 @@ export const works: WorkItem[] = [
     category: 'Script',
     market: 'United States',
     description: 'Long-form paid social scripts — the format scaling in selected niches.',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    driveFileId: '1-a_nZUoajqaVDDKaAuF3xD-kz9Toi8yO',
+    driveKind: 'file',
+    thumbnail: '/thumbnails/longform-ad-scripts.png',
   },
   {
     id: 'https-47-script',
@@ -152,7 +176,7 @@ export const works: WorkItem[] = [
     description:
       'Updated VSL script + brief for HTTPS-47 (infoproduct). Wire 27 was removed as requested.',
     driveFileId: '10Xdh0vhnA2gEpOsY3msCKo3yOGZ5947s0acdTEQKRpE',
-    featured: false,
+    driveKind: 'doc',
   },
   {
     id: 'liver-research',
@@ -164,7 +188,7 @@ export const works: WorkItem[] = [
     description:
       'Research before writing: competitor teardown, best public segments, persona & mechanism insights used to build the ads.',
     driveFileId: '1vpONqeSLWQeZ_iitPZtLhccKov2aCxTAqH9b5UxPeZ8',
-    featured: false,
+    driveKind: 'doc',
   },
   {
     id: 'liver-script-07',
@@ -176,7 +200,7 @@ export const works: WorkItem[] = [
     description:
       'Updated script + brief for the Liver Support VSL set (Concept 07).',
     driveFileId: '14SM_krE_arlmWgCl3v8o8FCPU6vgpWf-rpGN6Skh4jc',
-    featured: false,
+    driveKind: 'doc',
   },
   {
     id: 'iron-rise-ads-doc',
@@ -188,7 +212,7 @@ export const works: WorkItem[] = [
     description:
       'All Iron Rise ads list from the client doc (includes the ad that needs replacement).',
     driveFileId: '1mz5Q2tP4yjLCipOG0gJe1jLa_-HEQsbMxsPAR2vH7Sg',
-    featured: false,
+    driveKind: 'doc',
   },
   {
     id: 'nad-telehealth-script',
@@ -200,7 +224,7 @@ export const works: WorkItem[] = [
     description:
       'Script doc for the NAD+ telehealth mini-VSLs / ads (replacement for “six signs” handled in the ads library doc).',
     driveFileId: '1L9oLwm_6W3YuqkVCDNBvnaU1gB-qWVINYQyjD_eLgew',
-    featured: false,
+    driveKind: 'doc',
   },
   {
     id: 'nad-3-0-talking-head-hook2',
@@ -213,7 +237,7 @@ export const works: WorkItem[] = [
     description:
       'Client script doc for the NAD+ talking head piece (Hook 2 / TOF-3.0).',
     driveFileId: '13ll9HoA2icUxBPHXeS7GDEH0sNs2MuV3tXr2HhEVlvM',
-    featured: false,
+    driveKind: 'doc',
   },
   {
     id: 'nad-4-0-podcast',
@@ -225,7 +249,7 @@ export const works: WorkItem[] = [
     description:
       'Client script doc for the NAD+ 4.0 concept (Podcast angle / 3 hooks).',
     driveFileId: '1gXRLPsjYlCuLbL35-3UsK41Vr4lhf6RKGunJCODKhZI',
-    featured: false,
+    driveKind: 'doc',
   },
   {
     id: 'nad-whiteboard',
@@ -236,42 +260,268 @@ export const works: WorkItem[] = [
     market: 'NAD+',
     description: 'Client whiteboard doc for the NAD+ production set.',
     driveFileId: '1y6-7S3kl7MQME-TtUjvUeLrykn7rE0M49mELQfGMJdk',
-    featured: false,
+    driveKind: 'doc',
   },
+
+  // Liver Support ads (from portfolio PDF covers)
   {
-    id: 'liver-ad-set',
-    title: 'Liver Support — Ad Set',
+    id: 'liver-ad-01-2',
+    title: 'What if your liver could tell you something?',
     type: 'video',
-    function: 'Paid Social Ads',
+    function: 'Paid Social Ad',
     category: 'Ads',
-    market: 'Verdaia',
-    description:
-      'Liver Support is a supplement that supports the liver. Creative strategy built from competitor research (see Liver Research doc) and paired with the $82K / 4.05x ROAS results.',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    market: 'Liver Support',
+    description: 'AD01.2 — Liver Support creative.',
+    driveFileId: '1lCtcJewW4zU5Xd59YQO2CzkUa97mpHvE',
     featured: true,
   },
   {
-    id: 'iron-rise-ads',
-    title: 'Iron Rise — Ad Set',
+    id: 'liver-ad-01-3',
+    title: 'The beer that answers back',
     type: 'video',
-    function: 'Paid Social Ads',
+    function: 'Paid Social Ad',
     category: 'Ads',
-    market: 'Verdaia',
-    description:
-      'Men’s health ads for Iron Rise — compliant creative in a difficult niche. Use the Iron Rise Ads Library doc for the full list (last ad will be replaced as requested).',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    market: 'Liver Support',
+    description: 'AD01.3 — Liver Support creative.',
+    driveFileId: '1bHsSmzjId1salVJTVdz5om2iM-hDz-XK',
   },
   {
-    id: 'telehealth-nads',
-    title: 'Telehealth NAD+ — Mini-VSLs',
+    id: 'liver-ad-01-4',
+    title: 'Inside a fatty liver',
     type: 'video',
-    function: 'Animated + UGC',
+    function: 'Paid Social Ad',
     category: 'Ads',
-    market: 'Telehealth',
-    description:
-      'Current work: animated mini-VSLs and UGC talking heads for a telehealth NAD+ offer. Script reference: NAD+ Telehealth Script doc.',
-    driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+    market: 'Liver Support',
+    description: 'AD01.4 — Liver Support creative.',
+    driveFileId: '1n-N9_rKKzfHX7-KJw26kyjNbKF674TeS',
   },
+  {
+    id: 'liver-ad-01-5',
+    title: 'Liver on the table',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Liver Support',
+    description: 'AD01.5 — Liver Support creative.',
+    driveFileId: '1wejxJ8TcFtx8kzLdu3EjYWQR_UYFf6As',
+  },
+  {
+    id: 'liver-ad-2-1',
+    title: 'This is fatty',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Liver Support',
+    description: 'AD2.1 — Liver Support creative.',
+    driveFileId: '1e5bJLLFZKp5O4Lb7NBZ2uIB9SocXnkma',
+  },
+  {
+    id: 'liver-ad-2-2',
+    title: 'Five signs your liver is overloaded',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Liver Support',
+    description: 'AD2.2 — Liver Support creative.',
+    driveFileId: '1HXUV08RaREd3y5HQ5kojmQrITZfOGFat',
+  },
+  {
+    id: 'liver-ad-2-4',
+    title: 'Skeletons in the mirror',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Liver Support',
+    description: 'AD2.4 — Liver Support creative.',
+    driveFileId: '1f3hH2bJlgEBJEG9FfMHP46oS5zGfvQP_',
+  },
+  {
+    id: 'liver-ad-2-5',
+    title: '3 signs, click to see them',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Liver Support',
+    description: 'AD2.5 — Liver Support creative.',
+    driveFileId: '1xh8XZA_7UpAkTjt1F9VgB2Df5AYS-jBL',
+  },
+
+  // Iron Rise ads
+  {
+    id: 'iron-ad-2-1',
+    title: 'Three reasons why',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Iron Rise',
+    description: 'AD2.1 — Iron Rise creative.',
+    driveFileId: '13dMKNq56rmRy4r2cGet2MSTTcSpnYBi8',
+    featured: true,
+  },
+  {
+    id: 'iron-ad-1-6',
+    title: 'I need to',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Iron Rise',
+    description: 'AD1.6 — Iron Rise creative.',
+    driveFileId: '1ptfnfWezc3EklkwT_zsehH_EOcTv3Vr0',
+  },
+  {
+    id: 'iron-ad-1-8',
+    title: 'Skeleton couple',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Iron Rise',
+    description: 'AD1.8 — Iron Rise creative.',
+    driveFileId: '19I5UlU2MwZHx9yngdtcQYw5KaBHJWa7w',
+  },
+  {
+    id: 'iron-ad-1-7',
+    title: 'Rebuilding what the blue pill only rents',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Iron Rise',
+    description: 'AD1.7 — Iron Rise creative.',
+    driveFileId: '1zmqNO-UKJeEZikJhYN96RET4SVdrnp_p',
+  },
+  {
+    id: 'iron-ad-1-5',
+    title: 'UGC talking head',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Iron Rise',
+    description: 'AD1.5 — Iron Rise creative.',
+    driveFileId: '180SEHN3yKEc_psb-vpd2wX2pTYTJCRCs',
+  },
+  {
+    id: 'iron-ad-19-3',
+    title: 'What I did at 52',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Iron Rise',
+    description: 'AD19.3 — Iron Rise creative.',
+    driveFileId: '1z0-ESI16U0iQpbc8kBsV-jZXFsrQqN6m',
+  },
+  {
+    id: 'iron-ad-13-2',
+    title: "If you can't…",
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Iron Rise',
+    description: 'AD13.2 — Iron Rise creative.',
+    driveFileId: '1bfa5FzQuosj1yj9_xkWXAr0pXiLihui3',
+  },
+  {
+    id: 'iron-ad-19-4',
+    title: 'Thirty seconds before sex',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Iron Rise',
+    description: 'AD19.4 — Iron Rise creative.',
+    driveFileId: '1Bzl7VkUMB05NZFIApkPo2kLkshydkvWv',
+  },
+  {
+    id: 'iron-ad-2-3',
+    title: 'Porn has ruined real sex for you',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'Iron Rise',
+    description: 'AD2.3 — Iron Rise creative.',
+    driveFileId: '1H7KQC2iHqRHjRm0iTRQ9noByItltIDb-',
+  },
+
+  // NAD+ ads from portfolio PDF (+ local folder videos below)
+  {
+    id: 'nad-ad-01',
+    title: "I didn't believe in losing your spark",
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'NAD+',
+    description: 'AD01 — Telehealth NAD+ creative.',
+    driveFileId: '1yabBxQEdZYhHDOGEO4QpZ4STrXIHtMLv',
+  },
+  {
+    id: 'nad-ad-89',
+    title: 'Animated couple, bedroom',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'NAD+',
+    description: 'AD89 — Telehealth NAD+ creative.',
+    driveFileId: '1E5CPunRTn4Nh7AIEtMl5MoK0yPBKDyGJ',
+  },
+  {
+    id: 'nad-ad-91',
+    title: '50 is the new 40',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'NAD+',
+    description: 'AD91 · silent enzyme — Telehealth NAD+ creative.',
+    driveFileId: '1rMJ06PXFmdEZ3d-ck0u6KBOMPdnY5wci',
+  },
+  {
+    id: 'nad-ad-98',
+    title: 'My husband was about to leave me',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'NAD+',
+    description: 'AD98 — Telehealth NAD+ creative.',
+    driveFileId: '17Zjp0TDRCMEluWyrcbR7wUA2B8jLcQoI',
+  },
+  {
+    id: 'nad-ad-99',
+    title: 'Why did she look 15 years younger?',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'NAD+',
+    description: 'AD99 · husband POV — Telehealth NAD+ creative.',
+    driveFileId: '1F6iGGfTdjErtG4b46riGb5HDev363mf2',
+  },
+  {
+    id: 'nad-ad-124',
+    title: 'I became the wife who complained',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'NAD+',
+    description: 'AD124 — Telehealth NAD+ creative.',
+    driveFileId: '1rKLuiZhI8PVatMbRhNnIxMREfjjrN7yl',
+  },
+  {
+    id: 'nad-ad-126',
+    title: "The wellness industry's biggest lie",
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'NAD+',
+    description: 'AD126 — Telehealth NAD+ creative.',
+    driveFileId: '1lqNjLRcd1DEO1jlhLooNGiGQNPus7y4b',
+  },
+  {
+    id: 'nad-ad-125',
+    title: '6 signs your body is hiding something',
+    type: 'video',
+    function: 'Paid Social Ad',
+    category: 'Ads',
+    market: 'NAD+',
+    description: 'AD125 — Telehealth NAD+ creative.',
+    driveFileId: '1ep_85E-_4n06O-1UkTSa7b0HWA-fKIWC',
+  },
+
+  // Local NAD+ folder videos (client uploads — Drive file IDs pending)
   {
     id: 'nad-30-hook2',
     title: 'NAD+ — 3.0 Talking Head (Hook 2)',
