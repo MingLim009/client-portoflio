@@ -3,10 +3,10 @@ import { site } from '../data/site'
 
 const proofShots = [
   {
-    id: 'sfk-hub',
+    id: 'nad-telehealth',
     src: '/proof/meta-embed-1.png',
     eyebrow: 'Meta Ads Manager',
-    title: 'SFK Hub — campaign export',
+    title: 'Telehealth · NAD+ — campaign export',
     summary:
       '$267,778.67 across 88 campaigns · 5,837 purchases · $45.88 cost per purchase',
     accent: 'blue' as const,

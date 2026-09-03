@@ -8,7 +8,6 @@ import { Hero } from './components/Hero'
 import { JourneySection } from './components/JourneySection'
 import { PreviewModal } from './components/PreviewModal'
 import { ProofSection } from './components/ProofSection'
-import { WorkSection } from './components/WorkSection'
 import { site } from './data/site'
 import type { WorkItem } from './data/works'
 import './index.css'
@@ -35,9 +34,8 @@ export default function App() {
       <main>
         <Hero />
         <ProofSection />
-        <JourneySection />
+        <JourneySection onSelect={openWork} />
         <CaseStudiesSection onSelect={openWork} />
-        <WorkSection onSelect={openWork} />
         <About />
         {site.showDirectContacts ? <Contact /> : null}
       </main>

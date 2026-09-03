@@ -21,7 +21,7 @@ export function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.08 }}
         >
-          {site.about} For the path by year and market, see{' '}
+          {site.about} Browse scripts, videos, and results inside{' '}
           <a className="text-link" href="#journey">
             How I got here
           </a>

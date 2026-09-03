@@ -45,22 +45,22 @@ export type WorkItem = {
  */
 export const works: WorkItem[] = [
   {
-    id: 'meta-sfk-hub',
-    title: 'Meta Ads — SFK Hub',
+    id: 'meta-nad-telehealth',
+    title: 'Meta Ads — Telehealth · NAD+',
     type: 'result',
     function: 'Creative Strategy',
     category: 'Results',
-    market: 'United States',
-    vertical: 'infoproducts',
+    market: 'NAD+',
+    vertical: 'telehealth',
     description:
-      '$267,778.67 across 88 campaigns · 5,837 purchases · $45.88 per purchase. Account-level proof from the info-product funnel.',
+      '$267,778.67 across 88 campaigns · 5,837 purchases · $45.88 per purchase. Account-level proof from the Telehealth / NAD+ lane.',
     driveFileId: '',
     localPreviewUrl: '/proof/meta-embed-1.png',
     thumbnail: '/proof/thumb-sfk-hub.svg',
     cardHighlight: {
       value: '$267,778',
-      label: 'Meta Ads · SFK Hub',
-      detail: '88 campaigns · 5,837 purchases · $45.88 CPA',
+      label: 'Meta Ads · NAD+',
+      detail: 'Telehealth · 88 campaigns · 5,837 purchases · $45.88 CPA',
       tone: 'blue',
     },
     featured: true,
@@ -690,7 +690,7 @@ export const verticalFilters = [
   {
     id: 'infoproducts' as const,
     label: 'Infoproducts',
-    blurb: 'HTTPS-47 · SFK Hub',
+    blurb: 'HTTPS-47 · performance offers',
   },
   {
     id: 'direct-response' as const,

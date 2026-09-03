@@ -1,3 +1,5 @@
+import type { WorkVertical } from './works'
+
 export type ContactLink = {
   id: 'whatsapp' | 'discord' | 'slack'
   label: string
@@ -19,6 +21,8 @@ export type JourneyStep = {
   title: string
   summary: string
   focus: string[]
+  /** Work verticals shown inside this timeline chapter */
+  verticals: WorkVertical[]
 }
 
 export type SiteConfig = {
@@ -68,16 +72,16 @@ export const site: SiteConfig = {
   location: 'Brazil · US · EU markets',
   origin: '37 pieces · 5 markets',
   journeyIntro:
-    'How I got here — from learning direct response to owning creative strategy across infoproducts, telehealth, and supplements. Filter by year or market.',
+    'How I got here — and the work from each chapter. Filter by year, market, or format to move through the path.',
   email: 'benjamimrhuan@hotmail.com',
   phone: '+55 81 98699-7127',
   proofIntro:
-    'The screenshots below are direct captures from Meta Ads Manager — the same Business Manager view used to run the accounts. Totals are readable in the export itself, not rebuilt into custom charts.',
+    'The screenshots below are direct captures from Meta Ads Manager — the same Business Manager view used to run the accounts. The first export is from the Telehealth / NAD+ lane. Totals are readable in the export itself, not rebuilt into custom charts.',
   proofMetrics: [
     {
       value: '$267,778.67',
-      label: 'Meta spend',
-      detail: '88 campaigns · 5,837 purchases · $45.88 CPA',
+      label: 'Meta spend · Telehealth',
+      detail: 'NAD+ lane · 88 campaigns · 5,837 purchases · $45.88 CPA',
     },
     {
       value: '4.05x',
@@ -100,6 +104,7 @@ export const site: SiteConfig = {
       summary:
         'Started in the craft: ads, advertorials, and VSLs across Brazil, US, and Europe — learning funnel structure from the ground up.',
       focus: ['Bedigital', 'VSLs', 'Copy systems'],
+      verticals: ['direct-response'],
     },
     {
       id: '2023-info',
@@ -108,18 +113,20 @@ export const site: SiteConfig = {
       market: 'Infoproducts',
       title: 'Infoproduct creative strategy',
       summary:
-        'Moved into strategy for performance offers — research-backed briefs behind the $267K Meta campaign set at SFK Hub.',
-      focus: ['SFK Hub', 'US & DE markets', '$267K proof'],
+        'Moved into strategy for performance offers — research-backed briefs and creatives for info-product funnels.',
+      focus: ['HTTPS-47', 'US & DE markets', 'Pitch retention'],
+      verticals: ['infoproducts'],
     },
     {
       id: '2024-tele',
       year: '2024',
       era: '2024 – 2025',
       market: 'Telehealth',
-      title: 'Telehealth funnels',
+      title: 'Telehealth · NAD+',
       summary:
-        'Owned creative end to end for telemedicine: ads, sales pages, quizzes — not only scripts.',
-      focus: ['Full funnels', 'NAD+ lane', 'UGC + VSL'],
+        'Owned creative end to end for telemedicine — ads, sales pages, quizzes, and the NAD+ Meta proof below.',
+      focus: ['NAD+', 'Full funnels', 'UGC + VSL'],
+      verticals: ['telehealth'],
     },
     {
       id: '2025-supp',
@@ -130,6 +137,7 @@ export const site: SiteConfig = {
       summary:
         'Creative for two separate supplement brands — Iron Rise and Liver Support — with account-level ROAS proof.',
       focus: ['Iron Rise', 'Liver Support', '4.05x ROAS'],
+      verticals: ['iron-rise', 'liver-support'],
     },
   ],
   experience: [
