@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480" fill="none">
   <defs>
     <linearGradient id="sparkFillMint" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#7EC8B8" stop-opacity="0.5"/>
-      <stop offset="55%" stop-color="#7EC8B8" stop-opacity="0.12"/>
+      <stop offset="0%" stop-color="#7EC8B8" stop-opacity="0.4"/>
+      <stop offset="45%" stop-color="#7EC8B8" stop-opacity="0.12"/>
       <stop offset="100%" stop-color="#7EC8B8" stop-opacity="0"/>
     </linearGradient>
-    <filter id="glowMint" x="-20%" y="-40%" width="140%" height="180%">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
+    <filter id="glowMint" x="-15%" y="-40%" width="130%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -14,15 +14,19 @@
     </filter>
   </defs>
   <path
-    d="M0 300 L60 270 L120 285 L180 230 L240 255 L300 190 L360 220 L420 150 L480 185 L540 120 L600 160 L660 100 L720 135 L720 420 L0 420 Z"
+    d="M0 350 C80 310 130 330 190 280 C250 230 300 260 360 205 C420 150 480 190 540 140 C600 90 660 125 720 95 C780 65 830 85 880 50 L880 480 L0 480 Z"
     fill="url(#sparkFillMint)"
   />
   <path
-    d="M0 300 L60 270 L120 285 L180 230 L240 255 L300 190 L360 220 L420 150 L480 185 L540 120 L600 160 L660 100 L720 135"
-    stroke="#9FD9CD"
-    stroke-width="5"
+    d="M0 350 C80 310 130 330 190 280 C250 230 300 260 360 205 C420 150 480 190 540 140 C600 90 660 125 720 95 C780 65 830 85 880 50"
+    stroke="#B8E6DB"
+    stroke-width="4.5"
     stroke-linecap="round"
     stroke-linejoin="round"
     filter="url(#glowMint)"
   />
+  <circle cx="190" cy="280" r="5" fill="#EFFFFA" opacity="0.9"/>
+  <circle cx="360" cy="205" r="5" fill="#EFFFFA" opacity="0.9"/>
+  <circle cx="540" cy="140" r="5" fill="#EFFFFA" opacity="0.9"/>
+  <circle cx="720" cy="95" r="6" fill="#FFFFFF"/>
 </svg>

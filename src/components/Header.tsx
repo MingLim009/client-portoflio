@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { site } from '../data/site'
 
+const timelineYears = site.journey.map((step) => step.year)
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
 
@@ -16,11 +18,19 @@ export function Header() {
       <a className="brand" href="#top" aria-label={`${site.name}, home`}>
         <span className="brand-name">{site.name}</span>
       </a>
-      <nav className="nav" aria-label="Primary">
+      <nav className="nav nav-timeline" aria-label="Primary">
         <a href="#proof">Proof</a>
-        <a href="#cases">Cases</a>
+        {timelineYears.map((year, index) => (
+          <a
+            key={year}
+            href={`#journey-${year}`}
+            className="nav-year"
+            title={`${year}: ${site.journey[index].title}`}
+          >
+            {year}
+          </a>
+        ))}
         <a href="#work">Work</a>
-        <a href="#about">About</a>
       </nav>
     </header>
   )

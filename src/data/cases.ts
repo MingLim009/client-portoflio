@@ -97,6 +97,7 @@ export function caseAssetToWorkItem(
             : 'Retention',
     category: caseStudy.title,
     market: caseStudy.market,
+    vertical: 'direct-response',
     description: asset.description,
     driveFileId: asset.driveFileId,
     driveKind: asset.driveKind,

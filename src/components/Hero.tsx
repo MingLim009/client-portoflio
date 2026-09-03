@@ -15,7 +15,10 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
-        <p className="hero-role">{site.role}</p>
+        <p className="hero-role">
+          <span className="hero-role-mark" aria-hidden="true" />
+          {site.role}
+        </p>
         <h1 id="hero-heading" className="hero-brand">
           {site.name}
         </h1>
@@ -27,8 +30,8 @@ export function Hero() {
           <a className="btn btn-primary" href="#proof">
             See proof
           </a>
-          <a className="btn btn-ghost" href="#work">
-            Browse work
+          <a className="btn btn-ghost" href="#journey">
+            How I got here
           </a>
         </div>
       </motion.div>

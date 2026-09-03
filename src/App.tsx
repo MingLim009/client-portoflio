@@ -5,6 +5,7 @@ import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
+import { JourneySection } from './components/JourneySection'
 import { PreviewModal } from './components/PreviewModal'
 import { ProofSection } from './components/ProofSection'
 import { WorkSection } from './components/WorkSection'
@@ -34,6 +35,7 @@ export default function App() {
       <main>
         <Hero />
         <ProofSection />
+        <JourneySection />
         <CaseStudiesSection onSelect={openWork} />
         <WorkSection onSelect={openWork} />
         <About />

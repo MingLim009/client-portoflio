@@ -11,6 +11,16 @@ export type ProofMetric = {
   detail: string
 }
 
+export type JourneyStep = {
+  id: string
+  year: string
+  era: string
+  market: string
+  title: string
+  summary: string
+  focus: string[]
+}
+
 export type SiteConfig = {
   name: string
   role: string
@@ -27,6 +37,8 @@ export type SiteConfig = {
   phone?: string
   proofIntro: string
   proofMetrics: ProofMetric[]
+  journeyIntro: string
+  journey: JourneyStep[]
   experience: { period: string; company: string; role: string; points: string[] }[]
   /**
    * Keep false while sharing review links on freelancing platforms.
@@ -54,7 +66,9 @@ export const site: SiteConfig = {
   services: 'Creative Strategy / VSLs / Paid Social',
   availability: '100% available to start now',
   location: 'Brazil · US · EU markets',
-  origin: '37 pieces · 4 markets',
+  origin: '37 pieces · 5 markets',
+  journeyIntro:
+    'How I got here — from learning direct response to owning creative strategy across infoproducts, telehealth, and supplements. Filter by year or market.',
   email: 'benjamimrhuan@hotmail.com',
   phone: '+55 81 98699-7127',
   proofIntro:
@@ -74,6 +88,48 @@ export const site: SiteConfig = {
       value: '13.3M',
       label: 'VSL plays',
       detail: 'ProstaPrime · 18.4% still watching at 92% of the video',
+    },
+  ],
+  journey: [
+    {
+      id: '2021-dr',
+      year: '2021',
+      era: '2021 – 2023',
+      market: 'Direct response',
+      title: 'Direct response market',
+      summary:
+        'Started in the craft: ads, advertorials, and VSLs across Brazil, US, and Europe — learning funnel structure from the ground up.',
+      focus: ['Bedigital', 'VSLs', 'Copy systems'],
+    },
+    {
+      id: '2023-info',
+      year: '2023',
+      era: '2023 – 2024',
+      market: 'Infoproducts',
+      title: 'Infoproduct creative strategy',
+      summary:
+        'Moved into strategy for performance offers — research-backed briefs behind the $267K Meta campaign set at SFK Hub.',
+      focus: ['SFK Hub', 'US & DE markets', '$267K proof'],
+    },
+    {
+      id: '2024-tele',
+      year: '2024',
+      era: '2024 – 2025',
+      market: 'Telehealth',
+      title: 'Telehealth funnels',
+      summary:
+        'Owned creative end to end for telemedicine: ads, sales pages, quizzes — not only scripts.',
+      focus: ['Full funnels', 'NAD+ lane', 'UGC + VSL'],
+    },
+    {
+      id: '2025-supp',
+      year: '2025',
+      era: '2025 – 2026',
+      market: 'Supplements',
+      title: 'Supplement markets',
+      summary:
+        'Creative for two separate supplement brands — Iron Rise and Liver Support — with account-level ROAS proof.',
+      focus: ['Iron Rise', 'Liver Support', '4.05x ROAS'],
     },
   ],
   experience: [
