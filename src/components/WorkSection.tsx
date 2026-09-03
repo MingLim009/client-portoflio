@@ -135,7 +135,8 @@ export function WorkSection({ onSelect }: Props) {
         <div className="work-grid">
           {filtered.map((work, index) => {
             const thumb = getWorkThumbnail(work)
-            const pending = isPlaceholderDriveId(work.driveFileId)
+            const pending =
+              !work.localPreviewUrl && isPlaceholderDriveId(work.driveFileId)
 
             return (
               <motion.button

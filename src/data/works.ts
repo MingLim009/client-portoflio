@@ -10,6 +10,8 @@ export type WorkItem = {
   description: string
   /** Google Drive file ID only — not the full URL */
   driveFileId: string
+  /** Optional local preview URL (served from Vite public/). */
+  localPreviewUrl?: string
   /** Optional custom thumbnail URL */
   thumbnail?: string
   /** Inline metric card — preferred over thumbnail for Results */
@@ -269,6 +271,83 @@ export const works: WorkItem[] = [
     description:
       'Current work: animated mini-VSLs and UGC talking heads for a telehealth NAD+ offer. Script reference: NAD+ Telehealth Script doc.',
     driveFileId: 'REPLACE_WITH_DRIVE_FILE_ID',
+  },
+  {
+    id: 'nad-30-hook2',
+    title: 'NAD+ — 3.0 Talking Head (Hook 2)',
+    type: 'video',
+    function: 'Talking Head VSL',
+    category: 'Telehealth',
+    market: 'NAD+',
+    description:
+      'Talking head VSL (Hook 2 / TOF-3.0) — local preview. Drive link pending.',
+    driveFileId: '',
+    localPreviewUrl:
+      '/videos/30Talkingheadhook2mov4TOF30ScriptPersona_Supplementfatiguedwoman4055Angle_TheEnergyGraveyard3HooksWomen40Frameio (1).mp4',
+    thumbnail:
+      '/thumbnails/30Talkingheadhook2mov4TOF30ScriptPersona_Supplementfatiguedwoman4055Angle_TheEnergyGraveyard3HooksWomen40Frameio_(1).png',
+  },
+  {
+    id: 'nad-script-1',
+    title: 'NAD+ — Script 1 (Video)',
+    type: 'video',
+    function: 'Script Video',
+    category: 'Telehealth',
+    market: 'NAD+',
+    description: 'Script 1 video — local preview. Drive link pending.',
+    driveFileId: '',
+    localPreviewUrl: '/videos/Script1.mp4',
+    thumbnail: '/thumbnails/Script1.png',
+  },
+  {
+    id: 'nad-script-2',
+    title: 'NAD+ — Script 2 (Video)',
+    type: 'video',
+    function: 'Script Video',
+    category: 'Telehealth',
+    market: 'NAD+',
+    description: 'Script 2 video — local preview. Drive link pending.',
+    driveFileId: '',
+    localPreviewUrl: '/videos/Script2.mp4',
+    thumbnail: '/thumbnails/Script2.png',
+  },
+  {
+    id: 'nad-script-3',
+    title: 'NAD+ — Script 3 (Video)',
+    type: 'video',
+    function: 'Script Video',
+    category: 'Telehealth',
+    market: 'NAD+',
+    description: 'Script 3 video — local preview. Drive link pending.',
+    driveFileId: '',
+    localPreviewUrl: '/videos/Script3.mp4',
+    thumbnail: '/thumbnails/Script3.png',
+  },
+  {
+    id: 'nad-ad149v2',
+    title: 'NAD+ — AD149v2 (Video)',
+    type: 'video',
+    function: 'Paid Creative Video',
+    category: 'Telehealth',
+    market: 'NAD+',
+    description: 'AD149v2 final video — local preview. Drive link pending.',
+    driveFileId: '',
+    localPreviewUrl: '/videos/AD149v2_NAD_FILHA_FINAL.mp4',
+    thumbnail: '/thumbnails/AD149v2_NAD_FILHA_FINAL.png',
+  },
+  {
+    id: 'nad-large-thumbnail',
+    title: 'NAD+ — Retention / Thumbnail Media',
+    type: 'video',
+    function: 'Media Preview',
+    category: 'Telehealth',
+    market: 'NAD+',
+    description:
+      'Additional NAD+ media file — local preview. Drive link pending.',
+    driveFileId: '',
+    localPreviewUrl:
+      '/videos/large-thumbnail20250307-4035589-1m3s24m.mp4',
+    thumbnail: '/thumbnails/large-thumbnail20250307-4035589-1m3s24m.png',
   },
 ]
 

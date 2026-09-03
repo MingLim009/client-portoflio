@@ -48,9 +48,10 @@ export function PreviewModal({ work, list, onClose, onNavigate }: Props) {
 
   if (!work) return null
 
-  const pending = isPlaceholderDriveId(work.driveFileId)
-  const previewSrc = pending ? '' : drivePreviewUrl(work.driveFileId)
-  const driveHref = pending ? undefined : driveViewUrl(work.driveFileId)
+  const hasLocal = Boolean(work.localPreviewUrl)
+  const pendingDrive = isPlaceholderDriveId(work.driveFileId)
+  const previewSrc = pendingDrive ? '' : drivePreviewUrl(work.driveFileId)
+  const driveHref = pendingDrive ? undefined : driveViewUrl(work.driveFileId)
 
   return (
     <div className="modal-root" role="presentation" onClick={onClose}>
@@ -86,7 +87,14 @@ export function PreviewModal({ work, list, onClose, onNavigate }: Props) {
         </div>
 
         <div className={`preview-frame ${work.type === 'script' ? 'script' : 'video'}`}>
-          {pending ? (
+          {hasLocal ? (
+            <video
+              className="preview-video"
+              src={work.localPreviewUrl}
+              controls
+              playsInline
+            />
+          ) : pendingDrive ? (
             <div className="preview-placeholder">
               <p>Drive file not linked yet.</p>
               <p>
