@@ -1010,13 +1010,18 @@ p {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
 }
 
-.work-item:hover .work-hover-cue,
-.work-item:focus-visible .work-hover-cue {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
+@media (hover: hover) and (pointer: fine) {
+  .work-item:hover .work-hover-cue,
+  .work-item:focus-visible .work-hover-cue {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 .work-media img {
