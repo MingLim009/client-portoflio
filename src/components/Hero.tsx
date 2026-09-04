@@ -1,6 +1,23 @@
 import { motion } from 'framer-motion'
 import { site } from '../data/site'
 
+const tickerWords = [
+  'DIRECT RESPONSE',
+  'DTC',
+  'CREATIVE STRATEGY',
+  'VSLs',
+  'PAID SOCIAL',
+  'ADVERTORIALS',
+  'PRESELLS',
+  'MARKET RESEARCH',
+  'OFFER MECHANISMS',
+  'FUNNEL CONGRUENCE',
+  'WINNING HOOKS',
+  'SCALABLE ANGLES',
+]
+
+const tickerLoop = [...tickerWords, ...tickerWords]
+
 export function Hero() {
   return (
     <section className="hero" id="top" aria-labelledby="hero-heading">
@@ -23,9 +40,7 @@ export function Hero() {
           {site.name}
         </h1>
         <p className="hero-since">Writing winning ADs since 2021</p>
-        <p className="hero-craft">
-          {site.heroLine1} {site.heroLine2}
-        </p>
+        <p className="hero-craft">{site.heroLine1}</p>
         <p className="hero-tagline">{site.tagline}</p>
         <div className="hero-actions">
           <a className="btn btn-primary" href="#proof">
@@ -37,21 +52,16 @@ export function Hero() {
         </div>
       </motion.div>
 
-      <motion.div
-        className="hero-meta"
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.28, duration: 0.65 }}
-      >
-        <div className="hero-meta-block">
-          <p className="hero-meta-strong">{site.services}</p>
-          <p className="hero-meta-soft">{site.availability}</p>
+      <div className="hero-ticker" aria-hidden="true">
+        <div className="hero-ticker-track">
+          {tickerLoop.map((word, index) => (
+            <span key={`${word}-${index}`}>
+              {word}
+              <span className="hero-ticker-dot">·</span>
+            </span>
+          ))}
         </div>
-        <div className="hero-meta-block">
-          <p className="hero-meta-strong">{site.location}</p>
-          <p className="hero-meta-soft">{site.origin}</p>
-        </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

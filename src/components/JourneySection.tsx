@@ -4,11 +4,13 @@ import { site } from '../data/site'
 import {
   getWorkVertical,
   typeFilters,
+  verticalFilters,
   works,
   type WorkItem,
   type WorkType,
   type WorkVertical,
 } from '../data/works'
+import { ExpandableText } from './ExpandableText'
 import { WorkCard } from './WorkCard'
 
 type Props = {
@@ -16,6 +18,12 @@ type Props = {
 }
 
 type FormatFilter = 'all' | WorkType
+
+const hiddenInJourney = new Set([
+  'meta-nad-telehealth',
+  'meta-liver-support',
+  'prostapime-retention',
+])
 
 const yearFilters = ['All', ...site.journey.map((step) => step.year)]
 const marketFilters = [
@@ -36,10 +44,43 @@ function yearFromHash(hash: string): string | null {
 
 function worksForStep(verticals: WorkVertical[], format: FormatFilter) {
   return works.filter((work) => {
+    if (hiddenInJourney.has(work.id)) return false
     const verticalOk = verticals.includes(getWorkVertical(work))
     const formatOk = format === 'all' || work.type === format
     return verticalOk && formatOk
   })
+}
+
+function verticalLabel(vertical: WorkVertical) {
+  return verticalFilters.find((item) => item.id === vertical)?.label ?? vertical
+}
+
+function workGroups(verticals: WorkVertical[], stepWorks: WorkItem[]) {
+  const buckets =
+    verticals.length > 1
+      ? verticals.map((vertical) => ({
+          key: vertical,
+          label: verticalLabel(vertical),
+          items: stepWorks.filter((work) => getWorkVertical(work) === vertical),
+        }))
+      : [{ key: 'all', label: '', items: stepWorks }]
+
+  return buckets.flatMap((bucket) =>
+    formatSections
+      .map((section) => ({
+        id: `${bucket.key}-${section.id}`,
+        label: bucket.label
+          ? `${bucket.label} · ${section.label}`
+          : section.label,
+        items: bucket.items.filter((work) => work.type === section.id),
+      }))
+      .filter((group) => group.items.length > 0),
+  )
+}
+
+function yearChipLabel(year: string) {
+  if (year === 'All') return 'Full path'
+  return site.journey.find((step) => step.year === year)?.market ?? year
 }
 
 export function JourneySection({ onSelect }: Props) {
@@ -95,12 +136,43 @@ export function JourneySection({ onSelect }: Props) {
     history.replaceState(null, '', `#journey-${next}`)
   }
 
+  const journeyPreview = (
+    <>
+      <p>
+        I started in Direct Response in 2021, with{' '}
+        <em className="name-mark">Stefan Georgi</em> as one of my biggest
+        references, learning the craft through VSLs, advertorials, presells,
+        and complete sales funnels.
+      </p>
+    </>
+  )
+  const journeyMore = (
+    <>
+      <p>
+        Over time, that foundation evolved into creative strategy for DTC
+        brands across <em>supplements</em> and <em>telehealth</em>, while
+        keeping the same performance-first mindset.
+      </p>
+      <p>
+        This timeline shows that evolution through the actual work: research,
+        briefs, scripts, finished creatives, and the results behind them.
+      </p>
+    </>
+  )
+
   return (
     <section className="section journey-section" id="journey">
-      <div className="section-head journey-head" id="work">
+      <div className="section-head journey-head is-centered" id="work">
         <p className="section-kicker">Journey + work</p>
         <h2>How I got here</h2>
-        <p className="section-lead">{site.journeyIntro}</p>
+        <ExpandableText
+          className="section-lead is-centered"
+          preview={journeyPreview}
+          more={journeyMore}
+        />
+        <p className="journey-ps">
+          P.S. Start with the latest work, or filter by year, market or format.
+        </p>
       </div>
 
       <div className="journey-shortcuts" role="group" aria-label="Timeline filters">
@@ -115,7 +187,7 @@ export function JourneySection({ onSelect }: Props) {
                 aria-pressed={year === item}
                 onClick={() => selectYear(item)}
               >
-                {item === 'All' ? 'Full path' : item}
+                {yearChipLabel(item)}
               </button>
             ))}
           </div>
@@ -164,7 +236,7 @@ export function JourneySection({ onSelect }: Props) {
         <p>
           Showing <strong>{totalPieces}</strong>{' '}
           {totalPieces === 1 ? 'piece' : 'pieces'} inside the timeline
-          {year !== 'All' ? ` · ${year}` : ''}
+          {year !== 'All' ? ` · ${yearChipLabel(year)}` : ''}
           {market !== 'All markets' ? ` · ${market}` : ''}
           {format !== 'all'
             ? ` · ${typeFilters.find((item) => item.id === format)?.label}`
@@ -205,12 +277,7 @@ export function JourneySection({ onSelect }: Props) {
           ) : (
             filtered.map((step, index) => {
               const stepWorks = worksForStep(step.verticals, format)
-              const groups = formatSections
-                .map((section) => ({
-                  ...section,
-                  items: stepWorks.filter((work) => work.type === section.id),
-                }))
-                .filter((group) => group.items.length > 0)
+              const groups = workGroups(step.verticals, stepWorks)
 
               return (
                 <motion.article
@@ -234,8 +301,7 @@ export function JourneySection({ onSelect }: Props) {
                   <div className="journey-step-card">
                     <div className="journey-step-top">
                       <p className="journey-year">
-                        {step.year}
-                        <span> · {step.era}</span>
+                        {step.era}
                       </p>
                       <span className="journey-market">{step.market}</span>
                     </div>
@@ -285,10 +351,37 @@ export function JourneySection({ onSelect }: Props) {
           )}
         </div>
 
-        <aside className="journey-aside" aria-label="Timeline guide">
+        <aside className="journey-aside" aria-label="How I build creative">
           <div className="journey-aside-panel">
             <p className="journey-aside-kicker">{site.journeyGuideTitle}</p>
-            <p className="journey-aside-blurb">{site.journeyGuide}</p>
+            <ExpandableText
+              className="journey-aside-blurb"
+              preview={
+                <p>
+                  Every project here follows the same process: research the
+                  market first, identify the strongest <em>TOF</em> opportunities,
+                  turn those insights into angles and concepts, then build the
+                  script and production brief around them.
+                </p>
+              }
+              more={
+                <>
+                  <p>
+                    Each creative is meant to be clickable. Open any piece to
+                    see not only the final ad, but the thinking behind it: the
+                    brief I presented internally, the references I gave the
+                    video editor, the script, and how the idea was translated
+                    into production.
+                  </p>
+                  <p>
+                    I focus primarily on <em>TOF creative</em>, where the job
+                    is not just to sell: it’s to earn attention, create the
+                    right belief, and make the next step in the funnel feel
+                    natural.
+                  </p>
+                </>
+              }
+            />
             <ul className="journey-aside-points">
               {site.journeyGuidePoints.map((point) => (
                 <li key={point}>{point}</li>

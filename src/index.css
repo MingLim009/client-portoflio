@@ -390,8 +390,8 @@ p {
   flex-wrap: nowrap;
   justify-content: flex-end;
   align-items: center;
-  gap: clamp(0.55rem, 1.8vw, 1.15rem);
-  max-width: min(100%, 34rem);
+  gap: clamp(0.45rem, 1.4vw, 0.95rem);
+  max-width: min(100%, 46rem);
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
@@ -526,10 +526,11 @@ p {
 }
 
 .hero-craft {
-  font-size: clamp(1.4rem, 3.2vw, 2.2rem);
+  font-size: clamp(1.25rem, 3vw, 2.05rem);
   font-weight: 600;
   letter-spacing: -0.03em;
   color: var(--ink-soft);
+  max-width: 18ch;
 }
 
 .hero-tagline {
@@ -546,45 +547,56 @@ p {
   margin-top: 0.55rem;
 }
 
-.hero-meta {
+.hero-ticker {
   position: absolute;
-  left: clamp(1.2rem, 4vw, 3rem);
-  right: clamp(1.2rem, 4vw, 3rem);
-  bottom: clamp(1.4rem, 4vh, 2.4rem);
+  left: 0;
+  right: 0;
+  bottom: clamp(1.2rem, 3.5vh, 2.1rem);
   z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem 2rem;
-  padding: 1rem 1.15rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: rgba(6, 8, 14, 0.55);
+  overflow: hidden;
+  border-block: 1px solid rgba(126, 200, 184, 0.2);
+  background: rgba(6, 8, 14, 0.62);
   backdrop-filter: blur(12px);
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
 }
 
-@media (max-width: 700px) {
-  .hero-meta {
-    grid-template-columns: 1fr;
-  }
+.hero-ticker-track {
+  display: flex;
+  width: max-content;
+  gap: 0.85rem;
+  padding: 0.72rem 0;
+  animation: hero-ticker 38s linear infinite;
 }
 
-.hero-meta-strong,
-.hero-meta-soft {
-  font-size: clamp(0.82rem, 1.4vw, 0.95rem);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  line-height: 1.55;
-}
-
-.hero-meta-strong {
+.hero-ticker-track span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  color: var(--ink);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  white-space: nowrap;
 }
 
-.hero-meta-soft {
-  font-weight: 450;
-  color: var(--muted);
-  margin-top: 0.25rem;
+.hero-ticker-dot {
+  color: rgba(126, 200, 184, 0.45);
+}
+
+@keyframes hero-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .section {
@@ -636,6 +648,43 @@ p {
   display: grid;
   gap: 0.9rem;
   margin-bottom: 2.5rem;
+}
+
+.section-head.is-centered,
+.about-layout.is-centered {
+  margin-inline: auto;
+  text-align: center;
+  justify-items: center;
+}
+
+.section-lead.is-centered,
+.about-layout.is-centered .about-text {
+  max-width: 40rem;
+}
+
+.section-lead p + p,
+.about-text p + p,
+.journey-aside-blurb p + p {
+  margin-top: 0.75rem;
+}
+
+.section-lead em,
+.about-text em,
+.journey-aside-blurb em,
+.name-mark {
+  color: var(--accent-strong);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.expand-btn {
+  margin-top: 0.7rem;
+}
+
+.journey-ps {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
 }
 
 .section-head h2 {
@@ -1134,6 +1183,36 @@ p {
 .about-text {
   max-width: 42rem;
   font-size: 1.08rem;
+}
+
+.about-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 1.25rem;
+}
+
+.about-contact-link {
+  width: 2.45rem;
+  height: 2.45rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(126, 200, 184, 0.22);
+  background: rgba(126, 200, 184, 0.1);
+  color: var(--accent-strong);
+}
+
+.about-contact-link svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  display: block;
+}
+
+.about-contact-link:hover {
+  border-color: rgba(126, 200, 184, 0.5);
+  background: rgba(126, 200, 184, 0.18);
 }
 
 .text-link {
@@ -2267,12 +2346,16 @@ p {
   }
 
   .nav {
-    gap: 0.55rem;
-    max-width: calc(100vw - 8.2rem);
+    gap: 0.45rem;
+    max-width: calc(100vw - 7.2rem);
   }
 
   .nav a {
-    font-size: 0.7rem;
+    font-size: 0.66rem;
+  }
+
+  .brand-since {
+    display: none;
   }
 
   .hero-symbol {
@@ -2281,14 +2364,11 @@ p {
     opacity: 0.38;
   }
 
-  .hero-meta {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-symbol {
+  .hero-symbol,
+  .hero-ticker-track {
     animation: none;
   }
 }

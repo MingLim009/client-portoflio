@@ -1,23 +1,24 @@
 import { motion } from 'framer-motion'
 import { site } from '../data/site'
+import { ExpandableText } from './ExpandableText'
 
 const proofShots = [
   {
     id: 'nad-telehealth',
     src: '/proof/meta-embed-1.png',
     eyebrow: 'Meta Ads Manager',
-    title: 'Telehealth · NAD+ — campaign export',
+    title: 'Telehealth, NAD+ — Turning Creative Into Spend',
     summary:
-      '$267,778.67 across 88 campaigns · 5,837 purchases · $45.88 cost per purchase',
+      'My role went beyond writing individual ads. I worked around the creative logic behind the funnel, from the initial angle to the conversion path that followed.',
     accent: 'blue' as const,
   },
   {
     id: 'liver-support',
     src: '/proof/meta-embed-2.png',
     eyebrow: 'Meta Ads Manager',
-    title: 'Liver Support — supplement account',
+    title: 'DTC Supplement — Finding Profitable Angles',
     summary:
-      '$82,225.16 spent · 4.05x average purchase ROAS · best ad set at 12.27x',
+      'This is where my Direct Response background became especially valuable in DTC: understanding that the winning ad is usually the result of the right market insight, mechanism, promise and funnel congruence working together.',
     accent: 'mint' as const,
   },
 ]
@@ -27,8 +28,28 @@ export function ProofSection() {
     <section className="section proof-section" id="proof">
       <div className="section-head">
         <p className="section-kicker">Proof</p>
-        <h2>Straight from Meta Ads Manager</h2>
-        <p className="section-lead">{site.proofIntro}</p>
+        <h2>The numbers behind the work</h2>
+        <ExpandableText
+          className="section-lead"
+          preview={
+            <p>
+              I’ve spent the last few years working in environments where
+              creative is judged by one thing: <em>performance</em>.
+            </p>
+          }
+          more={
+            <>
+              <p>
+                These are real results from accounts and funnels I worked on:
+                across <em>telehealth</em>, <em>supplements</em>, and{' '}
+                <em>direct-response</em> offers. The numbers below aren’t
+                isolated wins. They’re the result of understanding how the
+                creative, offer, mechanism, funnel and media buying all work
+                together.
+              </p>
+            </>
+          }
+        />
       </div>
 
       <div className="proof-metrics">
@@ -100,15 +121,10 @@ export function ProofSection() {
         ))}
       </div>
 
-      <div className="proof-supplements" aria-label="Separate supplement markets">
-        <span className="proof-pill is-light">Iron Rise · Supplement</span>
-        <span className="proof-pill is-dark">Liver Support · Supplement</span>
-      </div>
-
       <p className="proof-source-note">
-        These are original Meta Ads Manager captures — not redesigned charts.
-        Campaign names are redacted where needed. Iron Rise and Liver Support
-        are separate supplement markets.
+        These numbers changed how I approached creative. I stopped looking at
+        ads as isolated assets and started looking at the entire customer
+        journey as one connected system.
       </p>
     </section>
   )
