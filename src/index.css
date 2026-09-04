@@ -548,8 +548,9 @@ p {
   bottom: 0;
   z-index: 2;
   overflow: hidden;
-  border-top: 1px solid rgba(159, 217, 205, 0.45);
-  background: #07110f;
+  border-top: 2px solid var(--accent);
+  background: #0d1f1c;
+  box-shadow: 0 -12px 32px rgba(126, 200, 184, 0.18);
 }
 
 .hero-ticker-track {
@@ -566,24 +567,25 @@ p {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  gap: 1rem;
-  padding: 0.85rem 1rem;
+  gap: 1.15rem;
+  padding: 1.05rem 1.15rem;
 }
 
 .hero-ticker-group span {
   display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  font-size: clamp(0.78rem, 2.4vw, 0.92rem);
-  font-weight: 750;
-  letter-spacing: 0.14em;
+  gap: 1.15rem;
+  font-size: clamp(0.92rem, 2.8vw, 1.05rem);
+  font-weight: 800;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #e8fff8;
+  color: #f4fffb;
+  text-shadow: 0 0 16px rgba(126, 200, 184, 0.45);
   white-space: nowrap;
 }
 
 .hero-ticker-dot {
-  color: var(--accent);
+  color: var(--accent-strong);
 }
 
 @keyframes hero-ticker {
