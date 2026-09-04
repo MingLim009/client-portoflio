@@ -1,10 +1,11 @@
 import type { WorkVertical } from './works'
 
 export type ContactLink = {
-  id: 'whatsapp' | 'discord' | 'slack'
+  id: 'whatsapp' | 'discord' | 'telegram' | 'x' | 'email'
   label: string
   href: string
   description: string
+  handle: string
 }
 
 export type ProofMetric = {
@@ -73,7 +74,7 @@ export const site: SiteConfig = {
   services: 'Creative Strategy / VSLs / Paid Social',
   availability: '100% available to start now',
   location: 'Brazil · US · EU markets',
-  origin: '37 pieces · 5 markets',
+  origin: '56 pieces · 5 markets',
   journeyIntro:
     'Curriculum order — latest chapter first. Each step includes the real work from that era. Filter by year, market, or format.',
   journeyGuideTitle: 'How to read this path',
@@ -84,8 +85,8 @@ export const site: SiteConfig = {
     'Each chapter holds its real work',
     'Filter when you want a sharper cut',
   ],
-  email: 'benjamimrhuan@hotmail.com',
-  phone: '+55 81 98699-7127',
+  email: 'benjaminhuan@hotmail.com',
+  phone: '+55 81 98696-7127',
   proofIntro:
     'The screenshots below are direct captures from Meta Ads Manager — the same Business Manager view used to run the accounts. The first export is from the Telehealth / NAD+ lane. Totals are readable in the export itself, not rebuilt into custom charts.',
   proofMetrics: [
@@ -189,25 +190,42 @@ export const site: SiteConfig = {
       ],
     },
   ],
-  showDirectContacts: false,
+  showDirectContacts: true,
   contacts: [
     {
       id: 'whatsapp',
       label: 'WhatsApp',
-      href: '',
+      href: 'https://wa.me/5581986967127',
+      handle: '+55 81 98696-7127',
       description: 'Message me directly',
+    },
+    {
+      id: 'telegram',
+      label: 'Telegram',
+      href: 'https://t.me/benjaminhuan',
+      handle: '@benjaminhuan',
+      description: 'Ping me on Telegram',
     },
     {
       id: 'discord',
       label: 'Discord',
-      href: '',
+      href: 'https://discord.com/users/benjaminhuan',
+      handle: '@benjaminhuan',
       description: 'Chat on Discord',
     },
     {
-      id: 'slack',
-      label: 'Slack',
-      href: '',
-      description: 'Reach me on Slack',
+      id: 'x',
+      label: 'X',
+      href: 'https://x.com/Creativlygames',
+      handle: '@Creativlygames',
+      description: 'Follow the work on X',
+    },
+    {
+      id: 'email',
+      label: 'Email',
+      href: 'mailto:benjaminhuan@hotmail.com',
+      handle: 'benjaminhuan@hotmail.com',
+      description: 'Write me a note',
     },
   ],
   seo: {

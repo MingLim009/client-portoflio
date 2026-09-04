@@ -2,13 +2,13 @@ import { useCallback, useState } from 'react'
 import { About } from './components/About'
 import { Background3D } from './components/Background3D'
 import { Contact } from './components/Contact'
+import { FloatingContacts } from './components/FloatingContacts'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { JourneySection } from './components/JourneySection'
 import { PreviewModal } from './components/PreviewModal'
 import { ProofSection } from './components/ProofSection'
-import { site } from './data/site'
 import type { WorkItem } from './data/works'
 import './index.css'
 
@@ -32,12 +32,13 @@ export default function App() {
         Skip to proof
       </a>
       <Header />
+      <FloatingContacts />
       <main className="app-main">
         <Hero />
         <ProofSection />
         <JourneySection onSelect={openWork} />
         <About />
-        {site.showDirectContacts ? <Contact /> : null}
+        <Contact />
       </main>
       <Footer />
       <PreviewModal

@@ -11,7 +11,7 @@ export function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="section-kicker">About</p>
+          <p className="section-kicker">About me</p>
           <h2>{site.aboutTitle}</h2>
         </motion.div>
         <motion.p

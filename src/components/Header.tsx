@@ -31,6 +31,8 @@ export function Header() {
             {year}
           </a>
         ))}
+        <a href="#about">About me</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
   )
