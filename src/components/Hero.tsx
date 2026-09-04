@@ -20,9 +20,8 @@ function TickerGroup({ suffix }: { suffix: string }) {
   return (
     <div className="hero-ticker-group" aria-hidden="true">
       {tickerWords.map((word) => (
-        <span key={`${suffix}-${word}`}>
+        <span key={`${suffix}-${word}`} className="hero-ticker-chip">
           {word}
-          <span className="hero-ticker-dot">·</span>
         </span>
       ))}
     </div>
