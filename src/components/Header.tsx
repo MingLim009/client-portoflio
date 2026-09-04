@@ -13,8 +13,9 @@ export function Header() {
 
   return (
     <header className={scrolled ? 'site-header is-scrolled' : 'site-header'}>
-      <a className="brand-mark-link" href="#top" aria-label={`${site.name}, home`}>
-        <span className="brand-mark" aria-hidden="true" />
+      <a className="brand" href="#top" aria-label={`${site.name}, home`}>
+        <span>Benjamin</span>
+        <span>Rhuan</span>
       </a>
       <nav className="nav nav-timeline" aria-label="Primary">
         <a href="#proof">Proof</a>

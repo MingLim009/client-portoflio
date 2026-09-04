@@ -347,26 +347,24 @@ p {
   backdrop-filter: blur(14px);
 }
 
-.brand-mark-link {
+.brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.05;
   flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  width: 1.85rem;
-  height: 1.85rem;
-  border-radius: 999px;
-  border: 1px solid rgba(126, 200, 184, 0.28);
-  background: rgba(126, 200, 184, 0.1);
+  text-decoration: none;
 }
 
-.brand-mark {
-  width: 1.15rem;
-  height: 0.5rem;
-  background: url('/brand/sparkline-symbol-mint.svg') center / contain no-repeat;
+.brand span {
+  font-size: 0.92rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: var(--ink);
 }
 
-.brand-mark-link:hover {
-  border-color: rgba(126, 200, 184, 0.5);
-  background: rgba(126, 200, 184, 0.18);
+.brand:hover span {
+  color: var(--accent-strong);
 }
 
 .hero-since {
