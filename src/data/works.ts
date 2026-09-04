@@ -750,20 +750,6 @@ export const works: WorkItem[] = [
     localPreviewUrl: '/videos/nad-tof50-hook3-whiteboard.mp4',
     thumbnail: '/thumbnails/nad-tof50-hook3-whiteboard.png',
   },
-  {
-    id: 'nad-large-thumbnail',
-    title: 'NAD+ — Retention / Thumbnail Media',
-    type: 'video',
-    function: 'Telehealth Media',
-    category: 'Telehealth',
-    market: 'NAD+',
-    vertical: 'telehealth',
-    description: 'NAD+ telehealth retention / thumbnail media cut.',
-    driveFileId: '',
-    localPreviewUrl:
-      '/videos/large-thumbnail20250307-4035589-1m3s24m.mp4',
-    thumbnail: '/thumbnails/large-thumbnail20250307-4035589-1m3s24m.png',
-  },
 ]
 
 export const typeFilters = [
