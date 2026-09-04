@@ -26,17 +26,18 @@ const proofShots = [
 export function ProofSection() {
   return (
     <section className="section proof-section" id="proof">
-      <div className="section-head">
+      <div className="section-head is-centered">
         <p className="section-kicker">Proof</p>
         <h2>The numbers behind the work</h2>
         <ExpandableText
-          className="section-lead"
+          className="section-lead is-centered"
           preview={
             <p>
               I’ve spent the last few years working in environments where
               creative is judged by one thing: <em>performance</em>.
             </p>
           }
+          hook="These are real results from accounts and funnels I worked on…"
           more={
             <>
               <p>

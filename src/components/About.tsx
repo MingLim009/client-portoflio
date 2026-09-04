@@ -30,6 +30,7 @@ export function About() {
                 ad itself.
               </p>
             }
+            hook="I think about hooks, angles, and formats…"
             more={
               <>
                 <p>

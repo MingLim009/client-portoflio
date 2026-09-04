@@ -168,6 +168,7 @@ export function JourneySection({ onSelect }: Props) {
         <ExpandableText
           className="section-lead is-centered"
           preview={journeyPreview}
+          hook="Over time, that foundation evolved into creative strategy…"
           more={journeyMore}
         />
         <p className="journey-ps">
@@ -364,6 +365,7 @@ export function JourneySection({ onSelect }: Props) {
                   script and production brief around them.
                 </p>
               }
+              hook="Each creative is meant to be clickable…"
               more={
                 <>
                   <p>

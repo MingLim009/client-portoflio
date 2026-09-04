@@ -16,7 +16,18 @@ const tickerWords = [
   'SCALABLE ANGLES',
 ]
 
-const tickerLoop = [...tickerWords, ...tickerWords]
+function TickerGroup({ suffix }: { suffix: string }) {
+  return (
+    <div className="hero-ticker-group" aria-hidden="true">
+      {tickerWords.map((word) => (
+        <span key={`${suffix}-${word}`}>
+          {word}
+          <span className="hero-ticker-dot">·</span>
+        </span>
+      ))}
+    </div>
+  )
+}
 
 export function Hero() {
   return (
@@ -52,14 +63,10 @@ export function Hero() {
         </div>
       </motion.div>
 
-      <div className="hero-ticker" aria-hidden="true">
+      <div className="hero-ticker" role="presentation">
         <div className="hero-ticker-track">
-          {tickerLoop.map((word, index) => (
-            <span key={`${word}-${index}`}>
-              {word}
-              <span className="hero-ticker-dot">·</span>
-            </span>
-          ))}
+          <TickerGroup suffix="a" />
+          <TickerGroup suffix="b" />
         </div>
       </div>
     </section>

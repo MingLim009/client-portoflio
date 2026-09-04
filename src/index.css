@@ -435,7 +435,7 @@ p {
   padding:
     clamp(7rem, 14vh, 9rem)
     clamp(1.2rem, 4vw, 3rem)
-    clamp(7.5rem, 16vh, 9rem);
+    clamp(6.2rem, 12vh, 7.5rem);
   overflow: hidden;
   background: transparent;
 }
@@ -551,51 +551,62 @@ p {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: clamp(1.2rem, 3.5vh, 2.1rem);
-  z-index: 1;
+  bottom: 0;
+  z-index: 2;
   overflow: hidden;
-  border-block: 1px solid rgba(126, 200, 184, 0.2);
-  background: rgba(6, 8, 14, 0.62);
-  backdrop-filter: blur(12px);
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 6%,
-    #000 94%,
-    transparent
-  );
+  border-top: 1px solid rgba(159, 217, 205, 0.45);
+  background: #07110f;
 }
 
 .hero-ticker-track {
   display: flex;
   width: max-content;
-  gap: 0.85rem;
-  padding: 0.72rem 0;
-  animation: hero-ticker 38s linear infinite;
+  animation: hero-ticker 26s linear infinite;
+  -webkit-animation: hero-ticker 26s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
-.hero-ticker-track span {
+.hero-ticker-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+}
+
+.hero-ticker-group span {
   display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  gap: 1rem;
+  font-size: clamp(0.78rem, 2.4vw, 0.92rem);
+  font-weight: 750;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent-strong);
+  color: #e8fff8;
   white-space: nowrap;
 }
 
 .hero-ticker-dot {
-  color: rgba(126, 200, 184, 0.45);
+  color: var(--accent);
 }
 
 @keyframes hero-ticker {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@-webkit-keyframes hero-ticker {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  to {
+    -webkit-transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -707,6 +718,18 @@ p {
   color: var(--ink-soft);
   line-height: 1.7;
   font-weight: 400;
+}
+
+.section-lead p,
+.about-text p,
+.journey-aside-blurb p {
+  color: var(--ink);
+}
+
+.expand-hook {
+  margin-top: 0.75rem;
+  color: var(--accent-strong);
+  font-weight: 650;
 }
 
 .filters {
@@ -2367,8 +2390,7 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-symbol,
-  .hero-ticker-track {
+  .hero-symbol {
     animation: none;
   }
 }
