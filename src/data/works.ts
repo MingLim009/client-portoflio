@@ -123,16 +123,10 @@ export const works: WorkItem[] = [
     market: 'HTTPS-47',
     vertical: 'infoproducts',
     description:
-      'HTTPS retention on VTurb (middle curve on the retention print) — 47.61% on a 22:51 video · 1,526 views · 658 plays.',
+      'HTTPS retention print from VTurb — 47.61% on a 22:51 video (middle curve on the retention report).',
     driveFileId: '',
     localPreviewUrl: '/proof/https-retention-print.png',
     thumbnail: '/proof/https-retention-print.png',
-    cardHighlight: {
-      value: '47.61%',
-      label: 'HTTPS retention',
-      detail: 'Middle curve · 22:51 VSL · VTurb print',
-      tone: 'blue',
-    },
     featured: true,
   },
   {
