@@ -1,7 +1,9 @@
 :root {
   --bg: #06080e;
-  --bg-elevated: #0c111b;
-  --bg-soft: #101722;
+  --bg-mid: #0a1218;
+  --bg-deep: #04060a;
+  --bg-elevated: #0a1018;
+  --bg-soft: #0d1520;
   --ink: #f3f5f8;
   --ink-soft: rgba(243, 245, 248, 0.74);
   --muted: rgba(243, 245, 248, 0.48);
@@ -15,6 +17,9 @@
   --shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
   --font-display: 'Sora', 'Segoe UI', Helvetica, Arial, sans-serif;
   --font-body: 'Figtree', 'Segoe UI', Helvetica, Arial, sans-serif;
+  --surface-atmosphere:
+    radial-gradient(ellipse 50% 40% at 12% 18%, rgba(126, 200, 184, 0.07), transparent 60%),
+    linear-gradient(165deg, var(--bg-deep) 0%, var(--bg-mid) 48%, var(--bg) 100%);
   color: var(--ink);
   background: var(--bg);
   font-family: var(--font-body);
@@ -36,7 +41,8 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: var(--bg);
+  background: var(--surface-atmosphere);
+  background-attachment: fixed;
   color: var(--ink);
 }
 
@@ -193,9 +199,7 @@ p {
     clamp(1.2rem, 4vw, 3rem)
     clamp(7.5rem, 16vh, 9rem);
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 50% 40% at 12% 20%, rgba(126, 200, 184, 0.08), transparent 60%),
-    linear-gradient(165deg, #04060a 0%, #0a1218 48%, #06080e 100%);
+  background: transparent;
 }
 
 .hero-symbol {
@@ -231,8 +235,8 @@ p {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.22;
-  mix-blend-mode: overlay;
+  opacity: 0.08;
+  mix-blend-mode: soft-light;
   z-index: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -357,14 +361,16 @@ p {
 .section {
   position: relative;
   padding: clamp(4.2rem, 9vw, 7rem) clamp(1.2rem, 4vw, 3rem);
-  background: var(--bg);
+  background: transparent;
 }
 
 .section.work-section,
 .section.proof-section {
-  background:
-    radial-gradient(ellipse 42% 28% at 100% 8%, rgba(126, 200, 184, 0.05), transparent 55%),
-    var(--bg);
+  background: radial-gradient(
+    ellipse 42% 28% at 100% 8%,
+    rgba(126, 200, 184, 0.05),
+    transparent 55%
+  );
 }
 
 .section.proof-section::after {
@@ -382,7 +388,7 @@ p {
 }
 
 .section.cases-section {
-  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-elevated) 50%, var(--bg) 100%);
+  background: transparent;
 }
 
 .section::before {
@@ -390,7 +396,8 @@ p {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.12;
+  opacity: 0.035;
+  mix-blend-mode: soft-light;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -866,9 +873,9 @@ p {
 
 .about-section {
   background:
-    radial-gradient(ellipse 60% 50% at 20% 0%, rgba(40, 78, 160, 0.25), transparent 60%),
-    var(--bg-elevated);
-  border-block: 1px solid var(--line);
+    radial-gradient(ellipse 55% 45% at 18% 0%, rgba(126, 200, 184, 0.07), transparent 58%),
+    radial-gradient(ellipse 40% 35% at 90% 80%, rgba(94, 183, 255, 0.05), transparent 55%);
+  border-block: 1px solid rgba(243, 245, 248, 0.06);
 }
 
 .about-layout {
@@ -904,10 +911,16 @@ p {
 }
 
 .journey-section {
-  background:
-    radial-gradient(ellipse 48% 36% at 0% 12%, rgba(94, 183, 255, 0.08), transparent 55%),
-    radial-gradient(ellipse 40% 30% at 100% 80%, rgba(126, 200, 184, 0.06), transparent 50%),
-    var(--bg);
+  background: radial-gradient(
+      ellipse 48% 36% at 0% 12%,
+      rgba(94, 183, 255, 0.06),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 40% 30% at 100% 80%,
+      rgba(126, 200, 184, 0.05),
+      transparent 50%
+    );
 }
 
 .journey-shortcuts {
@@ -917,7 +930,7 @@ p {
   padding: 1.1rem 1.15rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(10, 18, 24, 0.45);
 }
 
 .journey-body {
@@ -944,11 +957,11 @@ p {
   display: grid;
   gap: 0.85rem;
   padding: 1.15rem 1.1rem 1.35rem;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(243, 245, 248, 0.08);
   border-radius: var(--radius-lg);
   background:
-    linear-gradient(165deg, rgba(126, 200, 184, 0.08), transparent 42%),
-    rgba(255, 255, 255, 0.025);
+    radial-gradient(ellipse 70% 50% at 20% 0%, rgba(126, 200, 184, 0.1), transparent 55%),
+    linear-gradient(165deg, rgba(4, 6, 10, 0.55) 0%, rgba(10, 18, 24, 0.72) 100%);
   overflow: hidden;
   min-height: min(70vh, 520px);
 }
