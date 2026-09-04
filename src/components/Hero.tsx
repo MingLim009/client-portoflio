@@ -22,7 +22,7 @@ export function Hero() {
         <h1 id="hero-heading" className="hero-brand">
           {site.name}
         </h1>
-        <p className="hero-since">Since 2021</p>
+        <p className="hero-since">Writing winning ADs since 2021</p>
         <p className="hero-craft">
           {site.heroLine1} {site.heroLine2}
         </p>

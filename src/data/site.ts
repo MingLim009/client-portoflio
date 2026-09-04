@@ -125,7 +125,7 @@ export const site: SiteConfig = {
       title: 'Telehealth · NAD+',
       summary:
         'Owned creative end to end for telemedicine — ads, sales pages, quizzes, and the NAD+ Meta proof.',
-      focus: ['NAD+', 'Full funnels', 'UGC + VSL'],
+      focus: ['NAD+', 'Long-form ads', 'UGC + VSL'],
       verticals: ['telehealth'],
     },
     {
@@ -136,7 +136,7 @@ export const site: SiteConfig = {
       title: 'Infoproduct creative strategy',
       summary:
         'Moved into strategy for performance offers — research-backed briefs and creatives for info-product funnels.',
-      focus: ['HTTPS-47', 'US & DE markets', 'Pitch retention'],
+      focus: ['HTTPS-47', 'US & DE markets', 'VSL retention'],
       verticals: ['infoproducts'],
     },
     {

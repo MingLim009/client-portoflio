@@ -137,20 +137,7 @@ p {
 }
 
 .bg3d-horizon {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  top: 42%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(126, 200, 184, 0.28),
-    rgba(94, 183, 255, 0.22),
-    transparent
-  );
-  transform: translateZ(20px);
-  animation: bg3d-horizon-pulse 7s ease-in-out infinite;
+  display: none;
 }
 
 .bg3d-ribbon {
@@ -380,9 +367,20 @@ p {
 }
 
 .brand-since {
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  max-width: 16rem;
+  line-height: 1.35;
+}
+
+.hero-since {
+  margin-top: -0.15rem;
+  font-size: clamp(0.78rem, 1.35vw, 0.92rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -525,15 +523,6 @@ p {
   letter-spacing: -0.045em;
   line-height: 0.95;
   max-width: 12ch;
-}
-
-.hero-since {
-  margin-top: -0.15rem;
-  font-size: clamp(0.82rem, 1.4vw, 0.95rem);
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
 }
 
 .hero-craft {
@@ -1086,10 +1075,12 @@ p {
 .work-function,
 .work-meta {
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
 .work-copy h3 {

@@ -17,7 +17,7 @@ export function Header() {
     <header className={scrolled ? 'site-header is-scrolled' : 'site-header'}>
       <a className="brand" href="#top" aria-label={`${site.name}, home`}>
         <span className="brand-name">{site.name}</span>
-        <span className="brand-since">Since 2021</span>
+        <span className="brand-since">Writing winning ADs since 2021</span>
       </a>
       <nav className="nav nav-timeline" aria-label="Primary">
         <a href="#proof">Proof</a>
