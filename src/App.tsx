@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import { About } from './components/About'
+import { Background3D } from './components/Background3D'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
@@ -26,11 +27,12 @@ export default function App() {
 
   return (
     <div className="app-shell">
+      <Background3D />
       <a className="skip-link" href="#proof">
         Skip to proof
       </a>
       <Header />
-      <main>
+      <main className="app-main">
         <Hero />
         <ProofSection />
         <JourneySection onSelect={openWork} />
