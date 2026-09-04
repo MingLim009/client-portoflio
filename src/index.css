@@ -1454,19 +1454,25 @@ p {
   translate: 0 -50%;
   display: grid;
   gap: 0.45rem;
+  padding: 0.4rem;
+  border: 1px solid rgba(126, 200, 184, 0.2);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(126, 200, 184, 0.1), rgba(6, 8, 14, 0.72));
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
 }
 
 .contact-dock-link {
-  width: 2.7rem;
-  height: 2.7rem;
+  width: 2.55rem;
+  height: 2.55rem;
   display: grid;
   place-items: center;
   border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(6, 8, 14, 0.78);
-  color: var(--accent-strong);
-  backdrop-filter: blur(12px);
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  border: 1px solid rgba(126, 200, 184, 0.22);
+  background: rgba(10, 18, 24, 0.7);
+  color: var(--accent);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
 .contact-dock-link svg {
@@ -1477,9 +1483,9 @@ p {
 
 .contact-dock-link:hover {
   transform: translateX(-3px);
-  border-color: rgba(244, 246, 251, 0.32);
-  background: rgba(12, 18, 28, 0.95);
-  color: var(--ink);
+  border-color: rgba(126, 200, 184, 0.55);
+  background: rgba(126, 200, 184, 0.18);
+  color: var(--accent-strong);
 }
 
 @media (max-width: 720px) {
@@ -1488,6 +1494,7 @@ p {
     bottom: 1rem;
     translate: 0;
     gap: 0.35rem;
+    padding: 0.32rem;
   }
 
   .contact-dock-link {
@@ -1509,14 +1516,17 @@ p {
   align-items: center;
   gap: 0.9rem;
   padding: 1.15rem 1.2rem;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(126, 200, 184, 0.16);
   border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.02);
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  background:
+    linear-gradient(135deg, rgba(126, 200, 184, 0.08), rgba(255, 255, 255, 0.02));
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
 }
 
 .contact-link:hover {
-  border-color: rgba(244, 246, 251, 0.35);
+  border-color: rgba(126, 200, 184, 0.4);
+  background:
+    linear-gradient(135deg, rgba(126, 200, 184, 0.14), rgba(255, 255, 255, 0.03));
   transform: translateY(-2px);
 }
 
@@ -1536,8 +1546,9 @@ p {
   border-radius: 0.75rem;
   display: grid;
   place-items: center;
-  background: rgba(142, 182, 255, 0.12);
-  color: var(--accent);
+  background: rgba(126, 200, 184, 0.14);
+  border: 1px solid rgba(126, 200, 184, 0.22);
+  color: var(--accent-strong);
   flex-shrink: 0;
 }
 
