@@ -125,7 +125,7 @@ export const site: SiteConfig = {
       title: 'Telehealth · NAD+',
       summary:
         'Owned creative end to end for telemedicine — ads, sales pages, quizzes, and the NAD+ Meta proof.',
-      focus: ['NAD+', 'Long-form ads', 'UGC + VSL'],
+      focus: ['NAD+', 'Whiteboard ads', 'Long-form'],
       verticals: ['telehealth'],
     },
     {

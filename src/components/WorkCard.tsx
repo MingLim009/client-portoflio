@@ -20,8 +20,10 @@ function marketLabel(work: WorkItem) {
 
 export function WorkCard({ work, index, list, onSelect, compact }: Props) {
   const thumb = getWorkThumbnail(work)
-  const pending =
-    !work.localPreviewUrl && isPlaceholderDriveId(work.driveFileId)
+  const hasPlayablePreview = Boolean(
+    work.localPreviewUrl || !isPlaceholderDriveId(work.driveFileId),
+  )
+  const pending = !hasPlayablePreview
 
   return (
     <motion.button
@@ -46,7 +48,9 @@ export function WorkCard({ work, index, list, onSelect, compact }: Props) {
             src={thumb}
             alt=""
             loading="lazy"
+            referrerPolicy="no-referrer"
             onError={(event) => {
+              event.currentTarget.removeAttribute('src')
               event.currentTarget.style.display = 'none'
               const fallback = event.currentTarget.nextElementSibling
               if (fallback instanceof HTMLElement) {
@@ -71,7 +75,7 @@ export function WorkCard({ work, index, list, onSelect, compact }: Props) {
           </div>
         ) : null}
         <span className="work-type">{work.type}</span>
-        {pending && <span className="work-pending">Preview soon</span>}
+        {pending ? <span className="work-pending">Link soon</span> : null}
         <span className="work-hover-cue">Preview</span>
       </div>
       <div className="work-copy">
