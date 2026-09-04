@@ -1,13 +1,6 @@
 import { motion } from 'framer-motion'
 import { site } from '../data/site'
-
-const icons: Record<string, string> = {
-  whatsapp: 'WA',
-  telegram: 'TG',
-  discord: 'DC',
-  x: 'X',
-  email: '@',
-}
+import { ContactIcon } from './ContactIcons'
 
 export function Contact() {
   const available = site.contacts.filter((c) => c.href.trim().length > 0)
@@ -37,7 +30,7 @@ export function Contact() {
             transition={{ duration: 0.4, delay: index * 0.06 }}
           >
             <span className="contact-icon" aria-hidden="true">
-              {icons[contact.id]}
+              <ContactIcon id={contact.id} />
             </span>
             <span>
               <strong>{contact.label}</strong>

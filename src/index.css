@@ -1457,19 +1457,22 @@ p {
 }
 
 .contact-dock-link {
-  width: 2.55rem;
-  height: 2.55rem;
+  width: 2.7rem;
+  height: 2.7rem;
   display: grid;
   place-items: center;
   border-radius: 999px;
   border: 1px solid var(--line);
   background: rgba(6, 8, 14, 0.78);
   color: var(--accent-strong);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
   backdrop-filter: blur(12px);
   transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.contact-dock-link svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  display: block;
 }
 
 .contact-dock-link:hover {
@@ -1535,9 +1538,13 @@ p {
   place-items: center;
   background: rgba(142, 182, 255, 0.12);
   color: var(--accent);
-  font-size: 0.72rem;
-  font-weight: 700;
   flex-shrink: 0;
+}
+
+.contact-icon svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  display: block;
 }
 
 .contact-email {

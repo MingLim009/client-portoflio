@@ -1,12 +1,5 @@
 import { site } from '../data/site'
-
-const short: Record<string, string> = {
-  whatsapp: 'WA',
-  telegram: 'TG',
-  discord: 'DC',
-  x: 'X',
-  email: '@',
-}
+import { ContactIcon } from './ContactIcons'
 
 export function FloatingContacts() {
   const links = site.contacts.filter((item) => item.href.trim().length > 0)
@@ -23,9 +16,9 @@ export function FloatingContacts() {
           target={item.id === 'email' ? undefined : '_blank'}
           rel={item.id === 'email' ? undefined : 'noreferrer'}
           title={`${item.label} · ${item.handle}`}
+          aria-label={`${item.label}: ${item.handle}`}
         >
-          <span aria-hidden="true">{short[item.id]}</span>
-          <span className="sr-only">{item.label}</span>
+          <ContactIcon id={item.id} />
         </a>
       ))}
     </aside>
